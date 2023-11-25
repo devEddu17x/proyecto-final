@@ -10,6 +10,7 @@ public class Empleado {
     private String profesion;
     private int dni;
     private LocalDate inicioOrg;
+    private boolean activo;
 
     // todos los parametros
     public Empleado(String codigo, String nombre, String apellido, String profesion, int dni, LocalDate inicioOrg) {
@@ -80,6 +81,10 @@ public class Empleado {
         this.inicioOrg = inicioOrg;
     }
     
+    public void setActivo(boolean activo){
+        this.activo = activo;
+    }
+    
     // getters
 
     public String getCodigo() {
@@ -104,6 +109,10 @@ public class Empleado {
 
     public LocalDate getInicioOrg() {
         return inicioOrg;
+    }
+    
+    public boolean getActivo(){
+        return activo;
     }
     
     @Override
