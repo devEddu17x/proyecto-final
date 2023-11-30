@@ -27,7 +27,31 @@ public class ListaAsignaciones {
     public static void ordenarPorFechaAsc() {
         Collections.sort(listaAsignaciones, (Asignacion a1, Asignacion a2) -> (a1.getFechaAsignacion().compareTo(a2.getFechaAsignacion())));
     }
+    
+    
+    public static void ordenarPorFechaInicioAsc() {
+        Collections.sort(listaAsignaciones, (Asignacion a1, Asignacion a2) -> (a1.getInicioAsignacion().compareTo(a2.getInicioAsignacion())));
+    }
+    public static void ordenarPorFechasInicioDes() {
+        ordenarPorFechaInicioAsc();
+        Collections.reverse(listaAsignaciones);
+    }
+    
+    public static Asignacion buscarUltimaAsignacion(String codigoEmpleado) {
 
+        if (estaVacio()) {
+            return null;
+        } else {
+            ArrayList<Asignacion> lista = new ArrayList<>();
+            for (Asignacion asignacion : listaAsignaciones) {
+                if (asignacion.getEmpleado().getCodigo().equals(codigoEmpleado)) {
+                   return asignacion;
+                }
+            }
+            return null;
+        }
+    }
+    
     public static void ordenarPorFechasDes() {
         ordenarPorFechaAsc();
         Collections.reverse(listaAsignaciones);

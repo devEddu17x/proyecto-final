@@ -3,7 +3,7 @@ import complementos.Complementos;
 public class Puesto {
     private String codigo;
     private String nombre;
-    private String codigoArea;
+    private final String codigoArea;
     private int maximoEmpleados;
     private int numeroEmpleados;
     
@@ -35,10 +35,6 @@ public class Puesto {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public void setCodigorArea(String codigorArea) {
-        this.codigo = codigorArea;
     }
 
     public void setMaximoEmpleados(int maximoEmpleados) {
