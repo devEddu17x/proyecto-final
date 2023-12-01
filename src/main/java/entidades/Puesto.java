@@ -1,6 +1,8 @@
 package entidades;
 import complementos.Complementos;
-public class Puesto {
+import java.io.Serializable;
+
+public class Puesto implements Serializable{
     private String codigo;
     private String nombre;
     private final String codigoArea;

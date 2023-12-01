@@ -1,9 +1,10 @@
 package entidades;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 
-public class Asignacion {
+public class Asignacion implements Serializable{
 
     private final LocalDate fechaAsignacion;
     private LocalDate inicioAsignacion;

@@ -1,7 +1,8 @@
 package entidades;
 import complementos.Complementos;
+import java.io.Serializable;
 
-public class Area {
+public class Area implements Serializable{
     private final String codigo;
     private String nombre;
     private int empleadosAsignados;

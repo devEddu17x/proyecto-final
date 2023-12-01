@@ -13,11 +13,12 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class DALAsignacion {
-    static RandomAccessFile raf;
+    private static RandomAccessFile raf;
+    private static final String path = "lista_asignaciones.dat";
     
     public static void agregarAsignacion(Asignacion asignacion){
         try {
-            raf = new RandomAccessFile("asignaciones.dat", "rw");
+            raf = new RandomAccessFile(path, "rw");
             raf.seek(raf.length());
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(baos);
@@ -34,7 +35,7 @@ public class DALAsignacion {
     
     public static void leerAsignaciones(){
         try {
-            raf = new RandomAccessFile("asignaciones.dat", "r");
+            raf = new RandomAccessFile(path, "r");
             while (raf.getFilePointer() < raf.length()) {
                 int size = raf.readInt();
                 byte[] bytes = new byte[size];

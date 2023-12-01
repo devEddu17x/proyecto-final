@@ -2,7 +2,9 @@ package entidades;
 
 import java.time.LocalDate;
 import complementos.Complementos;
-public class Empleado {
+import java.io.Serializable;
+
+public class Empleado implements Serializable{
     
     private String codigo;
     private String nombre;
