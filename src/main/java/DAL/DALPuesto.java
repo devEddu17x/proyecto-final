@@ -17,7 +17,7 @@ public class DALPuesto {
     private static RandomAccessFile raf;
     private static final String path = "mapa_puestos.dat";
     
-    public static void agregarArea(Puesto puesto){
+    public static void agregarPuesto(Puesto puesto){
         try {
             // archivo
             raf = new RandomAccessFile(path, "rw");
@@ -38,7 +38,7 @@ public class DALPuesto {
             System.out.println(ex.getMessage());
         }
     }
-    public static void leerAreas(){
+    public static void leerPuestos(){
         try {
             raf = new RandomAccessFile(path, "r");
             
