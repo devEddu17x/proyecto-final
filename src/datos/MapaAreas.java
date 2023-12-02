@@ -4,40 +4,41 @@
  */
 package datos;
 
-import java.util.TreeMap;
-import entidades.Area;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.TreeMap;
+
+import entidades.Area;
 
 public class MapaAreas {
     private static TreeMap<String, Area> mapaArea = new TreeMap<>();
-    
-    public static void setArea(Area area){
+
+    public static void setArea(Area area) {
         mapaArea.put(area.getCodigo(), area);
     }
-    
-    public static Area getArea(String codigoArea){
-        return  mapaArea.get(codigoArea);
+
+    public static Area getArea(String codigoArea) {
+        return mapaArea.get(codigoArea);
     }
-    
-    public static int getTamaño(){
+
+    public static int getTamaño() {
         return mapaArea.size();
     }
-    
-    public static ArrayList<Area> ordenarPorNombreAsc(){
+
+    public static ArrayList<Area> ordenarPorNombreAsc() {
         ArrayList<Area> listaAreas = getLista();
         Collections.sort(listaAreas, (Area a1, Area a2) -> a1.getNombre().compareTo(a2.getNombre()));
         return listaAreas;
     }
-    
-    public static ArrayList<Area> ordenarPorNombreDes(){
-        ArrayList<Area> listaAreas =  ordenarPorNombreAsc();
+
+    public static ArrayList<Area> ordenarPorNombreDes() {
+        ArrayList<Area> listaAreas = ordenarPorNombreAsc();
         Collections.reverse(listaAreas);
         return listaAreas;
     }
-    
-    public static ArrayList<Area> getLista(){
+
+    public static ArrayList<Area> getLista() {
         Collection<Area> areas = mapaArea.values();
         return new ArrayList<>(areas);
     }
