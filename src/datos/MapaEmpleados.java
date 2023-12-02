@@ -1,10 +1,12 @@
 package datos;
-import entidades.Empleado;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.TreeMap;
+
+import entidades.Empleado;
 
 public class MapaEmpleados {
 
@@ -33,15 +35,20 @@ public class MapaEmpleados {
         Collection<Empleado> lista = mapaEmpleados.values();
         ArrayList<Empleado> listaEmpleados = new ArrayList<>(lista);
         Collections.sort(listaEmpleados, (Empleado e1, Empleado e2) -> e1.getNombre().compareTo(e2.getNombre()));
-//        listaEmpleados.sort(Comparator.comparing(Empleado::getNombre));
-        
+        // listaEmpleados.sort(Comparator.comparing(Empleado::getNombre));
+
         return listaEmpleados;
     }
-    
-    public static ArrayList<Empleado> ordenarPorNombreDes(){
+
+    public static ArrayList<Empleado> ordenarPorNombreDes() {
         ArrayList<Empleado> listaEmpleados = ordenarPorNombreAsc();
         Collections.reverse(listaEmpleados);
         return listaEmpleados;
+    }
+
+    public static ArrayList<Empleado> getLista() {
+        Collection<Empleado> empleados = mapaEmpleados.values();
+        return new ArrayList<>(empleados);
     }
 
 }
