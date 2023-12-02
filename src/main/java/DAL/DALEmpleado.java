@@ -24,7 +24,7 @@ public class DALEmpleado {
     private static RandomAccessFile raf;
     private static final String path = "mapa_empleado.dat";
 
-    private static String columnas[] = {"Codigo", "Nombre", "Apellido", "Profesion", "DNI", "Inicio Org.", "Cargo", "N° Empleados"};
+    private static final String columnas[] = {"Codigo", "Nombre", "Apellido", "Profesion", "DNI", "Inicio Org.", "Cargo", "N° Empleados"};
     private static Object[] fila = new Object[columnas.length];
 
     public static void agregarEmpleado(Empleado empleado) {
@@ -80,6 +80,7 @@ public class DALEmpleado {
     public static DefaultTableModel getTablaNombreDes(){
         return llenarTabla(MapaEmpleados.ordenarPorNombreDes());
     }
+    
     private static DefaultTableModel llenarTabla(ArrayList<Empleado> lista) {
         DefaultTableModel modelo = new DefaultTableModel();
         for (Empleado empleado : lista) {

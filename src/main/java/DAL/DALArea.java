@@ -24,7 +24,7 @@ public class DALArea {
     private static RandomAccessFile raf;
     private static final String path = "mapa_areas.dat";
 
-    private static String[] columnas = {"Codigo", "Nombre", "Cantidad de Empleados"};
+    private static final String[] columnas = {"Codigo", "Nombre", "Cantidad de Empleados"};
     private static Object[] fila = new Object[columnas.length];
 
     public static void agregarArea(Area area) {

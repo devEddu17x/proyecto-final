@@ -20,7 +20,7 @@ public class DALAsignacion {
     private static RandomAccessFile raf;
     private static final String path = "lista_asignaciones.dat";
 
-    private static String columnas[] = {"Fecha Asignacion", "Inicio Asignacion", "Fin Asignacion", "Cod. Empleado", "Cod. Area", "Cod. Puesto"};
+    private static final String columnas[] = {"Fecha Asignacion", "Inicio Asignacion", "Fin Asignacion", "Cod. Empleado", "Cod. Area", "Cod. Puesto"};
     private static Object[] fila = new Object[columnas.length];
 
     public static void agregarAsignacion(Asignacion asignacion) {
