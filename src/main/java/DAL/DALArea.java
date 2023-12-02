@@ -68,12 +68,27 @@ public class DALArea {
             }
         } catch (Exception e) {
         }
-        
-        
 
-    
-
-    public static DefaultTableModel llenarTabla() {
-        return null;
     }
+
+    public static DefaultTableModel getTablaNombreAsc() {
+        return llenarTabla(MapaAreas.ordenarPorNombreAsc());
+    }
+
+    public static DefaultTableModel getTablaNombreDes() {
+        return llenarTabla(MapaAreas.ordenarPorNombreDes());
+
+    }
+
+    private static DefaultTableModel llenarTabla(ArrayList<Area> lista) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        for (Area area : lista) {
+            fila[0] = area.getCodigo();
+            fila[1] = area.getNombre();
+            fila[2] = area.getEmpleadosAsignados();
+            modelo.addRow(fila);
+        }
+        return modelo;
+    }
+
 }

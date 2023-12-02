@@ -1,5 +1,4 @@
 package datos;
-import java.util.Comparator;
 import entidades.Empleado;
 import java.time.LocalDate;
 import java.util.ArrayList;

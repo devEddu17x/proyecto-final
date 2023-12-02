@@ -12,10 +12,15 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.RandomAccessFile;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 public class DALPuesto {
     private static RandomAccessFile raf;
     private static final String path = "mapa_puestos.dat";
+    
+    private static String [] columnas = {"Codigo", "Nombre", "Cod. Area", "Max. Empleados", "N° Empleados"};
+    private static Object[] fila = new Object[columnas.length];
     
     public static void agregarPuesto(Puesto puesto){
         try {
@@ -59,5 +64,28 @@ public class DALPuesto {
             }
         } catch (Exception e) {
         }
+    }
+    
+    
+    public static DefaultTableModel getTableNombreAsc(){
+        return llenarTabla(MapaPuestos.ordenarPorNombreAsc());
+    }
+    
+    public static DefaultTableModel getTableNombreDes(){
+        return llenarTabla(MapaPuestos.ordenarPorNombreDes());
+    }
+    
+    public static DefaultTableModel llenarTabla(ArrayList<Puesto> lista){
+        DefaultTableModel modelo = new DefaultTableModel();
+        for (Puesto puesto : lista) {
+            fila[0] = puesto.getCodigo();
+            fila[1] = puesto.getNombre();
+            fila[2] = puesto.getCodigoArea();
+            fila[3] = puesto.getMaximoEmpleados();
+            fila[4] = puesto.getNumeroEmpleados();
+            modelo.addRow(fila);
+        }
+        
+        return modelo;
     }
 }
