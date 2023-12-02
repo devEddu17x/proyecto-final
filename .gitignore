@@ -3,4 +3,4 @@ target/
 # los .class
 
 /nbproject/
-build/classes/*/*.class
+build/classes/**/*.class
