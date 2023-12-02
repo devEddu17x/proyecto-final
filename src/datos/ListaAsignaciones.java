@@ -1,9 +1,9 @@
 package datos;
 
-import entidades.Asignacion;
-
 import java.util.ArrayList;
 import java.util.Collections;
+
+import entidades.Asignacion;
 
 public class ListaAsignaciones {
 
@@ -29,7 +29,8 @@ public class ListaAsignaciones {
     }
 
     public static void ordenarPorFechaAsc() {
-        Collections.sort(listaAsignaciones, (Asignacion a1, Asignacion a2) -> (a1.getFechaAsignacion().compareTo(a2.getFechaAsignacion())));
+        Collections.sort(listaAsignaciones,
+                (Asignacion a1, Asignacion a2) -> (a1.getFechaAsignacion().compareTo(a2.getFechaAsignacion())));
     }
 
     public static void ordenarPorFechasDes() {
@@ -38,7 +39,8 @@ public class ListaAsignaciones {
     }
 
     public static void ordenarPorFechaInicioAsc() {
-        Collections.sort(listaAsignaciones, (Asignacion a1, Asignacion a2) -> (a1.getInicioAsignacion().compareTo(a2.getInicioAsignacion())));
+        Collections.sort(listaAsignaciones,
+                (Asignacion a1, Asignacion a2) -> (a1.getInicioAsignacion().compareTo(a2.getInicioAsignacion())));
     }
 
     public static void ordenarPorFechasInicioDes() {
@@ -103,6 +105,10 @@ public class ListaAsignaciones {
             }
             return lista;
         }
+    }
+
+    public static ArrayList<Asignacion> getContenido() {
+        return listaAsignaciones;
     }
 
 }
