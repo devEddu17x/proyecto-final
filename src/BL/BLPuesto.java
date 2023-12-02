@@ -1,13 +1,56 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package BL;
 
-/**
- *
- * @author eduar
- */
+import java.util.ArrayList;
+
+import DAL.DALPuesto;
+import datos.MapaPuestos;
+import entidades.Puesto;
+
 public class BLPuesto {
-    
+  public static String agregarPuesto(String codigo, String nombre, String codigoArea, int maximoEmpleados,
+      int numeroEmpleados) {
+    String mensaje = "";
+    Puesto puesto;
+
+    if (codigo != null && nombre.trim().length() > 0 && codigoArea.trim().length() > 0 && maximoEmpleados > 0
+        && numeroEmpleados > 0) {
+      puesto = new Puesto(codigo, nombre, codigoArea, maximoEmpleados, numeroEmpleados);
+      DALPuesto.agregarPuesto(puesto);
+      mensaje = "Puesto agregado correctamente";
+    } else {
+      mensaje = "No se pudo agregar el puesto";
+    }
+
+    return mensaje;
+  }
+
+  // constructor sin codigo
+  public static String agregarPuesto(String nombre, String codigoArea, int maximoEmpleados, int numeroEmpleados) {
+    String mensaje = "";
+    Puesto puesto;
+
+    if (nombre.trim().length() > 0 && codigoArea.trim().length() > 0 && maximoEmpleados > 0 && numeroEmpleados > 0) {
+      puesto = new Puesto(nombre, codigoArea, maximoEmpleados, numeroEmpleados);
+      DALPuesto.agregarPuesto(puesto);
+      mensaje = "Puesto agregado correctamente";
+    } else {
+      mensaje = "No se pudo agregar el puesto";
+    }
+
+    return mensaje;
+  }
+
+  public static Puesto getPuesto(String codigoPuesto) {
+    Puesto puesto = null;
+
+    if (codigoPuesto != null) {
+      puesto = MapaPuestos.getPuesto(codigoPuesto);
+    }
+
+    return puesto;
+  }
+
+  public static ArrayList<Puesto> getContenido() {
+    return MapaPuestos.getLista();
+  }
 }
