@@ -1,6 +1,6 @@
 # el target
 target/
 # los .class
-.class
+
 /nbproject/
-/build/
+build/classes/*/*.class
