@@ -26,8 +26,7 @@ public class MapaAreas {
     }
     
     public static ArrayList<Area> ordenarPorNombreAsc(){
-        Collection<Area> areas = mapaArea.values();
-        ArrayList<Area> listaAreas = new ArrayList<>(areas);
+        ArrayList<Area> listaAreas = getLista();
         Collections.sort(listaAreas, (Area a1, Area a2) -> a1.getNombre().compareTo(a2.getNombre()));
         return listaAreas;
     }
@@ -36,5 +35,10 @@ public class MapaAreas {
         ArrayList<Area> listaAreas =  ordenarPorNombreAsc();
         Collections.reverse(listaAreas);
         return listaAreas;
+    }
+    
+    public static ArrayList<Area> getLista(){
+        Collection<Area> areas = mapaArea.values();
+        return new ArrayList<>(areas);
     }
 }
