@@ -2,3 +2,4 @@
 target/
 # los .class
 .class
+/nbproject/
