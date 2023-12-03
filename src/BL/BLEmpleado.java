@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import DAL.DALEmpleado;
 import datos.MapaEmpleados;
 import entidades.Empleado;
+import entidades.EmpleadoCargo;
+import entidades.Factory;
 
 public class BLEmpleado {
   public static String agregarEmpleado(String codigo, String nombre, String apellido, String profesion, int dni,
@@ -15,7 +17,7 @@ public class BLEmpleado {
 
     if (codigo != null && nombre.trim().length() > 0 && apellido.trim().length() > 0 && profesion.trim().length() > 0
         && dni > 0 && inicioOrg != null) {
-      empleado = new Empleado(codigo, nombre, apellido, profesion, dni, inicioOrg);
+        empleado = (Empleado) Factory.crearEmpleado(codigo, nombre, apellido, profesion, dni, inicioOrg);
       DALEmpleado.agregarEmpleado(empleado);
       mensaje = "Empleado agregado correctamente";
     } else {
@@ -32,7 +34,8 @@ public class BLEmpleado {
 
     if (codigo != null && nombre.trim().length() > 0 && apellido.trim().length() > 0 && profesion.trim().length() > 0
         && dni > 0) {
-      empleado = new Empleado(codigo, nombre, apellido, profesion, dni);
+        empleado = (Empleado) Factory.crearEmpleado(codigo, nombre, apellido, profesion, dni);
+        
       DALEmpleado.agregarEmpleado(empleado);
       mensaje = "Empleado agregado correctamente";
     } else {
@@ -50,7 +53,7 @@ public class BLEmpleado {
 
     if (nombre.trim().length() > 0 && apellido.trim().length() > 0 && profesion.trim().length() > 0 && dni > 0
         && inicioOrg != null) {
-      empleado = new Empleado(nombre, apellido, profesion, dni, inicioOrg);
+        empleado = (Empleado) Factory.crearEmpleado(nombre, apellido, profesion,dni,inicioOrg);
       DALEmpleado.agregarEmpleado(empleado);
       mensaje = "Empleado agregado correctamente";
     } else {
@@ -66,7 +69,7 @@ public class BLEmpleado {
     Empleado empleado;
 
     if (nombre.trim().length() > 0 && apellido.trim().length() > 0 && profesion.trim().length() > 0 && dni > 0) {
-      empleado = new Empleado(nombre, apellido, profesion, dni);
+      empleado = (Empleado) Factory.crearEmpleado(nombre, apellido, profesion, dni);
       DALEmpleado.agregarEmpleado(empleado);
       mensaje = "Empleado agregado correctamente";
     } else {
@@ -75,6 +78,76 @@ public class BLEmpleado {
 
     return mensaje;
   }
+  
+  public static String agregarEmpleadoCargo(String cargo, int numeroEmpleados,String codigo, String nombre, String apellido, String profesion, int dni,
+      LocalDate inicioOrg) {
+    String mensaje = "";
+    EmpleadoCargo empleado;
+
+    if (codigo != null && nombre.trim().length() > 0 && apellido.trim().length() > 0 && profesion.trim().length() > 0
+        && dni > 0 && inicioOrg != null) {
+        empleado = (EmpleadoCargo) Factory.crearEmpleadoCargo(cargo, numeroEmpleados, codigo, nombre, apellido, profesion, dni, inicioOrg);
+      DALEmpleado.agregarEmpleado(empleado);
+      mensaje = "Empleado agregado correctamente";
+    } else {
+      mensaje = "No se pudo agregar el empleado";
+    }
+
+    return mensaje;
+  }
+
+  // sin fecha
+  public static String agregarEmpleadoCargo(String cargo, int numeroEmpleados, String codigo, String nombre, String apellido, String profesion, int dni) {
+    String mensaje = "";
+    EmpleadoCargo empleado;
+
+    if (codigo != null && nombre.trim().length() > 0 && apellido.trim().length() > 0 && profesion.trim().length() > 0
+        && dni > 0) {
+        empleado = (EmpleadoCargo) Factory.crearEmpleadoCargo(cargo, numeroEmpleados, codigo, nombre, apellido, profesion, dni);
+        
+      DALEmpleado.agregarEmpleado(empleado);
+      mensaje = "Empleado agregado correctamente";
+    } else {
+      mensaje = "No se pudo agregar el empleado";
+    }
+
+    return mensaje;
+  }
+
+  // los mismmos constructores pero sin codigo
+  // con fecha
+  public static String agregarEmpleadoCargo(String cargo, int numeroEmpleados, String nombre, String apellido, String profesion, int dni, LocalDate inicioOrg) {
+    String mensaje = "";
+    EmpleadoCargo empleado;
+
+    if (nombre.trim().length() > 0 && apellido.trim().length() > 0 && profesion.trim().length() > 0 && dni > 0
+        && inicioOrg != null) {
+        empleado = (EmpleadoCargo) Factory.crearEmpleadoCargo(cargo, numeroEmpleados, nombre, apellido, profesion, dni, inicioOrg);
+      DALEmpleado.agregarEmpleado(empleado);
+      mensaje = "Empleado agregado correctamente";
+    } else {
+      mensaje = "No se pudo agregar el empleado";
+    }
+
+    return mensaje;
+  }
+
+  // sin fecha
+  public static String agregarEmpleadoCargo(String cargo, int numeroEmpleados, String nombre, String apellido, String profesion, int dni) {
+    String mensaje = "";
+    EmpleadoCargo empleado;
+
+    if (nombre.trim().length() > 0 && apellido.trim().length() > 0 && profesion.trim().length() > 0 && dni > 0) {
+      empleado = (EmpleadoCargo) Factory.crearEmpleadoCargo(cargo, numeroEmpleados, nombre, apellido, profesion, dni);
+      DALEmpleado.agregarEmpleado(empleado);
+      mensaje = "Empleado agregado correctamente";
+    } else {
+      mensaje = "No se pudo agregar el empleado";
+    }
+
+    return mensaje;
+  }
+  
 
   public static Empleado getEmpleado(String codigoEmpleado) {
     Empleado empleado = null;

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import DAL.DALArea;
 import datos.MapaAreas;
 import entidades.Area;
+import entidades.Factory;
 
 public class BLArea {
   public static String agregarArea(String nombre) {
@@ -12,7 +13,7 @@ public class BLArea {
     Area area;
 
     if (nombre.trim().length() > 0) {
-      area = new Area(nombre, 0, 0);
+        area = (Area) Factory.crearArea(nombre, 0, 0);
       DALArea.agregarArea(area);
       mensaje = "Area agregada correctamente";
     } else {
@@ -27,7 +28,7 @@ public class BLArea {
     Area area;
 
     if (codigo != null && nombre.trim().length() > 0) {
-      area = new Area(codigo, nombre, 0, 0);
+        area = (Area) Factory.crearArea(codigo, nombre, 0, 0);
       DALArea.agregarArea(area);
       mensaje = "Area agregada correctamente";
     } else {
