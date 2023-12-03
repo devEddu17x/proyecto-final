@@ -7,14 +7,14 @@ public class Area implements Serializable, EntidadEmpresa{
     private String nombre;
     private int empleadosAsignados;
     
-    public Area(String codigo, String nombre, int empleadosAsignados, int numeroPuestos) {
+    public Area(String codigo, String nombre, int empleadosAsignados) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.empleadosAsignados = empleadosAsignados;
     }
     
     // constructor sin codigo
-    public Area(String nombre, int empleadosAsignados, int numeroPuestos) {
+    public Area(String nombre, int empleadosAsignados) {
         this.nombre = nombre;
         this.empleadosAsignados = empleadosAsignados;
         this.codigo = Complementos.generarCodigo();

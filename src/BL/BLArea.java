@@ -28,7 +28,7 @@ public class BLArea {
     Area area;
 
     if (codigo != null && nombre.trim().length() > 0) {
-        area = (Area) Factory.crearArea(codigo, nombre, 0, 0);
+        area = (Area) Factory.crearArea(codigo, 0, 0);
       DALArea.agregarArea(area);
       mensaje = "Area agregada correctamente";
     } else {

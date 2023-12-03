@@ -4,12 +4,12 @@ import java.time.LocalDate;
 
 public class Factory {
     
-    public static EntidadEmpresa crearArea(String codigo, String nombre, int empleadosAsignados, int numeroPuestos) {
-        return new Area(codigo, nombre, empleadosAsignados, numeroPuestos);
+    public static EntidadEmpresa crearArea(String codigo, String nombre, int empleadosAsignados) {
+        return new Area(codigo, nombre, empleadosAsignados);
     }
 
     public static EntidadEmpresa crearArea(String nombre, int empleadosAsignados, int numeroPuestos) {
-        return new Area(nombre, empleadosAsignados, numeroPuestos);
+        return new Area(nombre, empleadosAsignados);
     }
     
     public static EntidadEmpresa crearAsignacion(LocalDate fechaAsignacion, LocalDate inicioAsignacion, LocalDate finAsignacion, Empleado empleado, Area area, Puesto puesto) {
