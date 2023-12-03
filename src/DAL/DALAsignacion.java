@@ -88,8 +88,19 @@ public class DALAsignacion {
         ArrayList<Asignacion> lista = getContenido();
         for (Asignacion asignacion : lista) {
             fila[0] = asignacion.getFechaAsignacion();
-            fila[1] = asignacion.getInicioAsignacion();
-            fila[2] = asignacion.getFinAsignacion();
+
+            if (asignacion.getInicioAsignacion() != null) {
+                fila[1] = asignacion.getInicioAsignacion();
+            } else {
+                fila[1] = "Sin fecha";
+            }
+
+            if (asignacion.getFinAsignacion() != null) {
+                fila[2] = asignacion.getFinAsignacion();
+            } else {
+                fila[2] = "Sin fecha";
+            }
+
             fila[3] = asignacion.getEmpleado().getCodigo();
             fila[4] = asignacion.getArea().getCodigo();
             fila[5] = asignacion.getPuesto().getCodigo();

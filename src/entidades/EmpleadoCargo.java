@@ -1,15 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package entidades;
 
 import java.time.LocalDate;
 
-/**
- *
- * @author eduar
- */
 public class EmpleadoCargo extends Empleado {
     
     private String cargo;
@@ -54,7 +46,5 @@ public class EmpleadoCargo extends Empleado {
     public void setNumeroEmpleados(int numeroEmpleados) {
         this.numeroEmpleados = numeroEmpleados;
     }
-    
-    
     
 }

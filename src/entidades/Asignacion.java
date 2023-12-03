@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 
-public class Asignacion implements Serializable{
+public class Asignacion implements Serializable, EntidadEmpresa{
 
     private final LocalDate fechaAsignacion;
     private LocalDate inicioAsignacion;

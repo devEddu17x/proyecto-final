@@ -2,7 +2,7 @@ package entidades;
 import complementos.Complementos;
 import java.io.Serializable;
 
-public class Puesto implements Serializable{
+public class Puesto implements Serializable, EntidadEmpresa{
     private String codigo;
     private String nombre;
     private final String codigoArea;

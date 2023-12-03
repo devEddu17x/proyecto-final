@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import complementos.Complementos;
 import java.io.Serializable;
 
-public class Empleado implements Serializable{
+public class Empleado implements Serializable, EntidadEmpresa{
     
     private String codigo;
     private String nombre;
