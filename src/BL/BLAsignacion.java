@@ -8,6 +8,7 @@ import datos.ListaAsignaciones;
 import entidades.Area;
 import entidades.Asignacion;
 import entidades.Empleado;
+import entidades.Factory;
 import entidades.Puesto;
 
 public class BLAsignacion {
@@ -18,7 +19,7 @@ public class BLAsignacion {
 
     if (fechaAsignacion != null && inicioAsignacion != null && finAsignacion != null && empleado != null && area != null
         && puesto != null) {
-      asignacion = new Asignacion(fechaAsignacion, inicioAsignacion, finAsignacion, empleado, area, puesto);
+        asignacion = (Asignacion) Factory.crearAsignacion(fechaAsignacion, inicioAsignacion, finAsignacion, empleado, area, puesto);
       DALAsignacion.agregarAsignacion(asignacion);
       mensaje = "Asignacion agregada correctamente";
     } else {
@@ -35,7 +36,7 @@ public class BLAsignacion {
     Asignacion asignacion;
 
     if (fechaAsignacion != null && inicioAsignacion != null && empleado != null && area != null && puesto != null) {
-      asignacion = new Asignacion(fechaAsignacion, inicioAsignacion, empleado, area, puesto);
+        asignacion = (Asignacion) Factory.crearAsignacion(fechaAsignacion, inicioAsignacion, empleado, area, puesto);
       DALAsignacion.agregarAsignacion(asignacion);
       mensaje = "Asignacion agregada correctamente";
     } else {
@@ -51,7 +52,7 @@ public class BLAsignacion {
     Asignacion asignacion;
 
     if (fechaAsignacion != null && empleado != null && area != null && puesto != null) {
-      asignacion = new Asignacion(fechaAsignacion, empleado, area, puesto);
+        asignacion = (Asignacion) Factory.crearAsignacion(fechaAsignacion, empleado, area, puesto);
       DALAsignacion.agregarAsignacion(asignacion);
       mensaje = "Asignacion agregada correctamente";
     } else {

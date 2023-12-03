@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import DAL.DALPuesto;
 import datos.MapaPuestos;
+import entidades.Factory;
 import entidades.Puesto;
 
 public class BLPuesto {
@@ -14,7 +15,7 @@ public class BLPuesto {
 
     if (codigo != null && nombre.trim().length() > 0 && codigoArea.trim().length() > 0 && maximoEmpleados > 0
         && numeroEmpleados > 0) {
-      puesto = new Puesto(codigo, nombre, codigoArea, maximoEmpleados, numeroEmpleados);
+        puesto = (Puesto) Factory.crearPuesto(codigo, nombre, codigoArea, maximoEmpleados, numeroEmpleados);
       DALPuesto.agregarPuesto(puesto);
       mensaje = "Puesto agregado correctamente";
     } else {
@@ -30,7 +31,7 @@ public class BLPuesto {
     Puesto puesto;
 
     if (nombre.trim().length() > 0 && codigoArea.trim().length() > 0 && maximoEmpleados > 0 && numeroEmpleados > 0) {
-      puesto = new Puesto(nombre, codigoArea, maximoEmpleados, numeroEmpleados);
+        puesto = (Puesto) Factory.crearPuesto(nombre, codigoArea, maximoEmpleados, numeroEmpleados);
       DALPuesto.agregarPuesto(puesto);
       mensaje = "Puesto agregado correctamente";
     } else {
