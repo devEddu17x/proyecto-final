@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.TreeMap;
 
 import entidades.Empleado;
+import java.util.Comparator;
 
 public class MapaEmpleados {
 
@@ -34,8 +35,8 @@ public class MapaEmpleados {
         // un TreeMap siempre se mantiene ordenado por la clave no importa que pase
         Collection<Empleado> lista = mapaEmpleados.values();
         ArrayList<Empleado> listaEmpleados = new ArrayList<>(lista);
-        Collections.sort(listaEmpleados, (Empleado e1, Empleado e2) -> e1.getNombre().compareTo(e2.getNombre()));
-        // listaEmpleados.sort(Comparator.comparing(Empleado::getNombre));
+//        Collections.sort(listaEmpleados, (Empleado e1, Empleado e2) -> e1.getNombre().compareTo(e2.getNombre()));
+         listaEmpleados.sort(Comparator.comparing(Empleado::getNombre));
 
         return listaEmpleados;
     }

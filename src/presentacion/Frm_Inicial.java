@@ -3,7 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package presentacion;
+
 import DAL.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import javax.swing.Timer;
 
 /**
  *
@@ -15,12 +21,37 @@ public class Frm_Inicial extends javax.swing.JFrame {
      * Creates new form Frm_Inicial
      */
     public Frm_Inicial() {
+
         initComponents();
         setLocationRelativeTo(null);
         DALEmpleado.leerEmpleados();
         DALArea.leerAreas();
         DALAsignacion.leerAsignaciones();
         DALPuesto.leerPuestos();
+
+        LocalTime medioDia = LocalTime.of(12, 0);
+        // formato
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+        // saludo
+        // Se crea un Timer que se ejecuta cada segundo
+        Timer timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Se obtiene la hora actual
+                LocalTime hora = LocalTime.now();
+                // Se muestra la hora formateada
+                jLabel3.setText(hora.format(formato));
+                // Se muestra el saludo según la hora
+                if (hora.isAfter(medioDia)) {
+                    jLabel2.setText("Buenas tardes");
+                } else {
+                    jLabel2.setText("Buenos días");
+                }
+            }
+        });
+        // Se inicia el Timer
+        timer.start();
     }
 
     /**
@@ -58,18 +89,18 @@ public class Frm_Inicial extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 3, 90)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 153));
-        jLabel1.setText("Proyecto Final");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 560, -1));
+        jLabel1.setText("Talento Gestor");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 680, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 3, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 204, 0));
-        jLabel2.setText("Name");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, -1, -1));
+        jLabel2.setText("text");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 3, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 204, 51));
         jLabel3.setText("Timer");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(255, 0, 51));
         jButton1.setFont(new java.awt.Font("Segoe UI Black", 3, 24)); // NOI18N
@@ -162,8 +193,10 @@ public class Frm_Inicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        Frm_Menu comenzar =new Frm_Menu();
+        Frm_Menu comenzar = new Frm_Menu();
         comenzar.setVisible(true);
+
+
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**

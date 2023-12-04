@@ -38,7 +38,7 @@ public class DALPuesto {
             baos.close();
             raf.writeInt(bytes.length);
             raf.write(bytes);
-            
+            MapaPuestos.setPuesto(puesto);
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }

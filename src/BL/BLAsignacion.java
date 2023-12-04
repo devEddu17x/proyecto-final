@@ -12,6 +12,7 @@ import entidades.Factory;
 import entidades.Puesto;
 
 public class BLAsignacion {
+    // todos los parametros
   public static String agregarAsignacion(LocalDate fechaAsignacion, LocalDate inicioAsignacion, LocalDate finAsignacion,
       Empleado empleado, Area area, Puesto puesto) {
     String mensaje = "";

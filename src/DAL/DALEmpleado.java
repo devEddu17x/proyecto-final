@@ -14,7 +14,7 @@ import java.io.ObjectOutputStream;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-
+import datos.MapaEmpleados;
 /**
  *
  * @author eduar
@@ -46,6 +46,8 @@ public class DALEmpleado {
 
             raf.writeInt(bytes.length);
             raf.write(bytes);
+            
+            MapaEmpleados.setEmpleado(empleado);
 
         } catch (Exception e) {
         }

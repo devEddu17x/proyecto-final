@@ -12,17 +12,23 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import BL.BLArea;
+import BL.BLAsignacion;
 import BL.BLEmpleado;
 import BL.BLPuesto;
 import DAL.DALArea;
 import DAL.DALAsignacion;
 import DAL.DALEmpleado;
 import DAL.DALPuesto;
+import com.toedter.calendar.JCalendar;
 import datos.MapaAreas;
+import datos.MapaEmpleados;
+import datos.MapaPuestos;
 import entidades.Area;
 import entidades.Empleado;
 import entidades.EmpleadoCargo;
 import entidades.Puesto;
+import java.time.ZoneId;
+import java.util.Date;
 
 /**
  *
@@ -87,7 +93,7 @@ public class Frm_Menu extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         GruposArea = new javax.swing.ButtonGroup();
@@ -95,7 +101,7 @@ public class Frm_Menu extends javax.swing.JFrame {
         GruposEmpleado = new javax.swing.ButtonGroup();
         GruposAsignaciones = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        panelMenu = new javax.swing.JPanel();
         btnAgregar = new javax.swing.JLabel();
         btnPuestos = new javax.swing.JLabel();
         btnAsignaciones = new javax.swing.JLabel();
@@ -228,22 +234,15 @@ public class Frm_Menu extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        txtAsignacionArea = new javax.swing.JTextField();
         txtAsignacionEmpleado = new javax.swing.JTextField();
-        txtAsignacionPuesto = new javax.swing.JTextField();
         AgregarAsignaciones = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jComboBox5 = new javax.swing.JComboBox<>();
-        jComboBox6 = new javax.swing.JComboBox<>();
-        jComboBox7 = new javax.swing.JComboBox<>();
-        jComboBox8 = new javax.swing.JComboBox<>();
-        jComboBox9 = new javax.swing.JComboBox<>();
-        jComboBox10 = new javax.swing.JComboBox<>();
-        jComboBox11 = new javax.swing.JComboBox<>();
-        jComboBox12 = new javax.swing.JComboBox<>();
+        cbxAreaAsignaciones = new javax.swing.JComboBox<>();
+        cbxPuestoAsignaciones = new javax.swing.JComboBox<>();
+        finCalendario = new com.toedter.calendar.JCalendar();
+        inicioCalendario = new com.toedter.calendar.JCalendar();
         jPanel30 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
         btnRegresarAsignaciones = new javax.swing.JButton();
@@ -265,16 +264,14 @@ public class Frm_Menu extends javax.swing.JFrame {
         AgregarEmpleados = new javax.swing.JButton();
         EditarDatosEmpleados = new javax.swing.JButton();
         EliminarDatosEmpleado = new javax.swing.JButton();
-        cbxAño = new javax.swing.JComboBox<>();
-        cbxDia = new javax.swing.JComboBox<>();
-        cbxMes = new javax.swing.JComboBox<>();
         chxFechaEmpleado = new javax.swing.JCheckBox();
         chxCodigoEmpleado1 = new javax.swing.JCheckBox();
         chxEmpleadoCargo = new javax.swing.JCheckBox();
-        lblNombreCargo = new javax.swing.JLabel();
         inputNombreCargo = new javax.swing.JTextField();
-        lblCantidadEmpleados = new javax.swing.JLabel();
         inputCantidadEmpleados = new javax.swing.JTextField();
+        labelCantidadEmpleado = new javax.swing.JLabel();
+        labelNombreCargo = new javax.swing.JLabel();
+        calendarioFechaOrganizacion = new com.toedter.calendar.JCalendar();
         jPanel34 = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
         btnRegresarEmpleados = new javax.swing.JButton();
@@ -284,8 +281,8 @@ public class Frm_Menu extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelMenu.setBackground(new java.awt.Color(0, 0, 0));
+        panelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnAgregar.setBackground(new java.awt.Color(0, 0, 0));
         btnAgregar.setFont(new java.awt.Font("Segoe UI Black", 3, 20)); // NOI18N
@@ -297,10 +294,8 @@ public class Frm_Menu extends javax.swing.JFrame {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 btnAgregarAncestorAdded(evt);
             }
-
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
-
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
@@ -308,16 +303,14 @@ public class Frm_Menu extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAgregarMouseClicked(evt);
             }
-
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnAgregarMouseEntered(evt);
             }
-
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnAgregarMouseExited(evt);
             }
         });
-        jPanel2.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 190, 30));
+        panelMenu.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 190, 30));
 
         btnPuestos.setBackground(new java.awt.Color(0, 0, 0));
         btnPuestos.setFont(new java.awt.Font("Segoe UI Black", 3, 20)); // NOI18N
@@ -329,16 +322,14 @@ public class Frm_Menu extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnPuestosMouseClicked(evt);
             }
-
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnPuestosMouseEntered(evt);
             }
-
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnPuestosMouseExited(evt);
             }
         });
-        jPanel2.add(btnPuestos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 180, 30));
+        panelMenu.add(btnPuestos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 180, 30));
 
         btnAsignaciones.setBackground(new java.awt.Color(0, 0, 0));
         btnAsignaciones.setFont(new java.awt.Font("Segoe UI Black", 3, 20)); // NOI18N
@@ -350,16 +341,14 @@ public class Frm_Menu extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAsignacionesMouseClicked(evt);
             }
-
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnAsignacionesMouseEntered(evt);
             }
-
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnAsignacionesMouseExited(evt);
             }
         });
-        jPanel2.add(btnAsignaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 180, 30));
+        panelMenu.add(btnAsignaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 180, 30));
 
         btnMenu.setBackground(new java.awt.Color(0, 0, 0));
         btnMenu.setFont(new java.awt.Font("Segoe UI Black", 3, 20)); // NOI18N
@@ -371,16 +360,14 @@ public class Frm_Menu extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnMenuMouseClicked(evt);
             }
-
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnMenuMouseEntered(evt);
             }
-
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnMenuMouseExited(evt);
             }
         });
-        jPanel2.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 190, 40));
+        panelMenu.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 190, 40));
 
         btnAreas.setFont(new java.awt.Font("Segoe UI Black", 3, 20)); // NOI18N
         btnAreas.setForeground(new java.awt.Color(255, 255, 255));
@@ -390,10 +377,8 @@ public class Frm_Menu extends javax.swing.JFrame {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 btnAreasAncestorAdded(evt);
             }
-
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
-
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
@@ -401,33 +386,28 @@ public class Frm_Menu extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAreasMouseClicked(evt);
             }
-
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnAreasMouseEntered(evt);
             }
-
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnAreasMouseExited(evt);
             }
         });
-        jPanel2.add(btnAreas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 190, 30));
+        panelMenu.add(btnAreas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 190, 30));
 
         jButton1.setBackground(new java.awt.Color(255, 0, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI Symbol", 1, 22)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos Inter/door-open.png"))); // NOI18N
         jButton1.setText("Salir");
-        jButton1.setBorder(
-                new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED,
-                        new java.awt.Color(0, 0, 0),
-                        new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
         jButton1.setOpaque(true);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 751, 130, 50));
+        panelMenu.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 751, 130, 50));
 
         btnEmpleado.setFont(new java.awt.Font("Segoe UI Black", 3, 20)); // NOI18N
         btnEmpleado.setForeground(new java.awt.Color(255, 255, 255));
@@ -437,22 +417,19 @@ public class Frm_Menu extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEmpleadoMouseClicked(evt);
             }
-
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnEmpleadoMouseEntered(evt);
             }
-
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnEmpleadoMouseExited(evt);
             }
         });
-        jPanel2.add(btnEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
+        panelMenu.add(btnEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 210, 830));
+        jPanel1.add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 210, 830));
 
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED,
-                java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
@@ -488,41 +465,41 @@ public class Frm_Menu extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
-                jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                                .addContainerGap(464, Short.MAX_VALUE)
-                                .addComponent(jLabel4)
-                                .addGap(433, 433, 433)));
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(464, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(433, 433, 433))
+        );
         jPanel8Layout.setVerticalGroup(
-                jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                                .addContainerGap(29, Short.MAX_VALUE)
-                                .addComponent(jLabel4)
-                                .addGap(1, 1, 1)));
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(1, 1, 1))
+        );
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
-                jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3)
-                                .addGap(433, 433, 433))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)));
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(433, 433, 433))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
         jPanel6Layout.setVerticalGroup(
-                jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap()));
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1190, 90));
 
@@ -543,73 +520,74 @@ public class Frm_Menu extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
-                jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addGap(194, 194, 194)
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtEmpleadoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 406,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(41, 41, 41)
-                                .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 43,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(164, Short.MAX_VALUE)));
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(194, 194, 194)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(txtEmpleadoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(164, Short.MAX_VALUE))
+        );
         jPanel7Layout.setVerticalGroup(
-                jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addGap(37, 37, 37)
-                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(txtEmpleadoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 44,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel1)
-                                        .addGroup(jPanel7Layout.createSequentialGroup()
-                                                .addComponent(jLabel46)
-                                                .addGap(9, 9, 9)))
-                                .addContainerGap(29, Short.MAX_VALUE)));
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtEmpleadoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel46)
+                        .addGap(9, 9, 9)))
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
 
         jPanel5.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 1190, 110));
 
         jPanel9.setBackground(new java.awt.Color(0, 0, 0));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setBackground(new java.awt.Color(0, 0, 0));
+        jTable1.setBackground(new java.awt.Color(51, 51, 51));
         jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][] {
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null }
-                },
-                new String[] {
-                        "Codigo", "Nombres", "Apelldios", "Profesion", "Dni", "Ingreso"
-                }));
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Codigo", "Nombres", "Apelldios", "Profesion", "Dni", "Ingreso"
+            }
+        ));
         jScrollPane1.setViewportView(jTable1);
 
         jPanel9.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 990, 440));
@@ -649,6 +627,11 @@ public class Frm_Menu extends javax.swing.JFrame {
                 jButton4MouseClicked(evt);
             }
         });
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel11.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 360, 150));
 
         jButton2.setFont(new java.awt.Font("Sitka Text", 1, 48)); // NOI18N
@@ -665,6 +648,11 @@ public class Frm_Menu extends javax.swing.JFrame {
         jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton5MouseClicked(evt);
+            }
+        });
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
             }
         });
         jPanel11.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 350, 150));
@@ -703,13 +691,16 @@ public class Frm_Menu extends javax.swing.JFrame {
         jPanel14.setBackground(new java.awt.Color(0, 0, 0));
         jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        TablaAreas.setBackground(new java.awt.Color(51, 51, 51));
+        TablaAreas.setForeground(new java.awt.Color(255, 255, 255));
         TablaAreas.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][] {
+            new Object [][] {
 
-                },
-                new String[] {
-                        "Codigo", "Nombre", "N° de puestos", "Empleados asignados"
-                }));
+            },
+            new String [] {
+                "Codigo", "Nombre", "N° de puestos", "Empleados asignados"
+            }
+        ));
         jScrollPane2.setViewportView(TablaAreas);
 
         jPanel14.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 1110, 390));
@@ -810,42 +801,45 @@ public class Frm_Menu extends javax.swing.JFrame {
         jPanel20.setBackground(new java.awt.Color(0, 0, 0));
         jPanel20.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        TablaPuestos.setBackground(new java.awt.Color(51, 51, 51));
+        TablaPuestos.setForeground(new java.awt.Color(255, 255, 255));
         TablaPuestos.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][] {
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null }
-                },
-                new String[] {
-                        "Codigo", "Nombre", "Codigo de area", "N° empleados", "N° max Empleados"
-                }));
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Codigo", "Nombre", "Codigo de area", "N° empleados", "N° max Empleados"
+            }
+        ));
         jScrollPane3.setViewportView(TablaPuestos);
 
         jPanel20.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 1010, 380));
@@ -912,54 +906,44 @@ public class Frm_Menu extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel38Layout = new javax.swing.GroupLayout(jPanel38);
         jPanel38.setLayout(jPanel38Layout);
         jPanel38Layout.setHorizontalGroup(
-                jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel38Layout.createSequentialGroup()
-                                .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel38Layout.createSequentialGroup()
-                                                .addGap(341, 341, 341)
-                                                .addComponent(jLabel39)
-                                                .addGap(18, 18, 18))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-                                                jPanel38Layout.createSequentialGroup()
-                                                        .addContainerGap()
-                                                        .addComponent(jLabel38)
-                                                        .addGap(43, 43, 43)))
-                                .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel38Layout.createSequentialGroup()
-                                                .addComponent(txtPuestosBuscar, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                        345,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(26, 26, 26)
-                                                .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 43,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel38Layout.createSequentialGroup()
-                                                .addGap(36, 36, 36)
-                                                .addComponent(btnPuestosAscendentes,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE, 202,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(61, 61, 61)
-                                                .addComponent(btnPuestosDescendente)))
-                                .addContainerGap(192, Short.MAX_VALUE)));
+            jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel38Layout.createSequentialGroup()
+                .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel38Layout.createSequentialGroup()
+                        .addGap(341, 341, 341)
+                        .addComponent(jLabel39)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel38Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel38)
+                        .addGap(43, 43, 43)))
+                .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel38Layout.createSequentialGroup()
+                        .addComponent(txtPuestosBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel38Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(btnPuestosAscendentes, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61)
+                        .addComponent(btnPuestosDescendente)))
+                .addContainerGap(192, Short.MAX_VALUE))
+        );
         jPanel38Layout.setVerticalGroup(
-                jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel38Layout.createSequentialGroup()
-                                .addGap(47, 47, 47)
-                                .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel38)
-                                        .addComponent(btnPuestosAscendentes)
-                                        .addComponent(btnPuestosDescendente, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130,
-                                        Short.MAX_VALUE)
-                                .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel39, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel40, javax.swing.GroupLayout.Alignment.TRAILING,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE, 41,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtPuestosBuscar, javax.swing.GroupLayout.Alignment.TRAILING,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE, 45,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(55, 55, 55)));
+            jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel38Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel38)
+                    .addComponent(btnPuestosAscendentes)
+                    .addComponent(btnPuestosDescendente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel39, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel40, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPuestosBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(55, 55, 55))
+        );
 
         jPanel17.add(jPanel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1190, 330));
 
@@ -985,42 +969,45 @@ public class Frm_Menu extends javax.swing.JFrame {
         jPanel24.setBackground(new java.awt.Color(0, 0, 0));
         jPanel24.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        TablaAsignaciones.setBackground(new java.awt.Color(51, 51, 51));
+        TablaAsignaciones.setForeground(new java.awt.Color(255, 255, 255));
         TablaAsignaciones.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][] {
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null }
-                },
-                new String[] {
-                        "Inicio Asignacion", "Fecha Asignacion", "Empleado", "Area", "Puesto", "Fin Asignacion"
-                }));
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Inicio Asignacion", "Fecha Asignacion", "Empleado", "Area", "Puesto", "Fin Asignacion"
+            }
+        ));
         jScrollPane4.setViewportView(TablaAsignaciones);
 
         jPanel24.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 1080, 320));
@@ -1038,19 +1025,27 @@ public class Frm_Menu extends javax.swing.JFrame {
         btnFechaAsignacionesAscendente.setFont(new java.awt.Font("Sitka Text", 3, 30)); // NOI18N
         btnFechaAsignacionesAscendente.setForeground(new java.awt.Color(255, 255, 255));
         btnFechaAsignacionesAscendente.setText("Ascendente");
+        btnFechaAsignacionesAscendente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnFechaAsignacionesAscendenteMouseClicked(evt);
+            }
+        });
         btnFechaAsignacionesAscendente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFechaAsignacionesAscendenteActionPerformed(evt);
             }
         });
-        jPanel40.add(btnFechaAsignacionesAscendente,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, -1, -1));
+        jPanel40.add(btnFechaAsignacionesAscendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, -1, -1));
 
         btnFechaAsignacionesDescendente.setFont(new java.awt.Font("Sitka Text", 3, 30)); // NOI18N
         btnFechaAsignacionesDescendente.setForeground(new java.awt.Color(255, 255, 255));
         btnFechaAsignacionesDescendente.setText("Descendente");
-        jPanel40.add(btnFechaAsignacionesDescendente,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 70, -1, -1));
+        btnFechaAsignacionesDescendente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnFechaAsignacionesDescendenteMouseClicked(evt);
+            }
+        });
+        jPanel40.add(btnFechaAsignacionesDescendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 70, -1, -1));
 
         jLabel44.setFont(new java.awt.Font("Sitka Text", 1, 36)); // NOI18N
         jLabel44.setForeground(new java.awt.Color(255, 255, 255));
@@ -1060,19 +1055,27 @@ public class Frm_Menu extends javax.swing.JFrame {
         btnInicioAsignacionesAscendente.setFont(new java.awt.Font("Sitka Text", 3, 30)); // NOI18N
         btnInicioAsignacionesAscendente.setForeground(new java.awt.Color(255, 255, 255));
         btnInicioAsignacionesAscendente.setText("Ascendente");
+        btnInicioAsignacionesAscendente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInicioAsignacionesAscendenteMouseClicked(evt);
+            }
+        });
         btnInicioAsignacionesAscendente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInicioAsignacionesAscendenteActionPerformed(evt);
             }
         });
-        jPanel40.add(btnInicioAsignacionesAscendente,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 210, -1, -1));
+        jPanel40.add(btnInicioAsignacionesAscendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 210, -1, -1));
 
         btnInicioAsignacionesDescendente.setFont(new java.awt.Font("Sitka Text", 3, 30)); // NOI18N
         btnInicioAsignacionesDescendente.setForeground(new java.awt.Color(255, 255, 255));
         btnInicioAsignacionesDescendente.setText("Descendente");
-        jPanel40.add(btnInicioAsignacionesDescendente,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 210, -1, -1));
+        btnInicioAsignacionesDescendente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInicioAsignacionesDescendenteMouseClicked(evt);
+            }
+        });
+        jPanel40.add(btnInicioAsignacionesDescendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 210, -1, -1));
 
         jPanel21.add(jPanel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1190, 360));
 
@@ -1098,42 +1101,45 @@ public class Frm_Menu extends javax.swing.JFrame {
         jPanel28.setBackground(new java.awt.Color(0, 0, 0));
         jPanel28.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        TablaEmpleados.setBackground(new java.awt.Color(51, 51, 51));
+        TablaEmpleados.setForeground(new java.awt.Color(255, 255, 255));
         TablaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][] {
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null }
-                },
-                new String[] {
-                        "Codigo", "Nombre", "Apellido", "Profesion", "Dni", "Inicio Origen"
-                }));
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Codigo", "Nombre", "Apellido", "Profesion", "Dni", "Inicio Origen"
+            }
+        ));
         jScrollPane5.setViewportView(TablaEmpleados);
 
         jPanel28.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 1100, 300));
@@ -1152,6 +1158,11 @@ public class Frm_Menu extends javax.swing.JFrame {
         btnEmpleadosAscendentes.setFont(new java.awt.Font("Sitka Text", 1, 30)); // NOI18N
         btnEmpleadosAscendentes.setForeground(new java.awt.Color(255, 255, 255));
         btnEmpleadosAscendentes.setText("Ascendente");
+        btnEmpleadosAscendentes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEmpleadosAscendentesMouseClicked(evt);
+            }
+        });
         btnEmpleadosAscendentes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEmpleadosAscendentesActionPerformed(evt);
@@ -1162,6 +1173,11 @@ public class Frm_Menu extends javax.swing.JFrame {
         btnEmpleadosDescendente.setFont(new java.awt.Font("Sitka Text", 1, 30)); // NOI18N
         btnEmpleadosDescendente.setForeground(new java.awt.Color(255, 255, 255));
         btnEmpleadosDescendente.setText("Descendente\n");
+        btnEmpleadosDescendente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEmpleadosDescendenteMouseClicked(evt);
+            }
+        });
         jPanel39.add(btnEmpleadosDescendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 50, 250, -1));
 
         jLabel42.setBackground(new java.awt.Color(0, 0, 0));
@@ -1448,111 +1464,81 @@ public class Frm_Menu extends javax.swing.JFrame {
         jLabel20.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Inicio:");
-        jPanel22.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, -1, -1));
+        jPanel22.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, -1, -1));
 
         jLabel21.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Fin:");
-        jPanel22.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
+        jPanel22.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 340, -1, -1));
 
         jLabel23.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("Cod. Puesto:");
-        jPanel22.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, -1, -1));
+        jPanel22.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 130, -1, -1));
 
         jLabel18.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Cod. Area:");
-        jPanel22.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, -1, -1));
+        jPanel22.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 40, -1, -1));
 
         jLabel22.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("Cod. Empleado:");
-        jPanel22.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 40, -1, -1));
-        jPanel22.add(txtAsignacionArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 200, 200, 50));
-        jPanel22.add(txtAsignacionEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 40, 200, 50));
-        jPanel22.add(txtAsignacionPuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 120, 200, 50));
+        jPanel22.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 240, -1, -1));
+
+        txtAsignacionEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAsignacionEmpleadoActionPerformed(evt);
+            }
+        });
+        jPanel22.add(txtAsignacionEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 240, 150, 50));
 
         AgregarAsignaciones.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
         AgregarAsignaciones.setText("Agregar");
+        AgregarAsignaciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AgregarAsignacionesMouseClicked(evt);
+            }
+        });
         AgregarAsignaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AgregarAsignacionesActionPerformed(evt);
             }
         });
-        jPanel22.add(AgregarAsignaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 590, 140, 30));
+        jPanel22.add(AgregarAsignaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 670, 140, 30));
 
         jLabel8.setForeground(new java.awt.Color(204, 204, 204));
         jLabel8.setText("Fecha en la que finaliza su trabajo");
-        jPanel22.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
+        jPanel22.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 390, -1, -1));
 
         jLabel9.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel9.setText("Fecha en la que inicia en la organización\n");
-        jPanel22.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
+        jLabel9.setText("Se selecciona del empleado automaticamente");
+        jPanel22.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
 
         jLabel45.setForeground(new java.awt.Color(204, 204, 204));
         jLabel45.setText("Fecha en la que inicia a trabajar");
-        jPanel22.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
+        jPanel22.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, -1, -1));
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(
-                new String[] { "Dia", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15",
-                        "16",
-                        "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox4ActionPerformed(evt);
+        cbxAreaAsignaciones.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxAreaAsignacionesItemStateChanged(evt);
             }
         });
-        jPanel22.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 60, -1));
-
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(
-                new String[] { "Mes", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
-        jPanel22.add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 60, -1));
-
-        jComboBox6.setModel(
-                new javax.swing.DefaultComboBoxModel<>(
-                        new String[] { "Año", "2020", "2021", "2022", "2023", "2024", "2025" }));
-        jPanel22.add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, -1, -1));
-
-        jComboBox7.setModel(
-                new javax.swing.DefaultComboBoxModel<>(
-                        new String[] { "Año", "2020", "2021", "2022", "2023", "2024", "2025" }));
-        jPanel22.add(jComboBox7, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 220, -1, -1));
-
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(
-                new String[] { "Dia", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15",
-                        "16",
-                        "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        jComboBox8.addActionListener(new java.awt.event.ActionListener() {
+        cbxAreaAsignaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox8ActionPerformed(evt);
+                cbxAreaAsignacionesActionPerformed(evt);
             }
         });
-        jPanel22.add(jComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 60, -1));
+        jPanel22.add(cbxAreaAsignaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 50, 150, 30));
 
-        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(
-                new String[] { "Mes", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
-        jPanel22.add(jComboBox9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, 60, -1));
-
-        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(
-                new String[] { "Dia", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15",
-                        "16",
-                        "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        jComboBox10.addActionListener(new java.awt.event.ActionListener() {
+        cbxPuestoAsignaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox10ActionPerformed(evt);
+                cbxPuestoAsignacionesActionPerformed(evt);
             }
         });
-        jPanel22.add(jComboBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 60, -1));
-
-        jComboBox11.setModel(
-                new javax.swing.DefaultComboBoxModel<>(
-                        new String[] { "Año", "2020", "2021", "2022", "2023", "2024", "2025" }));
-        jPanel22.add(jComboBox11, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, -1, -1));
-
-        jComboBox12.setModel(new javax.swing.DefaultComboBoxModel<>(
-                new String[] { "Mes", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
-        jPanel22.add(jComboBox12, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 60, -1));
+        jPanel22.add(cbxPuestoAsignaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 140, 150, 30));
+        jPanel22.add(finCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 430, 450, 210));
+        jPanel22.add(inicioCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 450, 210));
 
         jPanel32.add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1190, 740));
 
@@ -1567,8 +1553,7 @@ public class Frm_Menu extends javax.swing.JFrame {
         btnRegresarAsignaciones.setBackground(new java.awt.Color(51, 51, 51));
         btnRegresarAsignaciones.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
         btnRegresarAsignaciones.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegresarAsignaciones
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos Inter/arrow-left.png"))); // NOI18N
+        btnRegresarAsignaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos Inter/arrow-left.png"))); // NOI18N
         btnRegresarAsignaciones.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnRegresarAsignacionesMouseClicked(evt);
@@ -1597,7 +1582,7 @@ public class Frm_Menu extends javax.swing.JFrame {
         jLabel25.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("Inicio Organizacion:");
-        jPanel27.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
+        jPanel27.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 220, -1, -1));
 
         jLabel26.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
@@ -1621,9 +1606,9 @@ public class Frm_Menu extends javax.swing.JFrame {
 
         jLabel30.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel30.setText("Dni:");
-        jPanel27.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 200, -1, -1));
-        jPanel27.add(txtEmpleadoDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 200, 150, 50));
+        jLabel30.setText("DNI:");
+        jPanel27.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
+        jPanel27.add(txtEmpleadoDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 250, 50));
         jPanel27.add(txtCodigoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 250, 50));
         jPanel27.add(txtNombreEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 250, 50));
         jPanel27.add(txtProfesionEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 60, 250, 50));
@@ -1636,7 +1621,7 @@ public class Frm_Menu extends javax.swing.JFrame {
                 LimpiarEmpleadosActionPerformed(evt);
             }
         });
-        jPanel27.add(LimpiarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 550, 120, 30));
+        jPanel27.add(LimpiarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 620, 120, 30));
 
         AgregarEmpleados.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
         AgregarEmpleados.setText("Agregar");
@@ -1650,7 +1635,7 @@ public class Frm_Menu extends javax.swing.JFrame {
                 AgregarEmpleadosActionPerformed(evt);
             }
         });
-        jPanel27.add(AgregarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 570, 140, 30));
+        jPanel27.add(AgregarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 620, 140, 30));
 
         EditarDatosEmpleados.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
         EditarDatosEmpleados.setText("Editar Datos");
@@ -1659,7 +1644,7 @@ public class Frm_Menu extends javax.swing.JFrame {
                 EditarDatosEmpleadosActionPerformed(evt);
             }
         });
-        jPanel27.add(EditarDatosEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 570, 180, 30));
+        jPanel27.add(EditarDatosEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 620, 180, 30));
 
         EliminarDatosEmpleado.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
         EliminarDatosEmpleado.setText("Eliminar Datos");
@@ -1668,22 +1653,7 @@ public class Frm_Menu extends javax.swing.JFrame {
                 EliminarDatosEmpleadoActionPerformed(evt);
             }
         });
-        jPanel27.add(EliminarDatosEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 560, 200, 30));
-
-        cbxAño.setModel(
-                new javax.swing.DefaultComboBoxModel<>(
-                        new String[] { "Año", "2020", "2021", "2022", "2023", "2024", "2025" }));
-        jPanel27.add(cbxAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 220, -1, -1));
-
-        cbxDia.setModel(new javax.swing.DefaultComboBoxModel<>(
-                new String[] { "Dia", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15",
-                        "16",
-                        "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        jPanel27.add(cbxDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, -1, -1));
-
-        cbxMes.setModel(new javax.swing.DefaultComboBoxModel<>(
-                new String[] { "Mes", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
-        jPanel27.add(cbxMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, -1, -1));
+        jPanel27.add(EliminarDatosEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 620, 200, 30));
 
         chxFechaEmpleado.setBackground(new java.awt.Color(51, 51, 51));
         chxFechaEmpleado.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
@@ -1699,7 +1669,7 @@ public class Frm_Menu extends javax.swing.JFrame {
                 chxFechaEmpleadoActionPerformed(evt);
             }
         });
-        jPanel27.add(chxFechaEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, -1, -1));
+        jPanel27.add(chxFechaEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 550, -1, -1));
 
         chxCodigoEmpleado1.setBackground(new java.awt.Color(51, 51, 51));
         chxCodigoEmpleado1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
@@ -1715,8 +1685,10 @@ public class Frm_Menu extends javax.swing.JFrame {
                 chxCodigoEmpleado1ActionPerformed(evt);
             }
         });
-        jPanel27.add(chxCodigoEmpleado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 80, -1, -1));
+        jPanel27.add(chxCodigoEmpleado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, -1, -1));
 
+        chxEmpleadoCargo.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
+        chxEmpleadoCargo.setForeground(new java.awt.Color(255, 255, 255));
         chxEmpleadoCargo.setText("Es jefe");
         chxEmpleadoCargo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1728,26 +1700,26 @@ public class Frm_Menu extends javax.swing.JFrame {
                 chxEmpleadoCargoActionPerformed(evt);
             }
         });
-        jPanel27.add(chxEmpleadoCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 100, -1));
+        jPanel27.add(chxEmpleadoCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 100, -1));
+        jPanel27.add(inputNombreCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 450, 220, 30));
 
-        lblNombreCargo.setText("Nombre del cargo:");
-        lblNombreCargo.setAutoscrolls(true);
-        lblNombreCargo.setEnabled(false);
-        lblNombreCargo.setFocusable(false);
-        jPanel27.add(lblNombreCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, -1, -1));
+        inputCantidadEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputCantidadEmpleadosActionPerformed(evt);
+            }
+        });
+        jPanel27.add(inputCantidadEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 500, 220, 30));
 
-        inputNombreCargo.setEnabled(false);
-        inputNombreCargo.setFocusable(false);
-        jPanel27.add(inputNombreCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, 220, -1));
+        labelCantidadEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        labelCantidadEmpleado.setForeground(new java.awt.Color(255, 255, 255));
+        labelCantidadEmpleado.setText("Cantidad Empleados");
+        jPanel27.add(labelCantidadEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 260, 20));
 
-        lblCantidadEmpleados.setText("Cantidad de Empleados:");
-        lblCantidadEmpleados.setEnabled(false);
-        lblCantidadEmpleados.setFocusable(false);
-        jPanel27.add(lblCantidadEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 470, -1, -1));
-
-        inputCantidadEmpleados.setEnabled(false);
-        inputCantidadEmpleados.setFocusable(false);
-        jPanel27.add(inputCantidadEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 470, 220, -1));
+        labelNombreCargo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        labelNombreCargo.setForeground(new java.awt.Color(255, 255, 255));
+        labelNombreCargo.setText("Nombre Cargo");
+        jPanel27.add(labelNombreCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 250, -1));
+        jPanel27.add(calendarioFechaOrganizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 290, 390, 240));
 
         jPanel33.add(jPanel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 1190, 720));
 
@@ -1787,6 +1759,144 @@ public class Frm_Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void inputCantidadEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputCantidadEmpleadosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputCantidadEmpleadosActionPerformed
+
+    private void chxEmpleadoCargoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chxEmpleadoCargoMouseClicked
+
+        if (chxEmpleadoCargo.isSelected()) {
+            labelCantidadEmpleado.setVisible(true);
+            labelNombreCargo.setVisible(true);
+            inputNombreCargo.setFocusable(true);
+            inputNombreCargo.setEnabled(true);
+            inputCantidadEmpleados.setFocusable(true);
+            inputCantidadEmpleados.setEnabled(true);
+            inputCantidadEmpleados.setVisible(true);
+            inputNombreCargo.setVisible(true);
+        } else {
+            labelCantidadEmpleado.setVisible(false);
+            labelNombreCargo.setVisible(false);
+            inputNombreCargo.setFocusable(false);
+            inputNombreCargo.setEnabled(false);
+            inputCantidadEmpleados.setFocusable(false);
+            inputCantidadEmpleados.setEnabled(false);
+            inputCantidadEmpleados.setVisible(false);
+            inputNombreCargo.setVisible(false);
+        }
+    }//GEN-LAST:event_chxEmpleadoCargoMouseClicked
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void btnEmpleadosAscendentesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpleadosAscendentesMouseClicked
+        TablaEmpleados.setModel(DALEmpleado.getTablaNombreAsc());
+    }//GEN-LAST:event_btnEmpleadosAscendentesMouseClicked
+
+    private void btnEmpleadosDescendenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpleadosDescendenteMouseClicked
+        TablaEmpleados.setModel(DALEmpleado.getTablaNombreDes());
+    }//GEN-LAST:event_btnEmpleadosDescendenteMouseClicked
+
+    private void btnFechaAsignacionesAscendenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFechaAsignacionesAscendenteMouseClicked
+        TablaAsignaciones.setModel(DALAsignacion.getTablaFechaAsc());
+    }//GEN-LAST:event_btnFechaAsignacionesAscendenteMouseClicked
+
+    private void btnFechaAsignacionesDescendenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFechaAsignacionesDescendenteMouseClicked
+        TablaAsignaciones.setModel(DALAsignacion.getTablaFechaDes());
+    }//GEN-LAST:event_btnFechaAsignacionesDescendenteMouseClicked
+
+    private void btnInicioAsignacionesAscendenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioAsignacionesAscendenteMouseClicked
+        TablaAsignaciones.setModel(DALAsignacion.getTablaFechaInicioAsc());
+    }//GEN-LAST:event_btnInicioAsignacionesAscendenteMouseClicked
+
+    private void btnInicioAsignacionesDescendenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioAsignacionesDescendenteMouseClicked
+        TablaAsignaciones.setModel(DALAsignacion.getTablaFechaInicioDes());
+    }//GEN-LAST:event_btnInicioAsignacionesDescendenteMouseClicked
+
+    private void txtAsignacionEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAsignacionEmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAsignacionEmpleadoActionPerformed
+
+    private void cbxAreaAsignacionesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxAreaAsignacionesItemStateChanged
+        if (cbxAreaAsignaciones.getSelectedIndex() != 0) {
+            String seleccion = cbxAreaAsignaciones.getItemAt(cbxAreaAsignaciones.getSelectedIndex());
+            actualizarCbxPuestoAsignaciones(seleccion);
+        }
+
+
+    }//GEN-LAST:event_cbxAreaAsignacionesItemStateChanged
+
+    private void cbxAreaAsignacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAreaAsignacionesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxAreaAsignacionesActionPerformed
+
+    private void cbxPuestoAsignacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPuestoAsignacionesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxPuestoAsignacionesActionPerformed
+
+    private void AgregarAsignacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarAsignacionesMouseClicked
+        String mensaje;
+        // obtencion de fechas del calendario
+//        Date fecha = fechaCaleendario.getDate();
+        Date fecha2 = inicioCalendario.getDate();
+        Date fecha3 = finCalendario.getDate();
+
+        // conversion a LocalDate
+//        LocalDate fechaOrganizacion = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate fechaInicio = fecha2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate fechaFin = fecha3.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate fechaOrganizacion = null;
+
+        // empleado, puesto y area
+        Empleado empleado = BLEmpleado.getEmpleado(txtAsignacionEmpleado.getText());
+        Area area = BLArea.getAreaNombre(cbxAreaAsignaciones.getItemAt(cbxAreaAsignaciones.getSelectedIndex()));
+        Puesto puesto = BLPuesto.getPuestoNombre(cbxPuestoAsignaciones.getItemAt(cbxPuestoAsignaciones.getSelectedIndex()));
+        if (empleado != null) {
+            fechaOrganizacion = empleado.getInicioOrg();
+        }
+        if (fechaOrganizacion != null && fechaInicio != null && fechaFin != null) {
+            mensaje = BLAsignacion.agregarAsignacion(fechaOrganizacion, fechaInicio, fechaFin, empleado, area, puesto);
+        } else if (fechaInicio == null && fechaFin == null) {
+            mensaje = BLAsignacion.agregarAsignacion(fechaOrganizacion, empleado, area, puesto);
+        } else /*if (fechaFin == null) */ {
+            mensaje = BLAsignacion.agregarAsignacion(fechaOrganizacion, fechaInicio, empleado, area, puesto);
+        }
+
+        JOptionPane.showMessageDialog(this, mensaje);
+    }//GEN-LAST:event_AgregarAsignacionesMouseClicked
+
+    private void actualizarCbxPuestoAsignaciones(String seleccion) {
+        // obtener la el area 
+        cbxPuestoAsignaciones.removeAllItems();
+        cbxPuestoAsignaciones.addItem("Seleccione el puesto");
+        Area area = null;
+        ArrayList<Area> lista = MapaAreas.getLista();
+        // buscando el area
+        for (Area areaAux : lista) {
+            if (areaAux.getNombre().equals(seleccion)) {
+                area = areaAux;
+                break;
+            }
+        }
+        //codigo de area
+
+        String codigo = area.getCodigo();
+        // obtener la lista de puestos con ese codigo de area
+        ArrayList<Puesto> listaPuesto = MapaPuestos.getLista();
+        for (Puesto puesto : listaPuesto) {
+            if (puesto.getCodigoArea().equals(codigo)) {
+                cbxPuestoAsignaciones.addItem(puesto.getNombre());
+                System.out.println(puesto.getNombre());
+            }
+        }
+
+    }
 
     private void btnMenuMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btnMenuMouseClicked
         pnMenu.setVisible(true);
@@ -1986,6 +2096,7 @@ public class Frm_Menu extends javax.swing.JFrame {
     }// GEN-LAST:event_jButton3ActionPerformed
 
     private void btnEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btnEmpleadoMouseClicked
+
         TablaEmpleados.setModel(DALEmpleado.getTablaNombreAsc());
         pnMenu.setVisible(false);
         pnAgregar.setVisible(false);
@@ -2089,7 +2200,7 @@ public class Frm_Menu extends javax.swing.JFrame {
 
             DefaultTableModel modeloAuxAreas = new DefaultTableModel();
 
-            String[] columnas = { "Codigo", "Nombre", "Cantidad de Empleados" };
+            String[] columnas = {"Codigo", "Nombre", "Cantidad de Empleados"};
             modeloAuxAreas.setColumnIdentifiers(columnas);
 
             Object[] fila = new Object[columnas.length];
@@ -2137,7 +2248,7 @@ public class Frm_Menu extends javax.swing.JFrame {
 
             DefaultTableModel modeloBusquedaPuesto = new DefaultTableModel();
 
-            String[] columnas = { "Codigo", "Nombre", "Cod. Area", "Max. Empleados", "N° Empleados" };
+            String[] columnas = {"Codigo", "Nombre", "Cod. Area", "Max. Empleados", "N° Empleados"};
             Object[] fila = new Object[columnas.length];
 
             modeloBusquedaPuesto.setColumnIdentifiers(columnas);
@@ -2181,6 +2292,33 @@ public class Frm_Menu extends javax.swing.JFrame {
     }// GEN-LAST:event_txtEmpleadosBuscarActionPerformed
 
     private void BuscarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_BuscarEmpleadoMouseClicked
+        Empleado empleado = MapaEmpleados.getEmpleado(txtEmpleadosBuscar.getText());
+        if (empleado != null) {
+            DefaultTableModel modeloAuxBusquedaEmpleado = new DefaultTableModel();
+
+            String columnas[] = {"Codigo", "Nombre", "Apellido", "Profesion", "DNI", "Inicio Org.", "Cargo", "N° Empleados"};
+            Object[] fila = new Object[columnas.length];
+            modeloAuxBusquedaEmpleado.setColumnIdentifiers(columnas);
+
+            fila[0] = empleado.getCodigo();
+            fila[1] = empleado.getNombre();
+            fila[2] = empleado.getApellido();
+            fila[3] = empleado.getProfesion();
+            fila[4] = empleado.getDni();
+            fila[5] = empleado.getInicioOrg();
+
+            if (empleado instanceof EmpleadoCargo) {
+                fila[6] = ((EmpleadoCargo) empleado).getCargo();
+                fila[7] = ((EmpleadoCargo) empleado).getNumeroEmpleados();
+            } else {
+                fila[6] = "No tiene";
+                fila[7] = "0";
+            }
+
+            modeloAuxBusquedaEmpleado.addRow(fila);
+            TablaEmpleados.setModel(modeloAuxBusquedaEmpleado);
+
+        }
         txtEmpleadosBuscar.setText("Igrese el codigo del puesto aqui");
     }// GEN-LAST:event_BuscarEmpleadoMouseClicked
 
@@ -2224,6 +2362,8 @@ public class Frm_Menu extends javax.swing.JFrame {
     }// GEN-LAST:event_jButton2MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jButton4MouseClicked
+
+        comboCodigoAreaFrmAsignacinoes();
         pnMenu.setVisible(false);
         pnAgregar.setVisible(false);
         pnAreas.setVisible(false);
@@ -2237,6 +2377,7 @@ public class Frm_Menu extends javax.swing.JFrame {
     }// GEN-LAST:event_jButton4MouseClicked
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jButton5MouseClicked
+        chxEmpleadoCargoMouseClicked(evt);
         pnMenu.setVisible(false);
         pnAgregar.setVisible(false);
         pnAreas.setVisible(false);
@@ -2299,8 +2440,8 @@ public class Frm_Menu extends javax.swing.JFrame {
 
         Empleado empleadoAux = BLEmpleado.getEmpleado(codigo);
         DefaultTableModel modeloMenuEmpleado = new DefaultTableModel();
-        String[] columnas = { "Codigo", "Nombre", "Apellido", "Profesion", "DNI", "Inicio Org.", "Cargo",
-                "N° Empleados" };
+        String[] columnas = {"Codigo", "Nombre", "Apellido", "Profesion", "DNI", "Inicio Org.", "Cargo",
+            "N° Empleados"};
         Object[] fila = new Object[columnas.length];
 
         if (empleadoAux != null) {
@@ -2396,6 +2537,7 @@ public class Frm_Menu extends javax.swing.JFrame {
     }// GEN-LAST:event_btnPuestosDescendenteMouseClicked
 
     private void AgregarEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_AgregarEmpleadosMouseClicked
+
         String mensaje;
         String nombre = txtNombreEmpleado.getText();
         String apellido = txtApellidoEmpleado.getText();
@@ -2403,173 +2545,148 @@ public class Frm_Menu extends javax.swing.JFrame {
         int dni = Integer.parseInt(txtEmpleadoDNI.getText());
         String codigo = txtCodigoEmpleado.getText();
         LocalDate fecha = null;
-        int dia, mes, año;
 
-        if (chxCodigoEmpleado1.isSelected() && chxFechaEmpleado.isSelected()) {
-            mensaje = BLEmpleado.agregarEmpleado(nombre, apellido, profesion, dni);
-
-            System.out.println("codigo y fecha");
-            JOptionPane.showMessageDialog(this, mensaje);
-
-            // limpiar campos
-            txtNombreEmpleado.setText("");
-            txtApellidoEmpleado.setText("");
-            txtProfesionEmpleado.setText("");
-            txtEmpleadoDNI.setText("");
-            txtCodigoEmpleado.setText("");
-
-        } else if (chxEmpleadoCargo.isSelected()) {
+        if (chxEmpleadoCargo.isSelected()) {
             String nombreCargo = inputNombreCargo.getText();
             int numeroEmpleados = Integer.parseInt(inputCantidadEmpleados.getText());
 
-            dia = Integer.parseInt(cbxDia.getItemAt(cbxDia.getSelectedIndex()));
-            mes = Integer.parseInt(cbxDia.getItemAt(cbxDia.getSelectedIndex()));
-            año = Integer.parseInt(cbxDia.getItemAt(cbxDia.getSelectedIndex()));
+            if (chxCodigoEmpleado1.isSelected() && chxFechaEmpleado.isSelected()) {
 
-            fecha = LocalDate.of(año, mes, dia);
+                System.out.println(nombreCargo + numeroEmpleados);
+                mensaje = BLEmpleado.agregarEmpleadoCargo(nombreCargo, numeroEmpleados, nombre, apellido, profesion, dni);
 
-            mensaje = BLEmpleado.agregarEmpleadoCargo(nombreCargo, numeroEmpleados, codigo, nombre, apellido, profesion,
-                    dni,
-                    fecha);
+                System.out.println("codigo, fecha y cargo");
+                JOptionPane.showMessageDialog(this, mensaje);
 
-            System.out.println("cargo");
-            JOptionPane.showMessageDialog(this, mensaje);
+                // limpiar campos
+                txtNombreEmpleado.setText("");
+                txtApellidoEmpleado.setText("");
+                txtProfesionEmpleado.setText("");
+                txtEmpleadoDNI.setText("");
+                txtCodigoEmpleado.setText("");
+                inputNombreCargo.setText("");
+                inputCantidadEmpleados.setText("");
+            } else if (chxFechaEmpleado.isSelected()) {
 
-            // limpiar campos
-            txtNombreEmpleado.setText("");
-            txtApellidoEmpleado.setText("");
-            txtProfesionEmpleado.setText("");
-            txtEmpleadoDNI.setText("");
-            txtCodigoEmpleado.setText("");
-            inputNombreCargo.setText("");
-            inputCantidadEmpleados.setText("");
+                mensaje = BLEmpleado.agregarEmpleadoCargo(nombreCargo, numeroEmpleados, codigo, nombre, apellido, profesion,
+                        dni);
 
-            // limpiar los campos de fecha y los checkbox
-            chxCodigoEmpleado1.setSelected(false);
-            chxFechaEmpleado.setSelected(false);
-            chxEmpleadoCargo.setSelected(false);
-            cbxDia.setSelectedIndex(0);
-            cbxMes.setSelectedIndex(0);
-            cbxAño.setSelectedIndex(0);
-        } else if (chxCodigoEmpleado1.isSelected() && chxEmpleadoCargo.isSelected()) {
-            String nombreCargo = inputNombreCargo.getText();
-            int numeroEmpleados = Integer.parseInt(inputCantidadEmpleados.getText());
+                System.out.println("fecha y cargo");
+                JOptionPane.showMessageDialog(this, mensaje);
 
-            dia = Integer.parseInt(cbxDia.getItemAt(cbxDia.getSelectedIndex()));
-            mes = Integer.parseInt(cbxDia.getItemAt(cbxDia.getSelectedIndex()));
-            año = Integer.parseInt(cbxDia.getItemAt(cbxDia.getSelectedIndex()));
+                // limpiar campos
+                txtNombreEmpleado.setText("");
+                txtApellidoEmpleado.setText("");
+                txtProfesionEmpleado.setText("");
+                txtEmpleadoDNI.setText("");
+                txtCodigoEmpleado.setText("");
+                inputNombreCargo.setText("");
+                inputCantidadEmpleados.setText("");
 
-            fecha = LocalDate.of(año, mes, dia);
+            } else if (chxCodigoEmpleado1.isSelected()) {
 
-            mensaje = BLEmpleado.agregarEmpleadoCargo(nombreCargo, numeroEmpleados, nombre, apellido, profesion, dni,
-                    fecha);
+                Date fechaCalendario = calendarioFechaOrganizacion.getDate();
+                if (fechaCalendario != null) {
+                    fecha = fechaCalendario.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                }
 
-            System.out.println("codigo y cargo");
-            JOptionPane.showMessageDialog(this, mensaje);
+                mensaje = BLEmpleado.agregarEmpleadoCargo(nombreCargo, numeroEmpleados, nombre, apellido, profesion, dni,
+                        fecha);
 
-            // limpiar campos
-            txtNombreEmpleado.setText("");
-            txtApellidoEmpleado.setText("");
-            txtProfesionEmpleado.setText("");
-            txtEmpleadoDNI.setText("");
-            txtCodigoEmpleado.setText("");
-            inputNombreCargo.setText("");
-            inputCantidadEmpleados.setText("");
+                System.out.println("codigo y cargo");
+                JOptionPane.showMessageDialog(this, mensaje);
 
-            // limpiar los campos de fecha y los checkbox
-            chxCodigoEmpleado1.setSelected(false);
-            chxFechaEmpleado.setSelected(false);
-            chxEmpleadoCargo.setSelected(false);
-            cbxDia.setSelectedIndex(0);
-            cbxMes.setSelectedIndex(0);
-            cbxAño.setSelectedIndex(0);
+                // limpiar campos
+                txtNombreEmpleado.setText("");
+                txtApellidoEmpleado.setText("");
+                txtProfesionEmpleado.setText("");
+                txtEmpleadoDNI.setText("");
+                txtCodigoEmpleado.setText("");
+                inputNombreCargo.setText("");
+                inputCantidadEmpleados.setText("");
 
-        } else if (chxFechaEmpleado.isSelected() && chxEmpleadoCargo.isSelected()) {
-            String nombreCargo = inputNombreCargo.getText();
-            int numeroEmpleados = Integer.parseInt(inputCantidadEmpleados.getText());
+                // limpiar los campos de fecha y los checkbox
+                chxCodigoEmpleado1.setSelected(false);
+                chxFechaEmpleado.setSelected(false);
+                chxEmpleadoCargo.setSelected(false);
 
-            mensaje = BLEmpleado.agregarEmpleadoCargo(nombreCargo, numeroEmpleados, codigo, nombre, apellido, profesion,
-                    dni);
+            } else {
+                Date fechaCalendario = calendarioFechaOrganizacion.getDate();
+                if (fechaCalendario != null) {
+                    fecha = fechaCalendario.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                }
+                mensaje = BLEmpleado.agregarEmpleadoCargo(nombreCargo, numeroEmpleados, nombre, apellido, profesion, dni,
+                        fecha);
 
-            System.out.println("fecha y cargo");
-            JOptionPane.showMessageDialog(this, mensaje);
-
-            // limpiar campos
-            txtNombreEmpleado.setText("");
-            txtApellidoEmpleado.setText("");
-            txtProfesionEmpleado.setText("");
-            txtEmpleadoDNI.setText("");
-            txtCodigoEmpleado.setText("");
-            inputNombreCargo.setText("");
-            inputCantidadEmpleados.setText("");
-
-        } else if (chxCodigoEmpleado1.isSelected() && chxFechaEmpleado.isSelected() && chxEmpleadoCargo.isSelected()) {
-            String nombreCargo = inputNombreCargo.getText();
-            int numeroEmpleados = Integer.parseInt(inputCantidadEmpleados.getText());
-
-            mensaje = BLEmpleado.agregarEmpleadoCargo(nombreCargo, numeroEmpleados, nombre, apellido, profesion, dni);
-
-            System.out.println("codigo, fecha y cargo");
-            JOptionPane.showMessageDialog(this, mensaje);
-
-            // limpiar campos
-            txtNombreEmpleado.setText("");
-            txtApellidoEmpleado.setText("");
-            txtProfesionEmpleado.setText("");
-            txtEmpleadoDNI.setText("");
-            txtCodigoEmpleado.setText("");
-            inputNombreCargo.setText("");
-            inputCantidadEmpleados.setText("");
-        } else if (chxCodigoEmpleado1.isSelected()) {
-            mensaje = BLEmpleado.agregarEmpleado(codigo, nombre, apellido, profesion, dni);
-
-            System.out.println("codigo");
-            JOptionPane.showMessageDialog(this, mensaje);
-
-            // limpiar campos
-            txtNombreEmpleado.setText("");
-            txtApellidoEmpleado.setText("");
-            txtProfesionEmpleado.setText("");
-            txtEmpleadoDNI.setText("");
-            txtCodigoEmpleado.setText("");
-        } else if (chxFechaEmpleado.isSelected()) {
-            dia = Integer.parseInt(cbxDia.getItemAt(cbxDia.getSelectedIndex()));
-            mes = Integer.parseInt(cbxDia.getItemAt(cbxDia.getSelectedIndex()));
-            año = Integer.parseInt(cbxDia.getItemAt(cbxDia.getSelectedIndex()));
-
-            fecha = LocalDate.of(año, mes, dia);
-
-            mensaje = BLEmpleado.agregarEmpleado(nombre, apellido, profesion, dni, fecha);
-
-            System.out.println("fecha");
-            JOptionPane.showMessageDialog(this, mensaje);
-
-            // limpiar campos
-            txtNombreEmpleado.setText("");
-            txtApellidoEmpleado.setText("");
-            txtProfesionEmpleado.setText("");
-            txtEmpleadoDNI.setText("");
-            txtCodigoEmpleado.setText("");
-
-            // limpiar los campos de fecha y los checkbox
-            chxCodigoEmpleado1.setSelected(false);
-            chxFechaEmpleado.setSelected(false);
-            chxEmpleadoCargo.setSelected(false);
-            cbxDia.setSelectedIndex(0);
-            cbxMes.setSelectedIndex(0);
-            cbxAño.setSelectedIndex(0);
+                System.out.println("nada");
+                JOptionPane.showMessageDialog(this, mensaje);
+            }
         } else {
-            mensaje = BLEmpleado.agregarEmpleado(nombre, apellido, profesion, dni);
+            if (chxCodigoEmpleado1.isSelected() && chxFechaEmpleado.isSelected()) {
+                mensaje = BLEmpleado.agregarEmpleado(nombre, apellido, profesion, dni);
 
-            System.out.println("nada");
-            JOptionPane.showMessageDialog(this, mensaje);
+                System.out.println("codigo y fecha");
+                JOptionPane.showMessageDialog(this, mensaje);
 
-            // limpiar campos
-            txtNombreEmpleado.setText("");
-            txtApellidoEmpleado.setText("");
-            txtProfesionEmpleado.setText("");
-            txtEmpleadoDNI.setText("");
-            txtCodigoEmpleado.setText("");
+                // limpiar campos
+                txtNombreEmpleado.setText("");
+                txtApellidoEmpleado.setText("");
+                txtProfesionEmpleado.setText("");
+                txtEmpleadoDNI.setText("");
+                txtCodigoEmpleado.setText("");
+
+            }
+            if (chxCodigoEmpleado1.isSelected()) {
+
+                Date fechaCalendario = calendarioFechaOrganizacion.getDate();
+                if (fechaCalendario != null) {
+                    fecha = fechaCalendario.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                }
+                mensaje = BLEmpleado.agregarEmpleado(nombre, apellido, profesion, dni, fecha);
+
+                System.out.println("fecha");
+                JOptionPane.showMessageDialog(this, mensaje);
+
+                // limpiar campos
+                txtNombreEmpleado.setText("");
+                txtApellidoEmpleado.setText("");
+                txtProfesionEmpleado.setText("");
+                txtEmpleadoDNI.setText("");
+                txtCodigoEmpleado.setText("");
+
+                // limpiar los campos de fecha y los checkbox
+                chxCodigoEmpleado1.setSelected(false);
+                chxFechaEmpleado.setSelected(false);
+                chxEmpleadoCargo.setSelected(false);
+            }
+            if (chxFechaEmpleado.isSelected()) {
+                mensaje = BLEmpleado.agregarEmpleado(codigo, nombre, apellido, profesion, dni);
+
+                System.out.println("codigo");
+                JOptionPane.showMessageDialog(this, mensaje);
+
+                // limpiar campos
+                txtNombreEmpleado.setText("");
+                txtApellidoEmpleado.setText("");
+                txtProfesionEmpleado.setText("");
+                txtEmpleadoDNI.setText("");
+                txtCodigoEmpleado.setText("");
+            } else {
+                 Date fechaCalendario = calendarioFechaOrganizacion.getDate();
+                if (fechaCalendario != null) {
+                    fecha = fechaCalendario.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                }
+                mensaje = BLEmpleado.agregarEmpleado(codigo, nombre, apellido, profesion, dni, fecha);
+
+                System.out.println("fecha");
+                JOptionPane.showMessageDialog(this, mensaje);
+
+                // limpiar los campos de fecha y los checkbox
+                chxCodigoEmpleado1.setSelected(false);
+                chxFechaEmpleado.setSelected(false);
+                chxEmpleadoCargo.setSelected(false);
+                
+            }
         }
 
         BLEmpleado.getLista();
@@ -2595,20 +2712,7 @@ public class Frm_Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }// GEN-LAST:event_chxEmpleadoCargoActionPerformed
 
-    private void chxEmpleadoCargoMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_chxEmpleadoCargoMouseClicked
-        if (chxEmpleadoCargo.isSelected()) {
-            inputNombreCargo.setFocusable(true);
-            inputNombreCargo.setEnabled(true);
-            inputCantidadEmpleados.setFocusable(true);
-            inputCantidadEmpleados.setEnabled(true);
-        } else {
-            inputNombreCargo.setFocusable(false);
-            inputNombreCargo.setEnabled(false);
-            inputCantidadEmpleados.setFocusable(false);
-            inputCantidadEmpleados.setEnabled(false);
-        }
-    }// GEN-LAST:event_chxEmpleadoCargoMouseClicked
-
+    // GEN-LAST:event_chxEmpleadoCargoMouseClicked
     /**
      * @param args the command line arguments
      */
@@ -2691,15 +2795,17 @@ public class Frm_Menu extends javax.swing.JFrame {
     private javax.swing.JButton btnRegresarAsignaciones;
     private javax.swing.JButton btnRegresarEmpleados;
     private javax.swing.JButton btnRegresarPuestos;
-    private javax.swing.JComboBox<String> cbxAño;
+    private com.toedter.calendar.JCalendar calendarioFechaOrganizacion;
+    private javax.swing.JComboBox<String> cbxAreaAsignaciones;
     private javax.swing.JComboBox<String> cbxCodigoArea;
-    private javax.swing.JComboBox<String> cbxDia;
-    private javax.swing.JComboBox<String> cbxMes;
+    private javax.swing.JComboBox<String> cbxPuestoAsignaciones;
     private javax.swing.JCheckBox chxCodigoArea;
     private javax.swing.JCheckBox chxCodigoEmpleado1;
     private javax.swing.JCheckBox chxCodigoPuesto;
     private javax.swing.JCheckBox chxEmpleadoCargo;
     private javax.swing.JCheckBox chxFechaEmpleado;
+    private com.toedter.calendar.JCalendar finCalendario;
+    private com.toedter.calendar.JCalendar inicioCalendario;
     private javax.swing.JTextField inputCantidadEmpleados;
     private javax.swing.JTextField inputNombreCargo;
     private javax.swing.JButton jButton1;
@@ -2711,15 +2817,6 @@ public class Frm_Menu extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox10;
-    private javax.swing.JComboBox<String> jComboBox11;
-    private javax.swing.JComboBox<String> jComboBox12;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JComboBox<String> jComboBox7;
-    private javax.swing.JComboBox<String> jComboBox8;
-    private javax.swing.JComboBox<String> jComboBox9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2776,7 +2873,6 @@ public class Frm_Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
@@ -2812,8 +2908,9 @@ public class Frm_Menu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable1;
-    private javax.swing.JLabel lblCantidadEmpleados;
-    private javax.swing.JLabel lblNombreCargo;
+    private javax.swing.JLabel labelCantidadEmpleado;
+    private javax.swing.JLabel labelNombreCargo;
+    private javax.swing.JPanel panelMenu;
     private javax.swing.JPanel pnAgregar;
     private javax.swing.JPanel pnAreas;
     private javax.swing.JPanel pnAsignaciones;
@@ -2824,9 +2921,7 @@ public class Frm_Menu extends javax.swing.JFrame {
     private javax.swing.JTextField txtAreaCodigo;
     private javax.swing.JTextField txtAreaNombre;
     private javax.swing.JTextField txtAreasBuscar;
-    private javax.swing.JTextField txtAsignacionArea;
     private javax.swing.JTextField txtAsignacionEmpleado;
-    private javax.swing.JTextField txtAsignacionPuesto;
     private javax.swing.JTextField txtCodigoEmpleado;
     private javax.swing.JTextField txtEmpleadoDNI;
     private javax.swing.JTextField txtEmpleadoMenu;
@@ -2843,10 +2938,19 @@ public class Frm_Menu extends javax.swing.JFrame {
         cbxCodigoArea.removeAllItems();
         cbxCodigoArea.addItem("Seleccione un area");
         ArrayList<Area> lista = MapaAreas.getLista();
-        String[] arreglo = new String[lista.size()];
         int tamaño = lista.size();
         for (int i = 0; i < tamaño; i++) {
             cbxCodigoArea.addItem(lista.get(i).getNombre());
+        }
+    }
+
+    private void comboCodigoAreaFrmAsignacinoes() {
+        cbxAreaAsignaciones.removeAllItems();
+        cbxAreaAsignaciones.addItem("Seleccione un area");
+        ArrayList<Area> lista = MapaAreas.getLista();
+        int tamaño = lista.size();
+        for (int i = 0; i < tamaño; i++) {
+            cbxAreaAsignaciones.addItem(lista.get(i).getNombre());
         }
     }
 
@@ -2865,8 +2969,8 @@ public class Frm_Menu extends javax.swing.JFrame {
         // txtAsignacionFecha.setText("");
         // txtAsignacionFin.setText("");
         txtAsignacionEmpleado.setText("");
-        txtAsignacionPuesto.setText("");
-        txtAsignacionArea.setText("");
+//        txtAsignacionPuesto.setText("");
+//        txtAsignacionArea.setText("");
 
         txtCodigoEmpleado.setText("");
         txtNombreEmpleado.setText("");

@@ -52,4 +52,13 @@ public class BLArea {
   public static ArrayList<Area> getContenido() {
     return MapaAreas.getLista();
   }
+  
+  public static Area getAreaNombre(String nombre){
+      ArrayList<Area> lista = getContenido();
+      for (Area area : lista) {
+          if (area.getNombre().equals(nombre)){
+              return area;
+          }
+      } return null;
+  }
 }

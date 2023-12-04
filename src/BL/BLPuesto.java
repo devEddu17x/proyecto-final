@@ -54,4 +54,13 @@ public class BLPuesto {
   public static ArrayList<Puesto> getContenido() {
     return MapaPuestos.getLista();
   }
+  
+  public static Puesto getPuestoNombre(String nombre){
+      ArrayList<Puesto> lista = getContenido();
+      for (Puesto puesto : lista) {
+          if (puesto.getNombre().equals(nombre)){
+              return puesto;
+          }
+      } return null;
+  }
 }

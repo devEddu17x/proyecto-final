@@ -17,7 +17,7 @@ public class BLEmpleado {
 
     if (codigo != null && nombre.trim().length() > 0 && apellido.trim().length() > 0 && profesion.trim().length() > 0
         && dni > 0 && inicioOrg != null) {
-      empleado = (Empleado) Factory.crearEmpleado(codigo, nombre, apellido, profesion, dni, inicioOrg);
+      empleado = (Empleado) Factory.crearEmpleado(codigo, nombre.trim(), apellido.trim(), profesion.trim(), dni, inicioOrg);
       DALEmpleado.agregarEmpleado(empleado);
       mensaje = "Empleado agregado correctamente";
     } else {
@@ -34,7 +34,7 @@ public class BLEmpleado {
 
     if (codigo != null && nombre.trim().length() > 0 && apellido.trim().length() > 0 && profesion.trim().length() > 0
         && dni > 0) {
-      empleado = (Empleado) Factory.crearEmpleado(codigo, nombre, apellido, profesion, dni);
+      empleado = (Empleado) Factory.crearEmpleado(codigo, nombre.trim(), apellido.trim(), profesion.trim(), dni);
 
       DALEmpleado.agregarEmpleado(empleado);
       mensaje = "Empleado agregado correctamente";
@@ -53,7 +53,7 @@ public class BLEmpleado {
 
     if (nombre.trim().length() > 0 && apellido.trim().length() > 0 && profesion.trim().length() > 0 && dni > 0
         && inicioOrg != null) {
-      empleado = (Empleado) Factory.crearEmpleado(nombre, apellido, profesion, dni, inicioOrg);
+      empleado = (Empleado) Factory.crearEmpleado(nombre.trim(), apellido.trim(), profesion.trim(), dni, inicioOrg);
       DALEmpleado.agregarEmpleado(empleado);
       mensaje = "Empleado agregado correctamente";
     } else {
@@ -69,7 +69,7 @@ public class BLEmpleado {
     Empleado empleado;
 
     if (nombre.trim().length() > 0 && apellido.trim().length() > 0 && profesion.trim().length() > 0 && dni > 0) {
-      empleado = (Empleado) Factory.crearEmpleado(nombre, apellido, profesion, dni);
+      empleado = (Empleado) Factory.crearEmpleado(nombre.trim(), apellido.trim(), profesion.trim(), dni);
       DALEmpleado.agregarEmpleado(empleado);
       mensaje = "Empleado agregado correctamente";
     } else {
@@ -87,7 +87,7 @@ public class BLEmpleado {
 
     if (codigo != null && nombre.trim().length() > 0 && apellido.trim().length() > 0 && profesion.trim().length() > 0
         && dni > 0 && inicioOrg != null) {
-      empleado = (EmpleadoCargo) Factory.crearEmpleadoCargo(cargo, numeroEmpleados, codigo, nombre, apellido, profesion,
+      empleado = (EmpleadoCargo) Factory.crearEmpleadoCargo(cargo.trim(), numeroEmpleados, codigo, nombre.trim(), apellido.trim(), profesion,
           dni, inicioOrg);
       DALEmpleado.agregarEmpleado(empleado);
       mensaje = "Empleado agregado correctamente";
@@ -106,7 +106,7 @@ public class BLEmpleado {
 
     if (codigo != null && nombre.trim().length() > 0 && apellido.trim().length() > 0 && profesion.trim().length() > 0
         && dni > 0) {
-      empleado = (EmpleadoCargo) Factory.crearEmpleadoCargo(cargo, numeroEmpleados, codigo, nombre, apellido, profesion,
+      empleado = (EmpleadoCargo) Factory.crearEmpleadoCargo(cargo.trim(), numeroEmpleados, codigo, nombre.trim(), apellido.trim(), profesion.trim(),
           dni);
 
       DALEmpleado.agregarEmpleado(empleado);
@@ -127,7 +127,7 @@ public class BLEmpleado {
 
     if (nombre.trim().length() > 0 && apellido.trim().length() > 0 && profesion.trim().length() > 0 && dni > 0
         && inicioOrg != null) {
-      empleado = (EmpleadoCargo) Factory.crearEmpleadoCargo(cargo, numeroEmpleados, nombre, apellido, profesion, dni,
+      empleado = (EmpleadoCargo) Factory.crearEmpleadoCargo(cargo.trim(), numeroEmpleados, nombre.trim(), apellido.trim(), profesion.trim(), dni,
           inicioOrg);
       DALEmpleado.agregarEmpleado(empleado);
       mensaje = "Empleado agregado correctamente";
@@ -145,7 +145,7 @@ public class BLEmpleado {
     EmpleadoCargo empleado;
 
     if (nombre.trim().length() > 0 && apellido.trim().length() > 0 && profesion.trim().length() > 0 && dni > 0) {
-      empleado = (EmpleadoCargo) Factory.crearEmpleadoCargo(cargo, numeroEmpleados, nombre, apellido, profesion, dni);
+      empleado = (EmpleadoCargo) Factory.crearEmpleadoCargo(cargo.trim(), numeroEmpleados, nombre.trim(), apellido.trim(), profesion.trim(), dni);
       DALEmpleado.agregarEmpleado(empleado);
       mensaje = "Empleado agregado correctamente";
     } else {
@@ -172,7 +172,8 @@ public class BLEmpleado {
   public static void listarEmpleados() {
     System.out.println("Lista de empleados");
     System.out.println("------------------");
-    for (Empleado empleado : MapaEmpleados.getLista()) {
+    ArrayList<Empleado> lista = MapaEmpleados.getLista();
+    for (Empleado empleado : lista) {
       System.out.println(empleado);
     }
   }

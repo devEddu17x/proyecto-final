@@ -20,7 +20,7 @@ public class DALAsignacion {
     private static RandomAccessFile raf;
     private static final String path = "lista_asignaciones.dat";
 
-    private static final String columnas[] = {"Fecha Asignacion", "Inicio Asignacion", "Fin Asignacion", "Cod. Empleado", "Cod. Area", "Cod. Puesto"};
+    private static final String columnas[] = {"Fecha Asignacion", "Inicio Asignacion", "Fin Asignacion", "Cod. Empleado","Empleado", "Cod. Area", "Area", "Cod. Puesto", "Puesto"};
     private static Object[] fila = new Object[columnas.length];
 
     public static void agregarAsignacion(Asignacion asignacion) {
@@ -35,6 +35,8 @@ public class DALAsignacion {
             baos.close();
             raf.writeInt(bytes.length);
             raf.write(bytes);
+            
+            ListaAsignaciones.agregarAsignacion(asignacion);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -103,8 +105,11 @@ public class DALAsignacion {
             }
 
             fila[3] = asignacion.getEmpleado().getCodigo();
-            fila[4] = asignacion.getArea().getCodigo();
-            fila[5] = asignacion.getPuesto().getCodigo();
+            fila[4] = asignacion.getEmpleado().getNombre();
+            fila[5] = asignacion.getArea().getCodigo();
+            fila[6] = asignacion.getArea().getNombre();
+            fila[7] = asignacion.getPuesto().getCodigo();
+            fila[8] = asignacion.getPuesto().getNombre();
 
             modelo.addRow(fila);
         }
