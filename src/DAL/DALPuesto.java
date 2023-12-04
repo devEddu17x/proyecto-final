@@ -77,6 +77,7 @@ public class DALPuesto {
     
     public static DefaultTableModel llenarTabla(ArrayList<Puesto> lista){
         DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(columnas);
         for (Puesto puesto : lista) {
             fila[0] = puesto.getCodigo();
             fila[1] = puesto.getNombre();

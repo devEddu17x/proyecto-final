@@ -85,6 +85,7 @@ public class DALAsignacion {
 
     private static DefaultTableModel llenarTabla() {
         DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(columnas);
         ArrayList<Asignacion> lista = getContenido();
         for (Asignacion asignacion : lista) {
             fila[0] = asignacion.getFechaAsignacion();

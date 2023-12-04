@@ -14,7 +14,7 @@ public class BLPuesto {
     Puesto puesto;
 
     if (codigo != null && nombre.trim().length() > 0 && codigoArea.trim().length() > 0 && maximoEmpleados > 0
-        && numeroEmpleados > 0) {
+        && numeroEmpleados > -1) {
         puesto = (Puesto) Factory.crearPuesto(codigo, nombre, codigoArea, maximoEmpleados, numeroEmpleados);
       DALPuesto.agregarPuesto(puesto);
       mensaje = "Puesto agregado correctamente";
@@ -30,7 +30,7 @@ public class BLPuesto {
     String mensaje = "";
     Puesto puesto;
 
-    if (nombre.trim().length() > 0 && codigoArea.trim().length() > 0 && maximoEmpleados > 0 && numeroEmpleados > 0) {
+    if (nombre.trim().length() > 0 && codigoArea.trim().length() > 0 && maximoEmpleados > 0 && numeroEmpleados > -1) {
         puesto = (Puesto) Factory.crearPuesto(nombre, codigoArea, maximoEmpleados, numeroEmpleados);
       DALPuesto.agregarPuesto(puesto);
       mensaje = "Puesto agregado correctamente";

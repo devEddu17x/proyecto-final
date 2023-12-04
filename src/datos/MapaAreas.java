@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.TreeMap;
 
 import entidades.Area;
+import java.util.Map;
 
 public class MapaAreas {
     private static TreeMap<String, Area> mapaArea = new TreeMap<>();
@@ -41,5 +42,13 @@ public class MapaAreas {
     public static ArrayList<Area> getLista() {
         Collection<Area> areas = mapaArea.values();
         return new ArrayList<>(areas);
+    }
+    
+    public static String getCodigoArea(String nombre){
+        for (Map.Entry<String, Area> entry : mapaArea.entrySet()) {
+            if(entry.getValue().getNombre().equals(nombre))
+            return entry.getValue().getCodigo();
+        }
+        return null;
     }
 }

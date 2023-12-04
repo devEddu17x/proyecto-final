@@ -10,10 +10,17 @@ import javax.swing.table.DefaultTableModel;
 
 import DAL.DALEmpleado;
 import BL.BLEmpleado;
+import BL.BLPuesto;
 import DAL.DALArea;
+import DAL.DALAsignacion;
+import DAL.DALPuesto;
+import datos.MapaAreas;
 import entidades.Area;
 import entidades.Empleado;
 import entidades.EmpleadoCargo;
+import entidades.Puesto;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -194,17 +201,15 @@ public class Frm_Menu extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        txtPuestoNEmpleados = new javax.swing.JTextField();
         txtPuestoCodigo = new javax.swing.JTextField();
         txtPuestoPuesto = new javax.swing.JTextField();
         txtMaximoEmpleados = new javax.swing.JTextField();
-        txtPuestoArea = new javax.swing.JTextField();
         LimpiarPuestos = new javax.swing.JButton();
         AgregarAreas1 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         chxCodigoPuesto = new javax.swing.JCheckBox();
+        cbxCodigoArea = new javax.swing.JComboBox<>();
         jPanel35 = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
         btnRegresarPuestos = new javax.swing.JButton();
@@ -245,18 +250,20 @@ public class Frm_Menu extends javax.swing.JFrame {
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
-        txtEmpleadoCodigo = new javax.swing.JTextField();
-        txtEmpleadoNombre = new javax.swing.JTextField();
-        txtEmpleadoApellido = new javax.swing.JTextField();
-        txtEmpleadoOrigen = new javax.swing.JTextField();
-        txtEmpleadoDni = new javax.swing.JTextField();
+        txtEmpleadoDNI = new javax.swing.JTextField();
+        txtCodigoEmpleado = new javax.swing.JTextField();
+        txtNombreEmpleado = new javax.swing.JTextField();
+        txtProfesionEmpleado = new javax.swing.JTextField();
+        txtApellidoEmpleado = new javax.swing.JTextField();
         LimpiarEmpleados = new javax.swing.JButton();
         AgregarEmpleados = new javax.swing.JButton();
         EditarDatosEmpleados = new javax.swing.JButton();
         EliminarDatosEmpleado = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        cbxAño = new javax.swing.JComboBox<>();
+        cbxDia = new javax.swing.JComboBox<>();
+        cbxMes = new javax.swing.JComboBox<>();
+        chxFechaEmpleado = new javax.swing.JCheckBox();
+        chxCodigoEmpleado1 = new javax.swing.JCheckBox();
         jPanel34 = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
         btnRegresarEmpleados = new javax.swing.JButton();
@@ -358,6 +365,15 @@ public class Frm_Menu extends javax.swing.JFrame {
         btnAreas.setForeground(new java.awt.Color(255, 255, 255));
         btnAreas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos Inter/area-chart.png"))); // NOI18N
         btnAreas.setText("Areas");
+        btnAreas.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                btnAreasAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         btnAreas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAreasMouseClicked(evt);
@@ -817,6 +833,11 @@ public class Frm_Menu extends javax.swing.JFrame {
         btnPuestosAscendentes.setFont(new java.awt.Font("Sitka Text", 1, 30)); // NOI18N
         btnPuestosAscendentes.setForeground(new java.awt.Color(255, 255, 255));
         btnPuestosAscendentes.setText("Ascendente");
+        btnPuestosAscendentes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPuestosAscendentesMouseClicked(evt);
+            }
+        });
         btnPuestosAscendentes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPuestosAscendentesActionPerformed(evt);
@@ -826,6 +847,11 @@ public class Frm_Menu extends javax.swing.JFrame {
         btnPuestosDescendente.setFont(new java.awt.Font("Sitka Text", 1, 30)); // NOI18N
         btnPuestosDescendente.setForeground(new java.awt.Color(255, 255, 255));
         btnPuestosDescendente.setText("Descendente\n");
+        btnPuestosDescendente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPuestosDescendenteMouseClicked(evt);
+            }
+        });
 
         txtPuestosBuscar.setBackground(new java.awt.Color(204, 204, 204));
         txtPuestosBuscar.setFont(new java.awt.Font("Segoe UI Emoji", 2, 18)); // NOI18N
@@ -1252,8 +1278,8 @@ public class Frm_Menu extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Numero máximo de empleados:");
-        jPanel18.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, -1, -1));
+        jLabel11.setText("Max. empleados:");
+        jPanel18.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 200, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -1269,16 +1295,15 @@ public class Frm_Menu extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Codigo de area:");
         jPanel18.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, -1, -1));
-
-        jLabel15.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("N°empleados:");
-        jPanel18.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 210, -1, -1));
-        jPanel18.add(txtPuestoNEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 210, 180, 50));
         jPanel18.add(txtPuestoCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 290, 50));
+
+        txtPuestoPuesto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPuestoPuestoActionPerformed(evt);
+            }
+        });
         jPanel18.add(txtPuestoPuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 290, 50));
-        jPanel18.add(txtMaximoEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 330, 200, 50));
-        jPanel18.add(txtPuestoArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 50, 180, 50));
+        jPanel18.add(txtMaximoEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 200, 90, 50));
 
         LimpiarPuestos.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
         LimpiarPuestos.setText("Limpiar");
@@ -1331,6 +1356,9 @@ public class Frm_Menu extends javax.swing.JFrame {
             }
         });
         jPanel18.add(chxCodigoPuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, -1, -1));
+
+        cbxCodigoArea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione area" }));
+        jPanel18.add(cbxCodigoArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(982, 70, 120, -1));
 
         jPanel31.add(jPanel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1190, 730));
 
@@ -1535,11 +1563,11 @@ public class Frm_Menu extends javax.swing.JFrame {
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
         jLabel30.setText("Dni:");
         jPanel27.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 200, -1, -1));
-        jPanel27.add(txtEmpleadoCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 200, 150, 50));
-        jPanel27.add(txtEmpleadoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 250, 50));
-        jPanel27.add(txtEmpleadoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 250, 50));
-        jPanel27.add(txtEmpleadoOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 60, 250, 50));
-        jPanel27.add(txtEmpleadoDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 130, 250, 50));
+        jPanel27.add(txtEmpleadoDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 200, 150, 50));
+        jPanel27.add(txtCodigoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 250, 50));
+        jPanel27.add(txtNombreEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 250, 50));
+        jPanel27.add(txtProfesionEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 60, 250, 50));
+        jPanel27.add(txtApellidoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 130, 250, 50));
 
         LimpiarEmpleados.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
         LimpiarEmpleados.setText("Limpiar");
@@ -1552,6 +1580,11 @@ public class Frm_Menu extends javax.swing.JFrame {
 
         AgregarEmpleados.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
         AgregarEmpleados.setText("Agregar");
+        AgregarEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AgregarEmpleadosMouseClicked(evt);
+            }
+        });
         AgregarEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AgregarEmpleadosActionPerformed(evt);
@@ -1577,14 +1610,46 @@ public class Frm_Menu extends javax.swing.JFrame {
         });
         jPanel27.add(EliminarDatosEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 560, 200, 30));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Año", "2020", "2021", "2022", "2023", "2024", "2025" }));
-        jPanel27.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 220, -1, -1));
+        cbxAño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Año", "2020", "2021", "2022", "2023", "2024", "2025" }));
+        jPanel27.add(cbxAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 220, -1, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dia", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        jPanel27.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, -1, -1));
+        cbxDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dia", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        jPanel27.add(cbxDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, -1, -1));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mes", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
-        jPanel27.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, -1, -1));
+        cbxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mes", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        jPanel27.add(cbxMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, -1, -1));
+
+        chxFechaEmpleado.setBackground(new java.awt.Color(51, 51, 51));
+        chxFechaEmpleado.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        chxFechaEmpleado.setForeground(new java.awt.Color(255, 255, 255));
+        chxFechaEmpleado.setText("<html><center> Generar<p> automaticamente  ");
+        chxFechaEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chxFechaEmpleadoMouseClicked(evt);
+            }
+        });
+        chxFechaEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chxFechaEmpleadoActionPerformed(evt);
+            }
+        });
+        jPanel27.add(chxFechaEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, -1, -1));
+
+        chxCodigoEmpleado1.setBackground(new java.awt.Color(51, 51, 51));
+        chxCodigoEmpleado1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        chxCodigoEmpleado1.setForeground(new java.awt.Color(255, 255, 255));
+        chxCodigoEmpleado1.setText("<html><center> Generar<p> automaticamente  ");
+        chxCodigoEmpleado1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chxCodigoEmpleado1MouseClicked(evt);
+            }
+        });
+        chxCodigoEmpleado1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chxCodigoEmpleado1ActionPerformed(evt);
+            }
+        });
+        jPanel27.add(chxCodigoEmpleado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, -1, -1));
 
         jPanel33.add(jPanel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 1190, 720));
 
@@ -1680,6 +1745,8 @@ public class Frm_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarMouseClicked
 
     private void btnPuestosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPuestosMouseClicked
+        
+        TablaPuestos.setModel(DALPuesto.getTableNombreAsc());
         pnMenu.setVisible(false);
         pnAgregar.setVisible(false);
         pnAreas.setVisible(false);
@@ -1707,6 +1774,7 @@ public class Frm_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPuestosMouseClicked
 
     private void btnAsignacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAsignacionesMouseClicked
+        TablaAsignaciones.setModel(DALAsignacion.getTablaFechaAsc());
         pnMenu.setVisible(false);
         pnAgregar.setVisible(false);
         pnAreas.setVisible(false);
@@ -1816,10 +1884,11 @@ public class Frm_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpleadoMouseClicked
+        TablaEmpleados.setModel(DALEmpleado.getTablaNombreAsc());
         pnMenu.setVisible(false);
         pnAgregar.setVisible(false);
         pnAreas.setVisible(false);
@@ -1867,7 +1936,7 @@ public class Frm_Menu extends javax.swing.JFrame {
 
     private void AgregarAreasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarAreasActionPerformed
 //        agregarArea();
-       
+
     }//GEN-LAST:event_AgregarAreasActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -1884,6 +1953,7 @@ public class Frm_Menu extends javax.swing.JFrame {
 
     private void AgregarAreas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarAreas1ActionPerformed
 //        agregarPuestos();
+
     }//GEN-LAST:event_AgregarAreas1ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -1916,30 +1986,30 @@ public class Frm_Menu extends javax.swing.JFrame {
 
     private void jLabel37MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel37MouseClicked
         Area area = BLArea.getArea(txtAreasBuscar.getText());
-        
-        if (area != null){
-            
+
+        if (area != null) {
+
             DefaultTableModel modeloAuxAreas = new DefaultTableModel();
-            
+
             String[] columnas = {"Codigo", "Nombre", "Cantidad de Empleados"};
             modeloAuxAreas.setColumnIdentifiers(columnas);
-            
-            Object [] fila = new Object[columnas.length];
-            
+
+            Object[] fila = new Object[columnas.length];
+
             fila[0] = area.getCodigo();
             fila[1] = area.getNombre();
             fila[2] = area.getEmpleadosAsignados();
-            
+
             modeloAuxAreas.addRow(fila);
-            
+
             TablaAreas.setModel(modeloAuxAreas);
             System.out.println("Area encontrada");
             System.out.println(area.getCodigo());
-            
+
         } else {
-            JOptionPane.showMessageDialog(this, "No se encontro el area","Error", 2);
+            JOptionPane.showMessageDialog(this, "No se encontro el area", "Error", 2);
         }
-        
+
         txtAreasBuscar.setText("Igrese el codigo del area aqui");
     }//GEN-LAST:event_jLabel37MouseClicked
 
@@ -1960,6 +2030,33 @@ public class Frm_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPuestosBuscarMouseClicked
 
     private void jLabel40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel40MouseClicked
+        String codigo = txtPuestosBuscar.getText();
+        Puesto puesto = BLPuesto.getPuesto(codigo);
+        
+        if (puesto != null){
+            
+            DefaultTableModel modeloBusquedaPuesto = new DefaultTableModel();
+            
+            String [] columnas = {"Codigo", "Nombre", "Cod. Area", "Max. Empleados", "N° Empleados"};
+            Object[] fila = new Object[columnas.length];
+            
+            modeloBusquedaPuesto.setColumnIdentifiers(columnas);
+            
+            fila[0] = puesto.getCodigo();
+            fila[1] = puesto.getNombre();
+            fila[2] = puesto.getCodigoArea();
+            fila[3] = puesto.getMaximoEmpleados();
+            fila[4] = puesto.getNumeroEmpleados();
+            
+            modeloBusquedaPuesto.addRow(fila);
+            
+            TablaPuestos.setModel(modeloBusquedaPuesto);
+            
+            System.out.println(puesto.toString());
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontro el puesto", "Error", 2);
+        }
+        
         txtPuestosBuscar.setText("Igrese el codigo del puesto aqui");
     }//GEN-LAST:event_jLabel40MouseClicked
 
@@ -2000,6 +2097,7 @@ public class Frm_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_chxCodigoAreaActionPerformed
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        comboCodigoArea();
         pnMenu.setVisible(false);
         pnAgregar.setVisible(false);
         pnAreas.setVisible(false);
@@ -2123,16 +2221,14 @@ public class Frm_Menu extends javax.swing.JFrame {
             modeloMenuEmpleado.addRow(fila);
             jTable1.setModel(modeloMenuEmpleado);
 
-        }
-        
-        else{
+        } else {
             JOptionPane.showMessageDialog(this, "No se encontro el empleado", "Error", 2);
         }
         txtEmpleadoMenu.setText("");
     }//GEN-LAST:event_jLabel46MouseClicked
 
     private void btnAreasAscendentesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAreasAscendentesMouseClicked
-       TablaAreas.setModel(DALArea.getTablaNombreAsc());
+        TablaAreas.setModel(DALArea.getTablaNombreAsc());
     }//GEN-LAST:event_btnAreasAscendentesMouseClicked
 
     private void btnAreasDescendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAreasDescendenteActionPerformed
@@ -2146,15 +2242,15 @@ public class Frm_Menu extends javax.swing.JFrame {
     private void AgregarAreasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarAreasMouseClicked
         String mensaje;
         String nombre = txtAreaNombre.getText();
-        if (chxCodigoArea.isSelected()){
+        if (chxCodigoArea.isSelected()) {
             mensaje = BLArea.agregarArea(nombre);
-        } else{
+        } else {
             String codigo = txtAreaCodigo.getText();
             mensaje = BLArea.agregarArea(codigo, nombre);
         }
-        
+
         JOptionPane.showMessageDialog(this, mensaje);
-    
+
     }//GEN-LAST:event_AgregarAreasMouseClicked
 
     private void chxCodigoAreaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chxCodigoAreaMouseClicked
@@ -2167,7 +2263,77 @@ public class Frm_Menu extends javax.swing.JFrame {
 
     private void AgregarAreas1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarAreas1MouseClicked
         
+        String mensaje;
+        String nombre = txtPuestoPuesto.getText();
+        int numeroMaximoEmpleados = Integer.parseInt(txtMaximoEmpleados.getText());
+        String nombreArea = cbxCodigoArea.getItemAt(cbxCodigoArea.getSelectedIndex());
+        String codigoArea = MapaAreas.getCodigoArea(nombreArea);
+
+        if (chxCodigoPuesto.isSelected()) {
+            mensaje = BLPuesto.agregarPuesto(nombre, codigoArea, numeroMaximoEmpleados, 0);
+        } else {
+            String codigoPuesto = txtPuestoCodigo.getText();
+            mensaje = BLPuesto.agregarPuesto(codigoPuesto, nombre, codigoArea, numeroMaximoEmpleados, 0);
+        }
+        JOptionPane.showMessageDialog(this, mensaje);
     }//GEN-LAST:event_AgregarAreas1MouseClicked
+
+    private void txtPuestoPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPuestoPuestoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPuestoPuestoActionPerformed
+
+    private void btnAreasAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_btnAreasAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAreasAncestorAdded
+
+    private void btnPuestosAscendentesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPuestosAscendentesMouseClicked
+        TablaPuestos.setModel(DALPuesto.getTableNombreAsc());
+    }//GEN-LAST:event_btnPuestosAscendentesMouseClicked
+
+    private void btnPuestosDescendenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPuestosDescendenteMouseClicked
+        TablaPuestos.setModel(DALPuesto.getTableNombreDes());
+    }//GEN-LAST:event_btnPuestosDescendenteMouseClicked
+
+    private void AgregarEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarEmpleadosMouseClicked
+        String mensaje; 
+        String nombre = txtNombreEmpleado.getText();
+         String apellido = txtApellidoEmpleado.getText();
+         String profesion = txtProfesionEmpleado.getText();
+         int dni = Integer.parseInt(txtEmpleadoDNI.getText());
+         if (chxFechaEmpleado.isSelected() && chxFechaEmpleado.isSelected()){
+             
+              mensaje = BLEmpleado.agregarEmpleado(nombre, apellido, profesion, dni);
+              
+         } else if (chxFechaEmpleado.isSelected()){
+             String codigo = txtCodigoEmpleado.getText();
+             mensaje = BLEmpleado.agregarEmpleado(codigo, nombre, apellido, profesion, dni);
+             
+         } else if (chxCodigoEmpleado1.isSelected()){
+             LocalDate fecha = null;
+             int dia = Integer.parseInt(cbxDia.getItemAt(cbxDia.getSelectedIndex()));
+                          int mes = Integer.parseInt(cbxDia.getItemAt(cbxDia.getSelectedIndex()));
+             int año = Integer.parseInt(cbxDia.getItemAt(cbxDia.getSelectedIndex()));
+             fecha = LocalDate.of(año, mes, dia);
+             mensaje = BLEmpleado.agregarEmpleado(nombre, apellido, profesion, dni, fecha);
+             
+         }
+    }//GEN-LAST:event_AgregarEmpleadosMouseClicked
+
+    private void chxFechaEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chxFechaEmpleadoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chxFechaEmpleadoMouseClicked
+
+    private void chxFechaEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chxFechaEmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chxFechaEmpleadoActionPerformed
+
+    private void chxCodigoEmpleado1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chxCodigoEmpleado1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chxCodigoEmpleado1MouseClicked
+
+    private void chxCodigoEmpleado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chxCodigoEmpleado1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chxCodigoEmpleado1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2247,8 +2413,14 @@ public class Frm_Menu extends javax.swing.JFrame {
     private javax.swing.JButton btnRegresarAsignaciones;
     private javax.swing.JButton btnRegresarEmpleados;
     private javax.swing.JButton btnRegresarPuestos;
+    private javax.swing.JComboBox<String> cbxAño;
+    private javax.swing.JComboBox<String> cbxCodigoArea;
+    private javax.swing.JComboBox<String> cbxDia;
+    private javax.swing.JComboBox<String> cbxMes;
     private javax.swing.JCheckBox chxCodigoArea;
+    private javax.swing.JCheckBox chxCodigoEmpleado1;
     private javax.swing.JCheckBox chxCodigoPuesto;
+    private javax.swing.JCheckBox chxFechaEmpleado;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
@@ -2258,12 +2430,9 @@ public class Frm_Menu extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox10;
     private javax.swing.JComboBox<String> jComboBox11;
     private javax.swing.JComboBox<String> jComboBox12;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
@@ -2276,7 +2445,6 @@ public class Frm_Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -2369,26 +2537,35 @@ public class Frm_Menu extends javax.swing.JFrame {
     private javax.swing.JPanel pnEmpleado;
     private javax.swing.JPanel pnMenu;
     private javax.swing.JPanel pnPuestos;
+    private javax.swing.JTextField txtApellidoEmpleado;
     private javax.swing.JTextField txtAreaCodigo;
     private javax.swing.JTextField txtAreaNombre;
     private javax.swing.JTextField txtAreasBuscar;
     private javax.swing.JTextField txtAsignacionArea;
     private javax.swing.JTextField txtAsignacionEmpleado;
     private javax.swing.JTextField txtAsignacionPuesto;
-    private javax.swing.JTextField txtEmpleadoApellido;
-    private javax.swing.JTextField txtEmpleadoCodigo;
-    private javax.swing.JTextField txtEmpleadoDni;
+    private javax.swing.JTextField txtCodigoEmpleado;
+    private javax.swing.JTextField txtEmpleadoDNI;
     private javax.swing.JTextField txtEmpleadoMenu;
-    private javax.swing.JTextField txtEmpleadoNombre;
-    private javax.swing.JTextField txtEmpleadoOrigen;
     private javax.swing.JTextField txtEmpleadosBuscar;
     private javax.swing.JTextField txtMaximoEmpleados;
-    private javax.swing.JTextField txtPuestoArea;
+    private javax.swing.JTextField txtNombreEmpleado;
+    private javax.swing.JTextField txtProfesionEmpleado;
     private javax.swing.JTextField txtPuestoCodigo;
-    private javax.swing.JTextField txtPuestoNEmpleados;
     private javax.swing.JTextField txtPuestoPuesto;
     private javax.swing.JTextField txtPuestosBuscar;
     // End of variables declaration//GEN-END:variables
+
+    private void comboCodigoArea() {
+        cbxCodigoArea.removeAllItems();
+        cbxCodigoArea.addItem("Seleccione un area");
+        ArrayList<Area> lista = MapaAreas.getLista();
+        String[] arreglo = new String[lista.size()];
+        int tamaño = lista.size();
+        for (int i = 0; i < tamaño; i++) {
+            cbxCodigoArea.addItem(lista.get(i).getNombre());
+        }
+    }
 
     private void Limpiar() {
 //       txtAreaNombre.setText("");
@@ -2398,8 +2575,8 @@ public class Frm_Menu extends javax.swing.JFrame {
         txtPuestoCodigo.setText("");
         txtPuestoPuesto.setText("");
         txtMaximoEmpleados.setText("");
-        txtPuestoArea.setText("");
-        txtPuestoNEmpleados.setText("");
+//        txtPuestoArea.setText("");
+//        txtPuestoNEmpleados.setText("");
 
 //       txtAsignacionesIncio.setText("");
 //       txtAsignacionFecha.setText("");
@@ -2408,12 +2585,12 @@ public class Frm_Menu extends javax.swing.JFrame {
         txtAsignacionPuesto.setText("");
         txtAsignacionArea.setText("");
 
-        txtEmpleadoNombre.setText("");
-        txtEmpleadoApellido.setText("");
+        txtCodigoEmpleado.setText("");
+        txtNombreEmpleado.setText("");
 //       txtEmpleadoProfesion.setText("");
-        txtEmpleadoOrigen.setText("");
-        txtEmpleadoDni.setText("");
-        txtEmpleadoCodigo.setText("");
+        txtProfesionEmpleado.setText("");
+        txtApellidoEmpleado.setText("");
+        txtEmpleadoDNI.setText("");
     }
 
     void regresar() {
