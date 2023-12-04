@@ -3394,6 +3394,16 @@
                             </Constraint>
                           </Constraints>
                         </Component>
+                        <Component class="javax.swing.JCheckBox" name="chxEmpleadoCargo">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Es jefe"/>
+                          </Properties>
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                              <AbsoluteConstraints x="60" y="390" width="100" height="-1"/>
+                            </Constraint>
+                          </Constraints>
+                        </Component>
                       </SubComponents>
                     </Container>
                     <Container class="javax.swing.JPanel" name="jPanel34">

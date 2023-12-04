@@ -264,6 +264,7 @@ public class Frm_Menu extends javax.swing.JFrame {
         cbxMes = new javax.swing.JComboBox<>();
         chxFechaEmpleado = new javax.swing.JCheckBox();
         chxCodigoEmpleado1 = new javax.swing.JCheckBox();
+        chxEmpleadoCargo = new javax.swing.JCheckBox();
         jPanel34 = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
         btnRegresarEmpleados = new javax.swing.JButton();
@@ -1651,6 +1652,9 @@ public class Frm_Menu extends javax.swing.JFrame {
         });
         jPanel27.add(chxCodigoEmpleado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, -1, -1));
 
+        chxEmpleadoCargo.setText("Es jefe");
+        jPanel27.add(chxEmpleadoCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 100, -1));
+
         jPanel33.add(jPanel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 1190, 720));
 
         jPanel34.setBackground(new java.awt.Color(0, 0, 0));
@@ -1745,7 +1749,7 @@ public class Frm_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarMouseClicked
 
     private void btnPuestosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPuestosMouseClicked
-        
+
         TablaPuestos.setModel(DALPuesto.getTableNombreAsc());
         pnMenu.setVisible(false);
         pnAgregar.setVisible(false);
@@ -1884,7 +1888,7 @@ public class Frm_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpleadoMouseClicked
@@ -2032,31 +2036,31 @@ public class Frm_Menu extends javax.swing.JFrame {
     private void jLabel40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel40MouseClicked
         String codigo = txtPuestosBuscar.getText();
         Puesto puesto = BLPuesto.getPuesto(codigo);
-        
-        if (puesto != null){
-            
+
+        if (puesto != null) {
+
             DefaultTableModel modeloBusquedaPuesto = new DefaultTableModel();
-            
-            String [] columnas = {"Codigo", "Nombre", "Cod. Area", "Max. Empleados", "N° Empleados"};
+
+            String[] columnas = {"Codigo", "Nombre", "Cod. Area", "Max. Empleados", "N° Empleados"};
             Object[] fila = new Object[columnas.length];
-            
+
             modeloBusquedaPuesto.setColumnIdentifiers(columnas);
-            
+
             fila[0] = puesto.getCodigo();
             fila[1] = puesto.getNombre();
             fila[2] = puesto.getCodigoArea();
             fila[3] = puesto.getMaximoEmpleados();
             fila[4] = puesto.getNumeroEmpleados();
-            
+
             modeloBusquedaPuesto.addRow(fila);
-            
+
             TablaPuestos.setModel(modeloBusquedaPuesto);
-            
+
             System.out.println(puesto.toString());
         } else {
             JOptionPane.showMessageDialog(this, "No se encontro el puesto", "Error", 2);
         }
-        
+
         txtPuestosBuscar.setText("Igrese el codigo del puesto aqui");
     }//GEN-LAST:event_jLabel40MouseClicked
 
@@ -2262,7 +2266,7 @@ public class Frm_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarAncestorAdded
 
     private void AgregarAreas1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarAreas1MouseClicked
-        
+
         String mensaje;
         String nombre = txtPuestoPuesto.getText();
         int numeroMaximoEmpleados = Integer.parseInt(txtMaximoEmpleados.getText());
@@ -2295,28 +2299,47 @@ public class Frm_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPuestosDescendenteMouseClicked
 
     private void AgregarEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarEmpleadosMouseClicked
-        String mensaje; 
+        String mensaje;
         String nombre = txtNombreEmpleado.getText();
-         String apellido = txtApellidoEmpleado.getText();
-         String profesion = txtProfesionEmpleado.getText();
-         int dni = Integer.parseInt(txtEmpleadoDNI.getText());
-         if (chxFechaEmpleado.isSelected() && chxFechaEmpleado.isSelected()){
-             
-              mensaje = BLEmpleado.agregarEmpleado(nombre, apellido, profesion, dni);
-              
-         } else if (chxFechaEmpleado.isSelected()){
-             String codigo = txtCodigoEmpleado.getText();
-             mensaje = BLEmpleado.agregarEmpleado(codigo, nombre, apellido, profesion, dni);
-             
-         } else if (chxCodigoEmpleado1.isSelected()){
-             LocalDate fecha = null;
-             int dia = Integer.parseInt(cbxDia.getItemAt(cbxDia.getSelectedIndex()));
-                          int mes = Integer.parseInt(cbxDia.getItemAt(cbxDia.getSelectedIndex()));
-             int año = Integer.parseInt(cbxDia.getItemAt(cbxDia.getSelectedIndex()));
-             fecha = LocalDate.of(año, mes, dia);
-             mensaje = BLEmpleado.agregarEmpleado(nombre, apellido, profesion, dni, fecha);
-             
-         }
+        String apellido = txtApellidoEmpleado.getText();
+        String profesion = txtProfesionEmpleado.getText();
+        int dni = Integer.parseInt(txtEmpleadoDNI.getText());
+
+        if (chxCodigoEmpleado1.isSelected() && chxFechaEmpleado.isSelected()) {
+
+            mensaje = BLEmpleado.agregarEmpleado(nombre, apellido, profesion, dni);
+
+        } else {
+            // fecha automatica
+            if (chxFechaEmpleado.isSelected()) {
+
+                String codigo = txtCodigoEmpleado.getText();
+                mensaje = BLEmpleado.agregarEmpleado(codigo, nombre, apellido, profesion, dni);
+
+            }
+            // codigo automatico
+            if (chxCodigoEmpleado1.isSelected()) {
+                LocalDate fecha = null;
+                int dia = Integer.parseInt(cbxDia.getItemAt(cbxDia.getSelectedIndex()));
+                int mes = Integer.parseInt(cbxDia.getItemAt(cbxDia.getSelectedIndex()));
+                int año = Integer.parseInt(cbxDia.getItemAt(cbxDia.getSelectedIndex()));
+                fecha = LocalDate.of(año, mes, dia);
+                mensaje = BLEmpleado.agregarEmpleado(nombre, apellido, profesion, dni, fecha);
+
+            }
+            // minguno esta seleccionado
+            else {
+                String codigo = txtCodigoEmpleado.getText();
+                LocalDate fecha = null;
+                int dia = Integer.parseInt(cbxDia.getItemAt(cbxDia.getSelectedIndex()));
+                int mes = Integer.parseInt(cbxDia.getItemAt(cbxDia.getSelectedIndex()));
+                int año = Integer.parseInt(cbxDia.getItemAt(cbxDia.getSelectedIndex()));
+                fecha = LocalDate.of(año, mes, dia);
+                
+                BLEmpleado.agregarEmpleado(codigo, nombre, apellido, profesion, dni, fecha);
+            }
+        }
+
     }//GEN-LAST:event_AgregarEmpleadosMouseClicked
 
     private void chxFechaEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chxFechaEmpleadoMouseClicked
@@ -2420,6 +2443,7 @@ public class Frm_Menu extends javax.swing.JFrame {
     private javax.swing.JCheckBox chxCodigoArea;
     private javax.swing.JCheckBox chxCodigoEmpleado1;
     private javax.swing.JCheckBox chxCodigoPuesto;
+    private javax.swing.JCheckBox chxEmpleadoCargo;
     private javax.swing.JCheckBox chxFechaEmpleado;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
