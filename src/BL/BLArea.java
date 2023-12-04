@@ -9,6 +9,7 @@ import entidades.Factory;
 
 public class BLArea {
   public static String agregarArea(String nombre) {
+    
     String mensaje = "";
     Area area;
 

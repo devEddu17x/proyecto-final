@@ -83,6 +83,7 @@ public class DALEmpleado {
     
     private static DefaultTableModel llenarTabla(ArrayList<Empleado> lista) {
         DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(columnas);
         for (Empleado empleado : lista) {
 
             fila[0] = empleado.getCodigo();

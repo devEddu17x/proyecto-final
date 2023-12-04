@@ -35,7 +35,7 @@ public class DALArea {
             baos.close();
             raf.writeInt(bytes.length);
             raf.write(bytes);
-
+            MapaAreas.setArea(area);
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
@@ -74,6 +74,7 @@ public class DALArea {
 
     private static DefaultTableModel llenarTabla(ArrayList<Area> lista) {
         DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(columnas);
         for (Area area : lista) {
             fila[0] = area.getCodigo();
             fila[1] = area.getNombre();

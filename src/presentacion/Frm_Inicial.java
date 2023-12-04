@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package presentacion;
+import DAL.*;
 
 /**
  *
@@ -15,7 +16,11 @@ public class Frm_Inicial extends javax.swing.JFrame {
      */
     public Frm_Inicial() {
         initComponents();
-
+        setLocationRelativeTo(null);
+        DALEmpleado.leerEmpleados();
+        DALArea.leerAreas();
+        DALAsignacion.leerAsignaciones();
+        DALPuesto.leerPuestos();
     }
 
     /**
@@ -70,6 +75,11 @@ public class Frm_Inicial extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI Black", 3, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(204, 255, 255));
         jButton1.setText("Comenzar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -150,6 +160,11 @@ public class Frm_Inicial extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        Frm_Menu comenzar =new Frm_Menu();
+        comenzar.setVisible(true);
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
