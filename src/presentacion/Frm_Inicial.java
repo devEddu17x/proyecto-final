@@ -195,7 +195,7 @@ public class Frm_Inicial extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         Frm_Menu comenzar = new Frm_Menu();
         comenzar.setVisible(true);
-
+        this.setVisible(false);
 
     }//GEN-LAST:event_jButton1MouseClicked
 

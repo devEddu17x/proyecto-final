@@ -193,15 +193,13 @@ public class Frm_Menu extends javax.swing.JFrame {
         FormularioAreas = new javax.swing.JPanel();
         jPanel29 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
+        LabelEmpleados = new javax.swing.JLabel();
         jPanel41 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtAreaNombre = new javax.swing.JTextField();
         txtAreaCodigo = new javax.swing.JTextField();
         chxCodigoArea = new javax.swing.JCheckBox();
-        jButton7 = new javax.swing.JButton();
-        LimpiarAreas = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
         AgregarAreas = new javax.swing.JButton();
         jPanel36 = new javax.swing.JPanel();
         jLabel33 = new javax.swing.JLabel();
@@ -216,12 +214,11 @@ public class Frm_Menu extends javax.swing.JFrame {
         txtPuestoCodigo = new javax.swing.JTextField();
         txtPuestoPuesto = new javax.swing.JTextField();
         txtMaximoEmpleados = new javax.swing.JTextField();
-        LimpiarPuestos = new javax.swing.JButton();
         AgregarAreas1 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
         chxCodigoPuesto = new javax.swing.JCheckBox();
         cbxCodigoArea = new javax.swing.JComboBox<>();
+        LabelMaxEmpleados = new javax.swing.JLabel();
+        LabelPuestos = new javax.swing.JLabel();
         jPanel35 = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
         btnRegresarPuestos = new javax.swing.JButton();
@@ -229,20 +226,22 @@ public class Frm_Menu extends javax.swing.JFrame {
         jPanel32 = new javax.swing.JPanel();
         jPanel22 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         txtAsignacionEmpleado = new javax.swing.JTextField();
-        AgregarAsignaciones = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel45 = new javax.swing.JLabel();
         cbxAreaAsignaciones = new javax.swing.JComboBox<>();
         cbxPuestoAsignaciones = new javax.swing.JComboBox<>();
-        finCalendario = new com.toedter.calendar.JCalendar();
+        jPanel2 = new javax.swing.JPanel();
+        AgregarAsignaciones = new javax.swing.JButton();
         inicioCalendario = new com.toedter.calendar.JCalendar();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jPanel42 = new javax.swing.JPanel();
+        finCalendario = new com.toedter.calendar.JCalendar();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
         jPanel30 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
         btnRegresarAsignaciones = new javax.swing.JButton();
@@ -260,10 +259,7 @@ public class Frm_Menu extends javax.swing.JFrame {
         txtNombreEmpleado = new javax.swing.JTextField();
         txtProfesionEmpleado = new javax.swing.JTextField();
         txtApellidoEmpleado = new javax.swing.JTextField();
-        LimpiarEmpleados = new javax.swing.JButton();
         AgregarEmpleados = new javax.swing.JButton();
-        EditarDatosEmpleados = new javax.swing.JButton();
-        EliminarDatosEmpleado = new javax.swing.JButton();
         chxFechaEmpleado = new javax.swing.JCheckBox();
         chxCodigoEmpleado1 = new javax.swing.JCheckBox();
         chxEmpleadoCargo = new javax.swing.JCheckBox();
@@ -272,6 +268,12 @@ public class Frm_Menu extends javax.swing.JFrame {
         labelCantidadEmpleado = new javax.swing.JLabel();
         labelNombreCargo = new javax.swing.JLabel();
         calendarioFechaOrganizacion = new com.toedter.calendar.JCalendar();
+        LabelDni = new javax.swing.JLabel();
+        LabelApellido = new javax.swing.JLabel();
+        LabelApellidoEmpleado = new javax.swing.JLabel();
+        LabelProfesion = new javax.swing.JLabel();
+        LabelNombreEmpleado = new javax.swing.JLabel();
+        LabelEmpleadoCantidad = new javax.swing.JLabel();
         jPanel34 = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
         btnRegresarEmpleados = new javax.swing.JButton();
@@ -285,7 +287,7 @@ public class Frm_Menu extends javax.swing.JFrame {
         panelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnAgregar.setBackground(new java.awt.Color(0, 0, 0));
-        btnAgregar.setFont(new java.awt.Font("Segoe UI Black", 3, 20)); // NOI18N
+        btnAgregar.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
         btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos Inter/badge-plus.png"))); // NOI18N
         btnAgregar.setText("Agregar");
@@ -313,7 +315,7 @@ public class Frm_Menu extends javax.swing.JFrame {
         panelMenu.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 190, 30));
 
         btnPuestos.setBackground(new java.awt.Color(0, 0, 0));
-        btnPuestos.setFont(new java.awt.Font("Segoe UI Black", 3, 20)); // NOI18N
+        btnPuestos.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
         btnPuestos.setForeground(new java.awt.Color(255, 255, 255));
         btnPuestos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos Inter/book-marked.png"))); // NOI18N
         btnPuestos.setText("Puestos");
@@ -332,7 +334,7 @@ public class Frm_Menu extends javax.swing.JFrame {
         panelMenu.add(btnPuestos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 180, 30));
 
         btnAsignaciones.setBackground(new java.awt.Color(0, 0, 0));
-        btnAsignaciones.setFont(new java.awt.Font("Segoe UI Black", 3, 20)); // NOI18N
+        btnAsignaciones.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
         btnAsignaciones.setForeground(new java.awt.Color(255, 255, 255));
         btnAsignaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos Inter/book-plus.png"))); // NOI18N
         btnAsignaciones.setText("Asignaciones");
@@ -351,7 +353,7 @@ public class Frm_Menu extends javax.swing.JFrame {
         panelMenu.add(btnAsignaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 180, 30));
 
         btnMenu.setBackground(new java.awt.Color(0, 0, 0));
-        btnMenu.setFont(new java.awt.Font("Segoe UI Black", 3, 20)); // NOI18N
+        btnMenu.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
         btnMenu.setForeground(new java.awt.Color(255, 255, 255));
         btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos Inter/home.png"))); // NOI18N
         btnMenu.setText("Menu Principal");
@@ -367,9 +369,9 @@ public class Frm_Menu extends javax.swing.JFrame {
                 btnMenuMouseExited(evt);
             }
         });
-        panelMenu.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 190, 40));
+        panelMenu.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 200, 40));
 
-        btnAreas.setFont(new java.awt.Font("Segoe UI Black", 3, 20)); // NOI18N
+        btnAreas.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
         btnAreas.setForeground(new java.awt.Color(255, 255, 255));
         btnAreas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos Inter/area-chart.png"))); // NOI18N
         btnAreas.setText("Areas");
@@ -396,7 +398,7 @@ public class Frm_Menu extends javax.swing.JFrame {
         panelMenu.add(btnAreas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 190, 30));
 
         jButton1.setBackground(new java.awt.Color(255, 0, 0));
-        jButton1.setFont(new java.awt.Font("Segoe UI Symbol", 1, 22)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Verdana", 1, 22)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos Inter/door-open.png"))); // NOI18N
         jButton1.setText("Salir");
@@ -409,7 +411,7 @@ public class Frm_Menu extends javax.swing.JFrame {
         });
         panelMenu.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 751, 130, 50));
 
-        btnEmpleado.setFont(new java.awt.Font("Segoe UI Black", 3, 20)); // NOI18N
+        btnEmpleado.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
         btnEmpleado.setForeground(new java.awt.Color(255, 255, 255));
         btnEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos Inter/users-round.png"))); // NOI18N
         btnEmpleado.setText("Empleados");
@@ -435,7 +437,7 @@ public class Frm_Menu extends javax.swing.JFrame {
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Sitka Text", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel2.setText("Proyecto Final");
+        jLabel2.setText("TALENTO GESTOR");
         jLabel2.setOpaque(true);
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, -1, -1));
 
@@ -506,9 +508,16 @@ public class Frm_Menu extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(0, 0, 0));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Buscar empleado:");
+        jLabel1.setText("Buscar por codigo: ");
+
+        txtEmpleadoMenu.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        txtEmpleadoMenu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEmpleadoMenuKeyTyped(evt);
+            }
+        });
 
         jLabel46.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos Inter/search.png"))); // NOI18N
         jLabel46.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -522,13 +531,13 @@ public class Frm_Menu extends javax.swing.JFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(194, 194, 194)
+                .addGap(91, 91, 91)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(121, 121, 121)
                 .addComponent(txtEmpleadoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
                 .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -540,7 +549,7 @@ public class Frm_Menu extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel46)
                         .addGap(9, 9, 9)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 1190, 110));
@@ -606,7 +615,9 @@ public class Frm_Menu extends javax.swing.JFrame {
         jPanel11.setBackground(new java.awt.Color(0, 0, 0));
         jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton3.setFont(new java.awt.Font("Sitka Text", 1, 48)); // NOI18N
+        jButton3.setBackground(new java.awt.Color(153, 153, 0));
+        jButton3.setFont(new java.awt.Font("Verdana", 1, 48)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Puestos");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -618,9 +629,11 @@ public class Frm_Menu extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel11.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 70, 360, 140));
+        jPanel11.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, 390, 140));
 
-        jButton4.setFont(new java.awt.Font("Sitka Text", 1, 48)); // NOI18N
+        jButton4.setBackground(new java.awt.Color(0, 51, 102));
+        jButton4.setFont(new java.awt.Font("Verdana", 1, 48)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Asignaciones");
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -632,18 +645,22 @@ public class Frm_Menu extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel11.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 360, 150));
+        jPanel11.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 390, 150));
 
-        jButton2.setFont(new java.awt.Font("Sitka Text", 1, 48)); // NOI18N
+        jButton2.setBackground(new java.awt.Color(153, 0, 153));
+        jButton2.setFont(new java.awt.Font("Verdana", 1, 48)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Areas");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
             }
         });
-        jPanel11.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 350, 140));
+        jPanel11.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 390, 140));
 
-        jButton5.setFont(new java.awt.Font("Sitka Text", 1, 48)); // NOI18N
+        jButton5.setBackground(new java.awt.Color(0, 102, 51));
+        jButton5.setFont(new java.awt.Font("Verdana", 1, 48)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Empleado");
         jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -655,7 +672,7 @@ public class Frm_Menu extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel11.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 350, 150));
+        jPanel11.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 390, 150));
 
         jPanel10.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 890, 620));
 
@@ -711,12 +728,12 @@ public class Frm_Menu extends javax.swing.JFrame {
         jPanel37.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel34.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel34.setFont(new java.awt.Font("Tw Cen MT", 1, 40)); // NOI18N
+        jLabel34.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel34.setText("Buscar :");
-        jPanel37.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 140, 50));
+        jLabel34.setText("Búsqueda por codigo");
+        jPanel37.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 400, 50));
 
-        btnAreasAscendentes.setFont(new java.awt.Font("Sitka Text", 1, 30)); // NOI18N
+        btnAreasAscendentes.setFont(new java.awt.Font("Verdana", 1, 30)); // NOI18N
         btnAreasAscendentes.setForeground(new java.awt.Color(255, 255, 255));
         btnAreasAscendentes.setText("Ascendente");
         btnAreasAscendentes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -729,9 +746,9 @@ public class Frm_Menu extends javax.swing.JFrame {
                 btnAreasAscendentesActionPerformed(evt);
             }
         });
-        jPanel37.add(btnAreasAscendentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, 200, 40));
+        jPanel37.add(btnAreasAscendentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, 270, 40));
 
-        btnAreasDescendente.setFont(new java.awt.Font("Sitka Text", 1, 30)); // NOI18N
+        btnAreasDescendente.setFont(new java.awt.Font("Verdana", 1, 30)); // NOI18N
         btnAreasDescendente.setForeground(new java.awt.Color(255, 255, 255));
         btnAreasDescendente.setText("Descendente\n");
         btnAreasDescendente.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -747,13 +764,13 @@ public class Frm_Menu extends javax.swing.JFrame {
         jPanel37.add(btnAreasDescendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 50, -1, -1));
 
         jLabel36.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel36.setFont(new java.awt.Font("Tw Cen MT", 1, 40)); // NOI18N
+        jLabel36.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
         jLabel36.setText("Ordenar areas:");
-        jPanel37.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, -1, -1));
+        jPanel37.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, -1, -1));
 
         txtAreasBuscar.setBackground(new java.awt.Color(204, 204, 204));
-        txtAreasBuscar.setFont(new java.awt.Font("Segoe UI Emoji", 2, 18)); // NOI18N
+        txtAreasBuscar.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
         txtAreasBuscar.setText("!Ingrese el codigo del area aqui!");
         txtAreasBuscar.setOpaque(true);
         txtAreasBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -766,7 +783,12 @@ public class Frm_Menu extends javax.swing.JFrame {
                 txtAreasBuscarActionPerformed(evt);
             }
         });
-        jPanel37.add(txtAreasBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, 380, 40));
+        txtAreasBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAreasBuscarKeyTyped(evt);
+            }
+        });
+        jPanel37.add(txtAreasBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 180, 380, 40));
 
         jLabel37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos Inter/search.png"))); // NOI18N
         jLabel37.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -774,7 +796,7 @@ public class Frm_Menu extends javax.swing.JFrame {
                 jLabel37MouseClicked(evt);
             }
         });
-        jPanel37.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 184, 30, 30));
+        jPanel37.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 180, 30, 30));
 
         jPanel13.add(jPanel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 1190, 260));
 
@@ -849,12 +871,12 @@ public class Frm_Menu extends javax.swing.JFrame {
         jPanel38.setBackground(new java.awt.Color(0, 0, 0));
 
         jLabel38.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel38.setFont(new java.awt.Font("Tw Cen MT", 1, 40)); // NOI18N
+        jLabel38.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel38.setText("Ordenar puestos:");
+        jLabel38.setText("Ordenar por nombre:");
 
-        btnPuestosAscendentes.setFont(new java.awt.Font("Sitka Text", 1, 30)); // NOI18N
-        btnPuestosAscendentes.setForeground(new java.awt.Color(255, 255, 255));
+        btnPuestosAscendentes.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        btnPuestosAscendentes.setForeground(new java.awt.Color(204, 204, 204));
         btnPuestosAscendentes.setText("Ascendente");
         btnPuestosAscendentes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -867,8 +889,8 @@ public class Frm_Menu extends javax.swing.JFrame {
             }
         });
 
-        btnPuestosDescendente.setFont(new java.awt.Font("Sitka Text", 1, 30)); // NOI18N
-        btnPuestosDescendente.setForeground(new java.awt.Color(255, 255, 255));
+        btnPuestosDescendente.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        btnPuestosDescendente.setForeground(new java.awt.Color(204, 204, 204));
         btnPuestosDescendente.setText("Descendente\n");
         btnPuestosDescendente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -877,7 +899,7 @@ public class Frm_Menu extends javax.swing.JFrame {
         });
 
         txtPuestosBuscar.setBackground(new java.awt.Color(204, 204, 204));
-        txtPuestosBuscar.setFont(new java.awt.Font("Segoe UI Emoji", 2, 18)); // NOI18N
+        txtPuestosBuscar.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
         txtPuestosBuscar.setText("!Ingrese el codigo del area aqui!");
         txtPuestosBuscar.setOpaque(true);
         txtPuestosBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -890,11 +912,16 @@ public class Frm_Menu extends javax.swing.JFrame {
                 txtPuestosBuscarActionPerformed(evt);
             }
         });
+        txtPuestosBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPuestosBuscarKeyTyped(evt);
+            }
+        });
 
         jLabel39.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel39.setFont(new java.awt.Font("Tw Cen MT", 1, 40)); // NOI18N
+        jLabel39.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel39.setText("Buscar :");
+        jLabel39.setText("Búsqueda por codigo");
 
         jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos Inter/search.png"))); // NOI18N
         jLabel40.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -908,41 +935,41 @@ public class Frm_Menu extends javax.swing.JFrame {
         jPanel38Layout.setHorizontalGroup(
             jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel38Layout.createSequentialGroup()
+                .addGap(115, 115, 115)
+                .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel38)
+                    .addComponent(jLabel39))
+                .addGap(99, 99, 99)
                 .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel38Layout.createSequentialGroup()
-                        .addGap(341, 341, 341)
-                        .addComponent(jLabel39)
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel38Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel38)
-                        .addGap(43, 43, 43)))
-                .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnPuestosAscendentes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnPuestosDescendente))
                     .addGroup(jPanel38Layout.createSequentialGroup()
                         .addComponent(txtPuestosBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel38Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(btnPuestosAscendentes, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61)
-                        .addComponent(btnPuestosDescendente)))
-                .addContainerGap(192, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                        .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(64, 64, 64))
         );
         jPanel38Layout.setVerticalGroup(
             jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel38Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel38)
-                    .addComponent(btnPuestosAscendentes)
-                    .addComponent(btnPuestosDescendente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addGap(63, 63, 63)
                 .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel39, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel40, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPuestosBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55))
+                    .addGroup(jPanel38Layout.createSequentialGroup()
+                        .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnPuestosAscendentes)
+                            .addComponent(btnPuestosDescendente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE))
+                    .addGroup(jPanel38Layout.createSequentialGroup()
+                        .addComponent(jLabel38)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtPuestosBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel39))
+                    .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48))
         );
 
         jPanel17.add(jPanel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1190, 330));
@@ -1017,13 +1044,13 @@ public class Frm_Menu extends javax.swing.JFrame {
         jPanel40.setBackground(new java.awt.Color(0, 0, 0));
         jPanel40.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel43.setFont(new java.awt.Font("Sitka Text", 1, 36)); // NOI18N
+        jLabel43.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         jLabel43.setForeground(new java.awt.Color(255, 255, 255));
         jLabel43.setText("Fecha asignacion:");
         jPanel40.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, -1));
 
-        btnFechaAsignacionesAscendente.setFont(new java.awt.Font("Sitka Text", 3, 30)); // NOI18N
-        btnFechaAsignacionesAscendente.setForeground(new java.awt.Color(255, 255, 255));
+        btnFechaAsignacionesAscendente.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        btnFechaAsignacionesAscendente.setForeground(new java.awt.Color(204, 204, 204));
         btnFechaAsignacionesAscendente.setText("Ascendente");
         btnFechaAsignacionesAscendente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1035,25 +1062,25 @@ public class Frm_Menu extends javax.swing.JFrame {
                 btnFechaAsignacionesAscendenteActionPerformed(evt);
             }
         });
-        jPanel40.add(btnFechaAsignacionesAscendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, -1, -1));
+        jPanel40.add(btnFechaAsignacionesAscendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, -1, -1));
 
-        btnFechaAsignacionesDescendente.setFont(new java.awt.Font("Sitka Text", 3, 30)); // NOI18N
-        btnFechaAsignacionesDescendente.setForeground(new java.awt.Color(255, 255, 255));
+        btnFechaAsignacionesDescendente.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        btnFechaAsignacionesDescendente.setForeground(new java.awt.Color(204, 204, 204));
         btnFechaAsignacionesDescendente.setText("Descendente");
         btnFechaAsignacionesDescendente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnFechaAsignacionesDescendenteMouseClicked(evt);
             }
         });
-        jPanel40.add(btnFechaAsignacionesDescendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 70, -1, -1));
+        jPanel40.add(btnFechaAsignacionesDescendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 80, -1, -1));
 
-        jLabel44.setFont(new java.awt.Font("Sitka Text", 1, 36)); // NOI18N
+        jLabel44.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         jLabel44.setForeground(new java.awt.Color(255, 255, 255));
         jLabel44.setText("Inicio asignacion:");
         jPanel40.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, -1, -1));
 
-        btnInicioAsignacionesAscendente.setFont(new java.awt.Font("Sitka Text", 3, 30)); // NOI18N
-        btnInicioAsignacionesAscendente.setForeground(new java.awt.Color(255, 255, 255));
+        btnInicioAsignacionesAscendente.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        btnInicioAsignacionesAscendente.setForeground(new java.awt.Color(204, 204, 204));
         btnInicioAsignacionesAscendente.setText("Ascendente");
         btnInicioAsignacionesAscendente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1065,17 +1092,17 @@ public class Frm_Menu extends javax.swing.JFrame {
                 btnInicioAsignacionesAscendenteActionPerformed(evt);
             }
         });
-        jPanel40.add(btnInicioAsignacionesAscendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 210, -1, -1));
+        jPanel40.add(btnInicioAsignacionesAscendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, -1, -1));
 
-        btnInicioAsignacionesDescendente.setFont(new java.awt.Font("Sitka Text", 3, 30)); // NOI18N
-        btnInicioAsignacionesDescendente.setForeground(new java.awt.Color(255, 255, 255));
+        btnInicioAsignacionesDescendente.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        btnInicioAsignacionesDescendente.setForeground(new java.awt.Color(204, 204, 204));
         btnInicioAsignacionesDescendente.setText("Descendente");
         btnInicioAsignacionesDescendente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnInicioAsignacionesDescendenteMouseClicked(evt);
             }
         });
-        jPanel40.add(btnInicioAsignacionesDescendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 210, -1, -1));
+        jPanel40.add(btnInicioAsignacionesDescendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 220, -1, -1));
 
         jPanel21.add(jPanel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1190, 360));
 
@@ -1150,13 +1177,13 @@ public class Frm_Menu extends javax.swing.JFrame {
         jPanel39.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel41.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel41.setFont(new java.awt.Font("Tw Cen MT", 1, 40)); // NOI18N
+        jLabel41.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         jLabel41.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel41.setText("Ordenar Empleados:");
-        jPanel39.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 360, -1));
+        jLabel41.setText("Ordenar por nombre");
+        jPanel39.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 450, -1));
 
-        btnEmpleadosAscendentes.setFont(new java.awt.Font("Sitka Text", 1, 30)); // NOI18N
-        btnEmpleadosAscendentes.setForeground(new java.awt.Color(255, 255, 255));
+        btnEmpleadosAscendentes.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        btnEmpleadosAscendentes.setForeground(new java.awt.Color(204, 204, 204));
         btnEmpleadosAscendentes.setText("Ascendente");
         btnEmpleadosAscendentes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1170,8 +1197,8 @@ public class Frm_Menu extends javax.swing.JFrame {
         });
         jPanel39.add(btnEmpleadosAscendentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 50, 210, 40));
 
-        btnEmpleadosDescendente.setFont(new java.awt.Font("Sitka Text", 1, 30)); // NOI18N
-        btnEmpleadosDescendente.setForeground(new java.awt.Color(255, 255, 255));
+        btnEmpleadosDescendente.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        btnEmpleadosDescendente.setForeground(new java.awt.Color(204, 204, 204));
         btnEmpleadosDescendente.setText("Descendente\n");
         btnEmpleadosDescendente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1181,13 +1208,13 @@ public class Frm_Menu extends javax.swing.JFrame {
         jPanel39.add(btnEmpleadosDescendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 50, 250, -1));
 
         jLabel42.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel42.setFont(new java.awt.Font("Tw Cen MT", 1, 40)); // NOI18N
+        jLabel42.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         jLabel42.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel42.setText("Buscar :");
-        jPanel39.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 140, 50));
+        jLabel42.setText("Buscar por código:");
+        jPanel39.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 420, 50));
 
         txtEmpleadosBuscar.setBackground(new java.awt.Color(204, 204, 204));
-        txtEmpleadosBuscar.setFont(new java.awt.Font("Segoe UI Emoji", 2, 18)); // NOI18N
+        txtEmpleadosBuscar.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
         txtEmpleadosBuscar.setText("!Ingrese el codigo del area aqui!");
         txtEmpleadosBuscar.setOpaque(true);
         txtEmpleadosBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1200,7 +1227,12 @@ public class Frm_Menu extends javax.swing.JFrame {
                 txtEmpleadosBuscarActionPerformed(evt);
             }
         });
-        jPanel39.add(txtEmpleadosBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, 390, 50));
+        txtEmpleadosBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEmpleadosBuscarKeyTyped(evt);
+            }
+        });
+        jPanel39.add(txtEmpleadosBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, 390, 50));
 
         BuscarEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos Inter/search.png"))); // NOI18N
         BuscarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1208,7 +1240,7 @@ public class Frm_Menu extends javax.swing.JFrame {
                 BuscarEmpleadoMouseClicked(evt);
             }
         });
-        jPanel39.add(BuscarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 240, 30, 30));
+        jPanel39.add(BuscarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 240, 30, 30));
 
         jPanel25.add(jPanel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1190, 370));
 
@@ -1223,21 +1255,41 @@ public class Frm_Menu extends javax.swing.JFrame {
         jPanel15.setBackground(new java.awt.Color(0, 0, 0));
         jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        LabelEmpleados.setBackground(new java.awt.Color(0, 0, 0));
+        LabelEmpleados.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        LabelEmpleados.setForeground(new java.awt.Color(255, 0, 51));
+        LabelEmpleados.setOpaque(true);
+        jPanel15.add(LabelEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 300, 250, 30));
+
         jPanel41.setBackground(new java.awt.Color(0, 0, 0));
         jPanel41.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Codigo:");
         jPanel41.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, -1));
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel10.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Nombre:");
         jPanel41.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, -1, -1));
+
+        txtAreaNombre.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        txtAreaNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAreaNombreKeyTyped(evt);
+            }
+        });
         jPanel41.add(txtAreaNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, 350, 50));
+
+        txtAreaCodigo.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        txtAreaCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAreaCodigoActionPerformed(evt);
+            }
+        });
         jPanel41.add(txtAreaCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 350, 50));
 
         chxCodigoArea.setBackground(new java.awt.Color(51, 51, 51));
@@ -1256,34 +1308,9 @@ public class Frm_Menu extends javax.swing.JFrame {
         });
         jPanel41.add(chxCodigoArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 110, -1, -1));
 
-        jButton7.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
-        jButton7.setText("Eliminar Datos");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-        jPanel41.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 600, 200, 30));
-
-        LimpiarAreas.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
-        LimpiarAreas.setText("Limpiar");
-        LimpiarAreas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LimpiarAreasActionPerformed(evt);
-            }
-        });
-        jPanel41.add(LimpiarAreas, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 600, 120, 30));
-
-        jButton8.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
-        jButton8.setText("Editar Datos");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-        jPanel41.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 600, 180, 30));
-
-        AgregarAreas.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
+        AgregarAreas.setBackground(new java.awt.Color(204, 0, 102));
+        AgregarAreas.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        AgregarAreas.setForeground(new java.awt.Color(255, 255, 255));
         AgregarAreas.setText("Agregar");
         AgregarAreas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1295,7 +1322,7 @@ public class Frm_Menu extends javax.swing.JFrame {
                 AgregarAreasActionPerformed(evt);
             }
         });
-        jPanel41.add(AgregarAreas, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 600, 140, 30));
+        jPanel41.add(AgregarAreas, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 570, 160, 40));
 
         jPanel15.add(jPanel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 730));
 
@@ -1333,45 +1360,58 @@ public class Frm_Menu extends javax.swing.JFrame {
         jPanel18.setBackground(new java.awt.Color(0, 0, 0));
         jPanel18.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel11.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Max. empleados:");
         jPanel18.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 200, -1, -1));
 
-        jLabel12.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Codigo:");
         jPanel18.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
 
-        jLabel13.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Nombre:");
         jPanel18.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
 
-        jLabel14.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Codigo de area:");
         jPanel18.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, -1, -1));
+
+        txtPuestoCodigo.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        txtPuestoCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPuestoCodigoActionPerformed(evt);
+            }
+        });
         jPanel18.add(txtPuestoCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 290, 50));
 
+        txtPuestoPuesto.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
         txtPuestoPuesto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPuestoPuestoActionPerformed(evt);
             }
         });
-        jPanel18.add(txtPuestoPuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 290, 50));
-        jPanel18.add(txtMaximoEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 200, 90, 50));
-
-        LimpiarPuestos.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
-        LimpiarPuestos.setText("Limpiar");
-        LimpiarPuestos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LimpiarPuestosActionPerformed(evt);
+        txtPuestoPuesto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPuestoPuestoKeyTyped(evt);
             }
         });
-        jPanel18.add(LimpiarPuestos, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 580, 120, 30));
+        jPanel18.add(txtPuestoPuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 290, 50));
 
-        AgregarAreas1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
+        txtMaximoEmpleados.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        txtMaximoEmpleados.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMaximoEmpleadosKeyTyped(evt);
+            }
+        });
+        jPanel18.add(txtMaximoEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 210, 100, 50));
+
+        AgregarAreas1.setBackground(new java.awt.Color(204, 0, 102));
+        AgregarAreas1.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        AgregarAreas1.setForeground(new java.awt.Color(255, 255, 255));
         AgregarAreas1.setText("Agregar");
         AgregarAreas1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1383,25 +1423,7 @@ public class Frm_Menu extends javax.swing.JFrame {
                 AgregarAreas1ActionPerformed(evt);
             }
         });
-        jPanel18.add(AgregarAreas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 580, 140, 30));
-
-        jButton9.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
-        jButton9.setText("Editar Datos");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-        jPanel18.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 580, 180, 30));
-
-        jButton10.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
-        jButton10.setText("Eliminar Datos");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
-        jPanel18.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 580, 200, 30));
+        jPanel18.add(AgregarAreas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 560, 140, 30));
 
         chxCodigoPuesto.setBackground(new java.awt.Color(51, 51, 51));
         chxCodigoPuesto.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
@@ -1416,6 +1438,18 @@ public class Frm_Menu extends javax.swing.JFrame {
 
         cbxCodigoArea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione area" }));
         jPanel18.add(cbxCodigoArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(982, 70, 120, -1));
+
+        LabelMaxEmpleados.setBackground(new java.awt.Color(0, 0, 0));
+        LabelMaxEmpleados.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        LabelMaxEmpleados.setForeground(new java.awt.Color(255, 0, 51));
+        LabelMaxEmpleados.setOpaque(true);
+        jPanel18.add(LabelMaxEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 260, 160, 30));
+
+        LabelPuestos.setBackground(new java.awt.Color(0, 0, 0));
+        LabelPuestos.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        LabelPuestos.setForeground(new java.awt.Color(255, 0, 51));
+        LabelPuestos.setOpaque(true);
+        jPanel18.add(LabelPuestos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 250, 30));
 
         jPanel31.add(jPanel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1190, 730));
 
@@ -1456,36 +1490,27 @@ public class Frm_Menu extends javax.swing.JFrame {
         jPanel22.setBackground(new java.awt.Color(0, 0, 0));
         jPanel22.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel19.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Fecha:");
-        jPanel22.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, -1));
+        jPanel22.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, -1, -1));
 
-        jLabel20.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel20.setText("Inicio:");
-        jPanel22.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, -1, -1));
-
-        jLabel21.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel21.setText("Fin:");
-        jPanel22.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 340, -1, -1));
-
-        jLabel23.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
+        jLabel23.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("Cod. Puesto:");
         jPanel22.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 130, -1, -1));
 
-        jLabel18.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Cod. Area:");
         jPanel22.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 40, -1, -1));
 
-        jLabel22.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
+        jLabel22.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("Cod. Empleado:");
         jPanel22.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 240, -1, -1));
 
+        txtAsignacionEmpleado.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
         txtAsignacionEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAsignacionEmpleadoActionPerformed(evt);
@@ -1493,31 +1518,10 @@ public class Frm_Menu extends javax.swing.JFrame {
         });
         jPanel22.add(txtAsignacionEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 240, 150, 50));
 
-        AgregarAsignaciones.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
-        AgregarAsignaciones.setText("Agregar");
-        AgregarAsignaciones.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AgregarAsignacionesMouseClicked(evt);
-            }
-        });
-        AgregarAsignaciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AgregarAsignacionesActionPerformed(evt);
-            }
-        });
-        jPanel22.add(AgregarAsignaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 670, 140, 30));
-
-        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel8.setText("Fecha en la que finaliza su trabajo");
-        jPanel22.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 390, -1, -1));
-
+        jLabel9.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(204, 204, 204));
         jLabel9.setText("Se selecciona del empleado automaticamente");
-        jPanel22.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
-
-        jLabel45.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel45.setText("Fecha en la que inicia a trabajar");
-        jPanel22.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, -1, -1));
+        jPanel22.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, -1, -1));
 
         cbxAreaAsignaciones.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1537,8 +1541,52 @@ public class Frm_Menu extends javax.swing.JFrame {
             }
         });
         jPanel22.add(cbxPuestoAsignaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 140, 150, 30));
-        jPanel22.add(finCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 430, 450, 210));
-        jPanel22.add(inicioCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 450, 210));
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        AgregarAsignaciones.setBackground(new java.awt.Color(204, 0, 102));
+        AgregarAsignaciones.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        AgregarAsignaciones.setForeground(new java.awt.Color(255, 255, 255));
+        AgregarAsignaciones.setText("Agregar");
+        AgregarAsignaciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AgregarAsignacionesMouseClicked(evt);
+            }
+        });
+        AgregarAsignaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarAsignacionesActionPerformed(evt);
+            }
+        });
+        jPanel2.add(AgregarAsignaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 160, 40));
+        jPanel2.add(inicioCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 450, 210));
+
+        jLabel45.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel45.setText("Fecha en la que inicia a trabajar");
+        jPanel2.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, -1, -1));
+
+        jLabel20.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setText("Inicio:");
+        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, -1, -1));
+
+        jPanel22.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 580, 350));
+
+        jPanel42.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel42.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel42.add(finCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 450, 210));
+
+        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel8.setText("Fecha en la que finaliza su trabajo");
+        jPanel42.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, -1, -1));
+
+        jLabel21.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("Fin:");
+        jPanel42.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, -1, -1));
+
+        jPanel22.add(jPanel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 370, 570, 350));
 
         jPanel32.add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1190, 740));
 
@@ -1579,51 +1627,74 @@ public class Frm_Menu extends javax.swing.JFrame {
         jPanel27.setBackground(new java.awt.Color(0, 0, 0));
         jPanel27.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel25.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
+        jLabel25.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("Inicio Organizacion:");
-        jPanel27.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 220, -1, -1));
+        jPanel27.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 260, -1, -1));
 
-        jLabel26.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
+        jLabel26.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("Nombre:");
-        jPanel27.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
+        jPanel27.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
 
-        jLabel27.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
+        jLabel27.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setText("Codigo:");
         jPanel27.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
 
-        jLabel28.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
+        jLabel28.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("Apellido:");
-        jPanel27.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 130, -1, -1));
+        jPanel27.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 160, -1, -1));
 
-        jLabel29.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
+        jLabel29.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(255, 255, 255));
         jLabel29.setText("Profesion:");
         jPanel27.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 60, -1, -1));
 
-        jLabel30.setFont(new java.awt.Font("Tw Cen MT", 1, 44)); // NOI18N
+        jLabel30.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
         jLabel30.setText("DNI:");
-        jPanel27.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
-        jPanel27.add(txtEmpleadoDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 250, 50));
-        jPanel27.add(txtCodigoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 250, 50));
-        jPanel27.add(txtNombreEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 250, 50));
-        jPanel27.add(txtProfesionEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 60, 250, 50));
-        jPanel27.add(txtApellidoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 130, 250, 50));
+        jPanel27.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
 
-        LimpiarEmpleados.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
-        LimpiarEmpleados.setText("Limpiar");
-        LimpiarEmpleados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LimpiarEmpleadosActionPerformed(evt);
+        txtEmpleadoDNI.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        txtEmpleadoDNI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEmpleadoDNIKeyTyped(evt);
             }
         });
-        jPanel27.add(LimpiarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 620, 120, 30));
+        jPanel27.add(txtEmpleadoDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 250, 50));
 
-        AgregarEmpleados.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
+        txtCodigoEmpleado.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        jPanel27.add(txtCodigoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 250, 50));
+
+        txtNombreEmpleado.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        txtNombreEmpleado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreEmpleadoKeyTyped(evt);
+            }
+        });
+        jPanel27.add(txtNombreEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 250, 50));
+
+        txtProfesionEmpleado.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        txtProfesionEmpleado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtProfesionEmpleadoKeyTyped(evt);
+            }
+        });
+        jPanel27.add(txtProfesionEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 60, 250, 50));
+
+        txtApellidoEmpleado.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        txtApellidoEmpleado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoEmpleadoKeyTyped(evt);
+            }
+        });
+        jPanel27.add(txtApellidoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 160, 250, 50));
+
+        AgregarEmpleados.setBackground(new java.awt.Color(204, 0, 102));
+        AgregarEmpleados.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        AgregarEmpleados.setForeground(new java.awt.Color(255, 255, 255));
         AgregarEmpleados.setText("Agregar");
         AgregarEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1635,25 +1706,7 @@ public class Frm_Menu extends javax.swing.JFrame {
                 AgregarEmpleadosActionPerformed(evt);
             }
         });
-        jPanel27.add(AgregarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 620, 140, 30));
-
-        EditarDatosEmpleados.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
-        EditarDatosEmpleados.setText("Editar Datos");
-        EditarDatosEmpleados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EditarDatosEmpleadosActionPerformed(evt);
-            }
-        });
-        jPanel27.add(EditarDatosEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 620, 180, 30));
-
-        EliminarDatosEmpleado.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
-        EliminarDatosEmpleado.setText("Eliminar Datos");
-        EliminarDatosEmpleado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EliminarDatosEmpleadoActionPerformed(evt);
-            }
-        });
-        jPanel27.add(EliminarDatosEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 620, 200, 30));
+        jPanel27.add(AgregarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 610, 140, 40));
 
         chxFechaEmpleado.setBackground(new java.awt.Color(51, 51, 51));
         chxFechaEmpleado.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
@@ -1669,7 +1722,7 @@ public class Frm_Menu extends javax.swing.JFrame {
                 chxFechaEmpleadoActionPerformed(evt);
             }
         });
-        jPanel27.add(chxFechaEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 550, -1, -1));
+        jPanel27.add(chxFechaEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 590, -1, -1));
 
         chxCodigoEmpleado1.setBackground(new java.awt.Color(51, 51, 51));
         chxCodigoEmpleado1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
@@ -1700,26 +1753,79 @@ public class Frm_Menu extends javax.swing.JFrame {
                 chxEmpleadoCargoActionPerformed(evt);
             }
         });
-        jPanel27.add(chxEmpleadoCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 100, -1));
-        jPanel27.add(inputNombreCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 450, 220, 30));
+        jPanel27.add(chxEmpleadoCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 100, -1));
+
+        inputNombreCargo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inputNombreCargoKeyTyped(evt);
+            }
+        });
+        jPanel27.add(inputNombreCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 420, 220, 30));
 
         inputCantidadEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputCantidadEmpleadosActionPerformed(evt);
             }
         });
+        inputCantidadEmpleados.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inputCantidadEmpleadosKeyTyped(evt);
+            }
+        });
         jPanel27.add(inputCantidadEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 500, 220, 30));
 
-        labelCantidadEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        labelCantidadEmpleado.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         labelCantidadEmpleado.setForeground(new java.awt.Color(255, 255, 255));
-        labelCantidadEmpleado.setText("Cantidad Empleados");
-        jPanel27.add(labelCantidadEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 260, 20));
+        labelCantidadEmpleado.setText("N° Empleados");
+        jPanel27.add(labelCantidadEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 210, 20));
 
-        labelNombreCargo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        labelNombreCargo.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         labelNombreCargo.setForeground(new java.awt.Color(255, 255, 255));
         labelNombreCargo.setText("Nombre Cargo");
-        jPanel27.add(labelNombreCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 250, -1));
-        jPanel27.add(calendarioFechaOrganizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 290, 390, 240));
+        jPanel27.add(labelNombreCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 420, 250, -1));
+        jPanel27.add(calendarioFechaOrganizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 330, 390, 240));
+
+        LabelDni.setBackground(new java.awt.Color(0, 0, 0));
+        LabelDni.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        LabelDni.setForeground(new java.awt.Color(255, 0, 51));
+        LabelDni.setOpaque(true);
+        jPanel27.add(LabelDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 210, 30));
+
+        LabelApellido.setBackground(new java.awt.Color(0, 0, 0));
+        LabelApellido.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        LabelApellido.setForeground(new java.awt.Color(255, 0, 51));
+        LabelApellido.setOpaque(true);
+        jPanel27.add(LabelApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 190, 30));
+
+        LabelApellidoEmpleado.setBackground(new java.awt.Color(0, 0, 0));
+        LabelApellidoEmpleado.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        LabelApellidoEmpleado.setForeground(new java.awt.Color(255, 0, 51));
+        LabelApellidoEmpleado.setOpaque(true);
+        jPanel27.add(LabelApellidoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 210, 190, 30));
+
+        LabelProfesion.setBackground(new java.awt.Color(0, 0, 0));
+        LabelProfesion.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        LabelProfesion.setForeground(new java.awt.Color(255, 0, 51));
+        LabelProfesion.setOpaque(true);
+        jPanel27.add(LabelProfesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 110, 190, 30));
+
+        LabelNombreEmpleado.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        LabelNombreEmpleado.setForeground(new java.awt.Color(255, 0, 0));
+        LabelNombreEmpleado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                LabelNombreEmpleadoKeyTyped(evt);
+            }
+        });
+        jPanel27.add(LabelNombreEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 450, 230, 30));
+
+        LabelEmpleadoCantidad.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        LabelEmpleadoCantidad.setForeground(new java.awt.Color(255, 0, 0));
+        LabelEmpleadoCantidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                LabelEmpleadoCantidadKeyTyped(evt);
+            }
+        });
+        jPanel27.add(LabelEmpleadoCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 530, 240, 30));
 
         jPanel33.add(jPanel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 1190, 720));
 
@@ -1857,6 +1963,8 @@ public class Frm_Menu extends javax.swing.JFrame {
         Empleado empleado = BLEmpleado.getEmpleado(txtAsignacionEmpleado.getText());
         Area area = BLArea.getAreaNombre(cbxAreaAsignaciones.getItemAt(cbxAreaAsignaciones.getSelectedIndex()));
         Puesto puesto = BLPuesto.getPuestoNombre(cbxPuestoAsignaciones.getItemAt(cbxPuestoAsignaciones.getSelectedIndex()));
+        
+        
         if (empleado != null) {
             fechaOrganizacion = empleado.getInicioOrg();
         }
@@ -1870,6 +1978,138 @@ public class Frm_Menu extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(this, mensaje);
     }//GEN-LAST:event_AgregarAsignacionesMouseClicked
+
+    private void txtEmpleadosBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmpleadosBuscarKeyTyped
+      
+    }//GEN-LAST:event_txtEmpleadosBuscarKeyTyped
+
+    private void txtPuestosBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPuestosBuscarKeyTyped
+       
+    }//GEN-LAST:event_txtPuestosBuscarKeyTyped
+
+    private void txtAreasBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAreasBuscarKeyTyped
+       
+    }//GEN-LAST:event_txtAreasBuscarKeyTyped
+
+    private void txtEmpleadoMenuKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmpleadoMenuKeyTyped
+       
+    }//GEN-LAST:event_txtEmpleadoMenuKeyTyped
+
+    private void txtAreaNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAreaNombreKeyTyped
+       char letras=evt.getKeyChar();
+      if(Character.isDigit(letras)){
+          getToolkit().beep();
+          evt.consume();
+          LabelEmpleados.setText("Ingresar solo letras");
+      }else {
+          LabelEmpleados.setText("");
+      }
+    }//GEN-LAST:event_txtAreaNombreKeyTyped
+
+    private void txtPuestoPuestoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPuestoPuestoKeyTyped
+       char letras=evt.getKeyChar();
+      if(Character.isDigit(letras)){
+          getToolkit().beep();
+          evt.consume();
+          LabelPuestos.setText("Ingresar solo letras");
+      }else {
+          LabelPuestos.setText("");
+      }
+
+    }//GEN-LAST:event_txtPuestoPuestoKeyTyped
+
+    private void txtMaximoEmpleadosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaximoEmpleadosKeyTyped
+      char numeros=evt.getKeyChar();
+      if(Character.isLetter(numeros)){
+          getToolkit().beep();
+          evt.consume();
+          LabelMaxEmpleados.setText("Ingresar solo numeros");
+      }else {
+          LabelMaxEmpleados.setText("");
+      }
+    }//GEN-LAST:event_txtMaximoEmpleadosKeyTyped
+
+    private void txtNombreEmpleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEmpleadoKeyTyped
+ char letras=evt.getKeyChar();
+      if(Character.isDigit(letras)){
+          getToolkit().beep();
+          evt.consume();
+          LabelApellido.setText("Ingresar solo letras");
+      }else {
+          LabelApellido.setText("");
+      }     
+    }//GEN-LAST:event_txtNombreEmpleadoKeyTyped
+
+    private void txtProfesionEmpleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProfesionEmpleadoKeyTyped
+      char letras=evt.getKeyChar();
+      if(Character.isDigit(letras)){
+          getToolkit().beep();
+          evt.consume();
+          LabelProfesion.setText("Ingresar solo letras");
+      }else {
+          LabelProfesion.setText("");
+      }   
+    }//GEN-LAST:event_txtProfesionEmpleadoKeyTyped
+
+    private void txtApellidoEmpleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoEmpleadoKeyTyped
+  char letras=evt.getKeyChar();
+      if(Character.isDigit(letras)){
+          getToolkit().beep();
+          evt.consume();
+          LabelApellidoEmpleado.setText("Ingresar solo letras");
+      }else {
+          LabelApellidoEmpleado.setText("");
+      }  
+    }//GEN-LAST:event_txtApellidoEmpleadoKeyTyped
+
+    private void inputNombreCargoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputNombreCargoKeyTyped
+    char letras=evt.getKeyChar();
+      if(Character.isDigit(letras)){
+          getToolkit().beep();
+          evt.consume();
+          LabelNombreEmpleado.setText("Ingresar solo letras");
+      }else {
+          LabelNombreEmpleado.setText("");
+      } 
+    }//GEN-LAST:event_inputNombreCargoKeyTyped
+
+    private void inputCantidadEmpleadosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputCantidadEmpleadosKeyTyped
+     char numeros=evt.getKeyChar();
+      if(Character.isLetter(numeros)){
+          getToolkit().beep();
+          evt.consume();
+          LabelEmpleadoCantidad.setText("Ingresar solo numeros");
+      }else {
+          LabelEmpleadoCantidad.setText("");
+      }
+    }//GEN-LAST:event_inputCantidadEmpleadosKeyTyped
+
+    private void txtEmpleadoDNIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmpleadoDNIKeyTyped
+     char numeros=evt.getKeyChar();
+      if(Character.isLetter(numeros)){
+          getToolkit().beep();
+          evt.consume();
+          LabelDni.setText("Ingresar solo numeros");
+      }else {
+          LabelDni.setText("");
+      }  
+    }//GEN-LAST:event_txtEmpleadoDNIKeyTyped
+
+    private void LabelNombreEmpleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LabelNombreEmpleadoKeyTyped
+      
+    }//GEN-LAST:event_LabelNombreEmpleadoKeyTyped
+
+    private void LabelEmpleadoCantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LabelEmpleadoCantidadKeyTyped
+          
+    }//GEN-LAST:event_LabelEmpleadoCantidadKeyTyped
+
+    private void txtPuestoCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPuestoCodigoActionPerformed
+        
+    }//GEN-LAST:event_txtPuestoCodigoActionPerformed
+
+    private void txtAreaCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAreaCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAreaCodigoActionPerformed
 
     private void actualizarCbxPuestoAsignaciones(String seleccion) {
         // obtener la el area 
@@ -2149,11 +2389,9 @@ public class Frm_Menu extends javax.swing.JFrame {
     }// GEN-LAST:event_AgregarAreasActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton7ActionPerformed
-        // eliminarArea();
     }// GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton8ActionPerformed
-        // actualizarArea();
     }// GEN-LAST:event_jButton8ActionPerformed
 
     private void LimpiarPuestosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_LimpiarPuestosActionPerformed
@@ -2161,20 +2399,15 @@ public class Frm_Menu extends javax.swing.JFrame {
     }// GEN-LAST:event_LimpiarPuestosActionPerformed
 
     private void AgregarAreas1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_AgregarAreas1ActionPerformed
-        // agregarPuestos();
-
     }// GEN-LAST:event_AgregarAreas1ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton9ActionPerformed
-        // actualizarPuestos();
     }// GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton10ActionPerformed
-        // eliminarPuestos();
     }// GEN-LAST:event_jButton10ActionPerformed
 
     private void AgregarAsignacionesActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_AgregarAsignacionesActionPerformed
-        // agregarAsignaciones();
     }// GEN-LAST:event_AgregarAsignacionesActionPerformed
 
     private void AgregarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_AgregarEmpleadosActionPerformed
@@ -2331,8 +2564,12 @@ public class Frm_Menu extends javax.swing.JFrame {
     }// GEN-LAST:event_btnInicioAsignacionesAscendenteActionPerformed
 
     private void chxCodigoAreaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_chxCodigoAreaActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_chxCodigoAreaActionPerformed
+        if(chxCodigoArea.isSelected()){
+            txtAreaCodigo.setEditable(false);
+        } else {
+            txtAreaCodigo.setEditable(true);
+            }
+    }
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jButton3MouseClicked
         comboCodigoArea();
@@ -2400,12 +2637,11 @@ public class Frm_Menu extends javax.swing.JFrame {
     }// GEN-LAST:event_btnRegresarPuestosMouseClicked
 
     private void btnRegresarPuestosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnRegresarPuestosActionPerformed
-        // TODO add your handling code here:
     }// GEN-LAST:event_btnRegresarPuestosActionPerformed
 
     private void btnRegresarAsignacionesMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btnRegresarAsignacionesMouseClicked
         regresar();
-    }// GEN-LAST:event_btnRegresarAsignacionesMouseClicked
+    }
 
     private void btnRegresarAsignacionesActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnRegresarAsignacionesActionPerformed
         // TODO add your handling code here:
@@ -2416,11 +2652,14 @@ public class Frm_Menu extends javax.swing.JFrame {
     }// GEN-LAST:event_btnRegresarEmpleadosMouseClicked
 
     private void btnRegresarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnRegresarEmpleadosActionPerformed
-        // TODO add your handling code here:
     }// GEN-LAST:event_btnRegresarEmpleadosActionPerformed
 
     private void chxCodigoPuestoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_chxCodigoPuestoActionPerformed
-        // TODO add your handling code here:
+       if(chxCodigoPuesto.isSelected()){
+            txtPuestoCodigo.setEditable(false);
+        } else {
+            txtPuestoCodigo.setEditable(true);
+            }
     }// GEN-LAST:event_chxCodigoPuestoActionPerformed
 
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jComboBox4ActionPerformed
@@ -2474,7 +2713,6 @@ public class Frm_Menu extends javax.swing.JFrame {
     }// GEN-LAST:event_btnAreasAscendentesMouseClicked
 
     private void btnAreasDescendenteActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAreasDescendenteActionPerformed
-        // TODO add your handling code here:
     }// GEN-LAST:event_btnAreasDescendenteActionPerformed
 
     private void btnAreasDescendenteMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btnAreasDescendenteMouseClicked
@@ -2496,11 +2734,9 @@ public class Frm_Menu extends javax.swing.JFrame {
     }// GEN-LAST:event_AgregarAreasMouseClicked
 
     private void chxCodigoAreaMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_chxCodigoAreaMouseClicked
-        // TODO add your handling code here:
     }// GEN-LAST:event_chxCodigoAreaMouseClicked
 
     private void btnAgregarAncestorAdded(javax.swing.event.AncestorEvent evt) {// GEN-FIRST:event_btnAgregarAncestorAdded
-        // TODO add your handling code here:
     }// GEN-LAST:event_btnAgregarAncestorAdded
 
     private void AgregarAreas1MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_AgregarAreas1MouseClicked
@@ -2518,14 +2754,12 @@ public class Frm_Menu extends javax.swing.JFrame {
             mensaje = BLPuesto.agregarPuesto(codigoPuesto, nombre, codigoArea, numeroMaximoEmpleados, 0);
         }
         JOptionPane.showMessageDialog(this, mensaje);
-    }// GEN-LAST:event_AgregarAreas1MouseClicked
+    }
 
     private void txtPuestoPuestoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtPuestoPuestoActionPerformed
-        // TODO add your handling code here:
     }// GEN-LAST:event_txtPuestoPuestoActionPerformed
 
     private void btnAreasAncestorAdded(javax.swing.event.AncestorEvent evt) {// GEN-FIRST:event_btnAreasAncestorAdded
-        // TODO add your handling code here:
     }// GEN-LAST:event_btnAreasAncestorAdded
 
     private void btnPuestosAscendentesMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btnPuestosAscendentesMouseClicked
@@ -2534,7 +2768,7 @@ public class Frm_Menu extends javax.swing.JFrame {
 
     private void btnPuestosDescendenteMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btnPuestosDescendenteMouseClicked
         TablaPuestos.setModel(DALPuesto.getTableNombreDes());
-    }// GEN-LAST:event_btnPuestosDescendenteMouseClicked
+    }
 
     private void AgregarEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_AgregarEmpleadosMouseClicked
 
@@ -2693,23 +2927,23 @@ public class Frm_Menu extends javax.swing.JFrame {
     }// GEN-LAST:event_AgregarEmpleadosMouseClicked
 
     private void chxFechaEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_chxFechaEmpleadoMouseClicked
-        // TODO add your handling code here:
     }// GEN-LAST:event_chxFechaEmpleadoMouseClicked
 
     private void chxFechaEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_chxFechaEmpleadoActionPerformed
-        // TODO add your handling code here:
     }// GEN-LAST:event_chxFechaEmpleadoActionPerformed
 
     private void chxCodigoEmpleado1MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_chxCodigoEmpleado1MouseClicked
-        // TODO add your handling code here:
     }// GEN-LAST:event_chxCodigoEmpleado1MouseClicked
 
-    private void chxCodigoEmpleado1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_chxCodigoEmpleado1ActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_chxCodigoEmpleado1ActionPerformed
+    private void chxCodigoEmpleado1ActionPerformed(java.awt.event.ActionEvent evt) {
+       if(chxCodigoEmpleado1.isSelected()){
+            txtCodigoEmpleado.setEditable(false);
+        } else {
+            txtCodigoEmpleado.setEditable(true);
+            }
+     }// GEN-LAST:event_chxCodigoEmpleado1ActionPerformed
 
     private void chxEmpleadoCargoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_chxEmpleadoCargoActionPerformed
-        // TODO add your handling code here:
     }// GEN-LAST:event_chxEmpleadoCargoActionPerformed
 
     // GEN-LAST:event_chxEmpleadoCargoMouseClicked
@@ -2717,15 +2951,7 @@ public class Frm_Menu extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
-        // (optional) ">
-        /*
-         * If Nimbus (introduced in Java SE 6) is not available, stay with the default
-         * look and feel.
-         * For details see
-         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -2758,8 +2984,6 @@ public class Frm_Menu extends javax.swing.JFrame {
     private javax.swing.JButton AgregarAsignaciones;
     private javax.swing.JButton AgregarEmpleados;
     private javax.swing.JLabel BuscarEmpleado;
-    private javax.swing.JButton EditarDatosEmpleados;
-    private javax.swing.JButton EliminarDatosEmpleado;
     private javax.swing.JPanel FormularioAreas;
     private javax.swing.JPanel FormularioAsignaciones;
     private javax.swing.JPanel FormularioEmpleado;
@@ -2768,9 +2992,15 @@ public class Frm_Menu extends javax.swing.JFrame {
     private javax.swing.ButtonGroup GruposAsignaciones;
     private javax.swing.ButtonGroup GruposEmpleado;
     private javax.swing.ButtonGroup GruposPuesto;
-    private javax.swing.JButton LimpiarAreas;
-    private javax.swing.JButton LimpiarEmpleados;
-    private javax.swing.JButton LimpiarPuestos;
+    private javax.swing.JLabel LabelApellido;
+    private javax.swing.JLabel LabelApellidoEmpleado;
+    private javax.swing.JLabel LabelDni;
+    private javax.swing.JLabel LabelEmpleadoCantidad;
+    private javax.swing.JLabel LabelEmpleados;
+    private javax.swing.JLabel LabelMaxEmpleados;
+    private javax.swing.JLabel LabelNombreEmpleado;
+    private javax.swing.JLabel LabelProfesion;
+    private javax.swing.JLabel LabelPuestos;
     private javax.swing.JTable TablaAreas;
     private javax.swing.JTable TablaAsignaciones;
     private javax.swing.JTable TablaEmpleados;
@@ -2809,14 +3039,10 @@ public class Frm_Menu extends javax.swing.JFrame {
     private javax.swing.JTextField inputCantidadEmpleados;
     private javax.swing.JTextField inputNombreCargo;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2873,6 +3099,7 @@ public class Frm_Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
@@ -2897,6 +3124,7 @@ public class Frm_Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel40;
     private javax.swing.JPanel jPanel41;
+    private javax.swing.JPanel jPanel42;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
@@ -2980,7 +3208,7 @@ public class Frm_Menu extends javax.swing.JFrame {
         txtEmpleadoDNI.setText("");
     }
 
-    void regresar() {
+    private void regresar() {
         pnMenu.setVisible(false);
         pnAgregar.setVisible(true);
         pnAreas.setVisible(false);
@@ -2993,76 +3221,4 @@ public class Frm_Menu extends javax.swing.JFrame {
         FormularioEmpleado.setVisible(false);
     }
 
-    // void agregarArea() {
-    // modelo.addRow(new Object[] {
-    // txtAreaCodigo.getText(),txtAreaNombre.getText(),txtAreaEmpleados.getText()
-    // });
-    // }
-    // void eliminarArea() {
-    // int fila=TablaAreas.getSelectedRow();
-    // modelo.removeRow(fila);
-    // }
-    // void actualizarArea() {
-    // int fila=TablaAreas.getSelectedRow();
-    // modelo.setValueAt(txtAreaCodigo.getText(), fila, 0);
-    // modelo.setValueAt(txtAreaNombre.getText(), fila, 1);
-    // modelo.setValueAt(txtAreaPuesto.getText(), fila, 2);
-    // modelo.setValueAt(txtAreaEmpleados.getText(), fila, 3);
-    // }
-    //
-    // void agregarPuestos() {
-    // puestos.addRow(new Object[] {
-    // txtPuestoCodigo.getText(),txtPuestoPuesto.getText(),txtPuestoArea.getText(),txtPuestoNEmpleados.getText(),txtMaximoEmpleados.getText()
-    // });
-    // }
-    // void eliminarPuestos() {
-    // int fila=TablaPuestos.getSelectedRow();
-    // puestos.removeRow(fila);
-    // }
-    // void actualizarPuestos() {
-    // int fila=TablaPuestos.getSelectedRow();
-    // puestos.setValueAt(txtPuestoCodigo.getText(), fila, 0);
-    // puestos.setValueAt(txtPuestoPuesto.getText(), fila, 1);
-    // puestos.setValueAt(txtPuestoArea.getText(), fila, 2);
-    // puestos.setValueAt(txtPuestoNEmpleados.getText(), fila, 3);
-    // puestos.setValueAt(txtMaximoEmpleados.getText(), fila, 4);
-    // }
-    //
-    // void agregarAsignaciones() {
-    // asignaciones.addRow(new Object[] {
-    // txtAsignacionesIncio.getText(),txtAsignacionFecha.getText(),txtAsignacionEmpleado.getText(),txtAsignacionArea.getText(),txtAsignacionPuesto.getText(),txtAsignacionFin.getText()
-    // });
-    // }
-    // void eliminarAsignaciones() {
-    // int fila=TablaAsignaciones.getSelectedRow();
-    // asignaciones.removeRow(fila);
-    // }
-    // void actualizarAsignaciones() {
-    // int fila=TablaAsignaciones.getSelectedRow();
-    // asignaciones.setValueAt(txtAsignacionesIncio.getText(), fila, 0);
-    // asignaciones.setValueAt(txtAsignacionFecha.getText(), fila, 1);
-    // asignaciones.setValueAt(txtAsignacionEmpleado.getText(), fila, 2);
-    // asignaciones.setValueAt(txtAsignacionArea.getText(), fila, 3);
-    // asignaciones.setValueAt(txtAsignacionPuesto.getText(), fila, 4);
-    // asignaciones.setValueAt(txtAsignacionFin.getText(), fila, 5);
-    // }
-    //
-    // void agregarEmpleados() {
-    // empleados.addRow(new Object[] {
-    // txtEmpleadoCodigo.getText(),txtEmpleadoNombre.getText(),txtEmpleadoApellido.getText(),txtEmpleadoProfesion.getText(),txtEmpleadoDni.getText(),txtEmpleadoOrigen.getText()
-    // });
-    // }
-    // void eliminarEmpleados() {
-    // int fila=TablaEmpleados.getSelectedRow();
-    // empleados.removeRow(fila);
-    // }
-    // void actualizarEmpleados() {
-    // int fila=TablaEmpleados.getSelectedRow();
-    // empleados.setValueAt(txtEmpleadoCodigo.getText(), fila, 0);
-    // empleados.setValueAt(txtEmpleadoNombre.getText(), fila, 1);
-    // empleados.setValueAt(txtEmpleadoApellido.getText(), fila, 2);
-    // empleados.setValueAt(txtEmpleadoProfesion.getText(), fila, 3);
-    // empleados.setValueAt(txtEmpleadoDni.getText(), fila, 4);
-    // empleados.setValueAt(txtEmpleadoOrigen.getText(), fila, 5);
-    // }
 }
