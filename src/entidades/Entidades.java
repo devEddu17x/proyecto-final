@@ -8,6 +8,7 @@ package entidades;
  *
  * @author eduar
  */
-public class App {
-    
+public class Entidades {
+    public static void main(String[] args) {
+    }
 }
