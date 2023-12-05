@@ -1,4 +1,2 @@
-# el target
-target/
-# los .class
-.class
+build/
+*.class
