@@ -963,7 +963,7 @@ public class Frm_Menu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE))
                     .addGroup(jPanel38Layout.createSequentialGroup()
                         .addComponent(jLabel38)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)))
                 .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtPuestosBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1497,17 +1497,17 @@ public class Frm_Menu extends javax.swing.JFrame {
 
         jLabel23.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel23.setText("Cod. Puesto:");
-        jPanel22.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 130, -1, -1));
+        jLabel23.setText("Puesto:");
+        jPanel22.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 130, -1, -1));
 
         jLabel18.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setText("Cod. Area:");
-        jPanel22.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 40, -1, -1));
+        jLabel18.setText("Area:");
+        jPanel22.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 40, -1, -1));
 
         jLabel22.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel22.setText("Cod. Empleado:");
+        jLabel22.setText("Empleado:");
         jPanel22.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 240, -1, -1));
 
         txtAsignacionEmpleado.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
@@ -1666,9 +1666,19 @@ public class Frm_Menu extends javax.swing.JFrame {
         jPanel27.add(txtEmpleadoDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 250, 50));
 
         txtCodigoEmpleado.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        txtCodigoEmpleado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCodigoEmpleadoKeyTyped(evt);
+            }
+        });
         jPanel27.add(txtCodigoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 250, 50));
 
         txtNombreEmpleado.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        txtNombreEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreEmpleadoActionPerformed(evt);
+            }
+        });
         txtNombreEmpleado.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNombreEmpleadoKeyTyped(evt);
@@ -1963,8 +1973,7 @@ public class Frm_Menu extends javax.swing.JFrame {
         Empleado empleado = BLEmpleado.getEmpleado(txtAsignacionEmpleado.getText());
         Area area = BLArea.getAreaNombre(cbxAreaAsignaciones.getItemAt(cbxAreaAsignaciones.getSelectedIndex()));
         Puesto puesto = BLPuesto.getPuestoNombre(cbxPuestoAsignaciones.getItemAt(cbxPuestoAsignaciones.getSelectedIndex()));
-        
-        
+
         if (empleado != null) {
             fechaOrganizacion = empleado.getInicioOrg();
         }
@@ -1975,141 +1984,162 @@ public class Frm_Menu extends javax.swing.JFrame {
         } else /*if (fechaFin == null) */ {
             mensaje = BLAsignacion.agregarAsignacion(fechaOrganizacion, fechaInicio, empleado, area, puesto);
         }
+        
+        if (mensaje.equals("Asignacion agregada correctamente")){
+            puesto.setNumeroEmpleados(puesto.getNumeroEmpleados()+1);
+            BLPuesto.guardarCambios();
+        }
+        
+        
 
         JOptionPane.showMessageDialog(this, mensaje);
     }//GEN-LAST:event_AgregarAsignacionesMouseClicked
 
     private void txtEmpleadosBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmpleadosBuscarKeyTyped
-      
+
     }//GEN-LAST:event_txtEmpleadosBuscarKeyTyped
 
     private void txtPuestosBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPuestosBuscarKeyTyped
-       
+
     }//GEN-LAST:event_txtPuestosBuscarKeyTyped
 
     private void txtAreasBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAreasBuscarKeyTyped
-       
+
     }//GEN-LAST:event_txtAreasBuscarKeyTyped
 
     private void txtEmpleadoMenuKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmpleadoMenuKeyTyped
-       
+
     }//GEN-LAST:event_txtEmpleadoMenuKeyTyped
 
     private void txtAreaNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAreaNombreKeyTyped
-       char letras=evt.getKeyChar();
-      if(Character.isDigit(letras)){
-          getToolkit().beep();
-          evt.consume();
-          LabelEmpleados.setText("Ingresar solo letras");
-      }else {
-          LabelEmpleados.setText("");
-      }
+        char key = evt.getKeyChar();
+        if (key == evt.VK_BACK_SPACE) {
+            return;
+        }
+        if (!Character.isLetter(key)) {
+            evt.consume();
+            LabelEmpleados.setText("Ingresar solo letras");
+        } else {
+            LabelEmpleados.setText("");
+        }
     }//GEN-LAST:event_txtAreaNombreKeyTyped
 
     private void txtPuestoPuestoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPuestoPuestoKeyTyped
-       char letras=evt.getKeyChar();
-      if(Character.isDigit(letras)){
-          getToolkit().beep();
-          evt.consume();
-          LabelPuestos.setText("Ingresar solo letras");
-      }else {
-          LabelPuestos.setText("");
-      }
+        char key = evt.getKeyChar();
+        if (key == evt.VK_BACK_SPACE) {
+            return;
+        }
+        if (!Character.isLetter(key)) {
+            evt.consume();
+            LabelPuestos.setText("Ingresar solo letras");
+        } else {
+            LabelPuestos.setText("");
+        }
 
     }//GEN-LAST:event_txtPuestoPuestoKeyTyped
 
     private void txtMaximoEmpleadosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaximoEmpleadosKeyTyped
-      char numeros=evt.getKeyChar();
-      if(Character.isLetter(numeros)){
-          getToolkit().beep();
-          evt.consume();
-          LabelMaxEmpleados.setText("Ingresar solo numeros");
-      }else {
-          LabelMaxEmpleados.setText("");
-      }
+        char key = evt.getKeyChar();
+
+        if (!Character.isDigit(key)) {
+            evt.consume();
+            LabelMaxEmpleados.setText("Ingresar solo numeros");
+        } else {
+            LabelMaxEmpleados.setText("");
+        }
     }//GEN-LAST:event_txtMaximoEmpleadosKeyTyped
 
     private void txtNombreEmpleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEmpleadoKeyTyped
- char letras=evt.getKeyChar();
-      if(Character.isDigit(letras)){
-          getToolkit().beep();
-          evt.consume();
-          LabelApellido.setText("Ingresar solo letras");
-      }else {
-          LabelApellido.setText("");
-      }     
+        char key = evt.getKeyChar();
+        if (key == evt.VK_BACK_SPACE) {
+            return;
+        }
+        if (!Character.isLetter(key)) {
+            evt.consume();
+            LabelApellido.setText("Ingresar solo letras");
+        } else {
+            LabelApellido.setText("");
+        }
     }//GEN-LAST:event_txtNombreEmpleadoKeyTyped
 
     private void txtProfesionEmpleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProfesionEmpleadoKeyTyped
-      char letras=evt.getKeyChar();
-      if(Character.isDigit(letras)){
-          getToolkit().beep();
-          evt.consume();
-          LabelProfesion.setText("Ingresar solo letras");
-      }else {
-          LabelProfesion.setText("");
-      }   
+        char letras = evt.getKeyChar();
+        if (!Character.isLetter(letras)) {
+            getToolkit().beep();
+            evt.consume();
+            LabelProfesion.setText("Ingresar solo letras");
+        } else {
+            LabelProfesion.setText("");
+        }
     }//GEN-LAST:event_txtProfesionEmpleadoKeyTyped
 
     private void txtApellidoEmpleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoEmpleadoKeyTyped
-  char letras=evt.getKeyChar();
-      if(Character.isDigit(letras)){
-          getToolkit().beep();
-          evt.consume();
-          LabelApellidoEmpleado.setText("Ingresar solo letras");
-      }else {
-          LabelApellidoEmpleado.setText("");
-      }  
+        char letras = evt.getKeyChar();
+        if (!Character.isLetter(letras)) {
+            getToolkit().beep();
+            evt.consume();
+            LabelApellidoEmpleado.setText("Ingresar solo letras");
+        } else {
+            LabelApellidoEmpleado.setText("");
+        }
     }//GEN-LAST:event_txtApellidoEmpleadoKeyTyped
 
     private void inputNombreCargoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputNombreCargoKeyTyped
-    char letras=evt.getKeyChar();
-      if(Character.isDigit(letras)){
-          getToolkit().beep();
-          evt.consume();
-          LabelNombreEmpleado.setText("Ingresar solo letras");
-      }else {
-          LabelNombreEmpleado.setText("");
-      } 
+        char letras = evt.getKeyChar();
+        if (!Character.isLetter(letras)) {
+            getToolkit().beep();
+            evt.consume();
+            LabelNombreEmpleado.setText("Ingresar solo letras");
+        } else {
+            LabelNombreEmpleado.setText("");
+        }
     }//GEN-LAST:event_inputNombreCargoKeyTyped
 
     private void inputCantidadEmpleadosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputCantidadEmpleadosKeyTyped
-     char numeros=evt.getKeyChar();
-      if(Character.isLetter(numeros)){
-          getToolkit().beep();
-          evt.consume();
-          LabelEmpleadoCantidad.setText("Ingresar solo numeros");
-      }else {
-          LabelEmpleadoCantidad.setText("");
-      }
+        char numeros = evt.getKeyChar();
+        if (!Character.isDigit(numeros)) {
+            getToolkit().beep();
+            evt.consume();
+            LabelEmpleadoCantidad.setText("Ingresar solo numeros");
+        } else {
+            LabelEmpleadoCantidad.setText("");
+        }
     }//GEN-LAST:event_inputCantidadEmpleadosKeyTyped
 
     private void txtEmpleadoDNIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmpleadoDNIKeyTyped
-     char numeros=evt.getKeyChar();
-      if(Character.isLetter(numeros)){
-          getToolkit().beep();
-          evt.consume();
-          LabelDni.setText("Ingresar solo numeros");
-      }else {
-          LabelDni.setText("");
-      }  
+        char numeros = evt.getKeyChar();
+        if (!Character.isDigit(numeros)) {
+            getToolkit().beep();
+            evt.consume();
+            LabelDni.setText("Ingresar solo numeros");
+        } else {
+            LabelDni.setText("");
+        }
     }//GEN-LAST:event_txtEmpleadoDNIKeyTyped
 
     private void LabelNombreEmpleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LabelNombreEmpleadoKeyTyped
-      
+
     }//GEN-LAST:event_LabelNombreEmpleadoKeyTyped
 
     private void LabelEmpleadoCantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LabelEmpleadoCantidadKeyTyped
-          
+
     }//GEN-LAST:event_LabelEmpleadoCantidadKeyTyped
 
     private void txtPuestoCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPuestoCodigoActionPerformed
-        
+
     }//GEN-LAST:event_txtPuestoCodigoActionPerformed
 
     private void txtAreaCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAreaCodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAreaCodigoActionPerformed
+
+    private void txtCodigoEmpleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoEmpleadoKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoEmpleadoKeyTyped
+
+    private void txtNombreEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreEmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreEmpleadoActionPerformed
 
     private void actualizarCbxPuestoAsignaciones(String seleccion) {
         // obtener la el area 
@@ -2564,11 +2594,11 @@ public class Frm_Menu extends javax.swing.JFrame {
     }// GEN-LAST:event_btnInicioAsignacionesAscendenteActionPerformed
 
     private void chxCodigoAreaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_chxCodigoAreaActionPerformed
-        if(chxCodigoArea.isSelected()){
+        if (chxCodigoArea.isSelected()) {
             txtAreaCodigo.setEditable(false);
         } else {
             txtAreaCodigo.setEditable(true);
-            }
+        }
     }
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jButton3MouseClicked
@@ -2655,11 +2685,11 @@ public class Frm_Menu extends javax.swing.JFrame {
     }// GEN-LAST:event_btnRegresarEmpleadosActionPerformed
 
     private void chxCodigoPuestoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_chxCodigoPuestoActionPerformed
-       if(chxCodigoPuesto.isSelected()){
+        if (chxCodigoPuesto.isSelected()) {
             txtPuestoCodigo.setEditable(false);
         } else {
             txtPuestoCodigo.setEditable(true);
-            }
+        }
     }// GEN-LAST:event_chxCodigoPuestoActionPerformed
 
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jComboBox4ActionPerformed
@@ -2906,7 +2936,7 @@ public class Frm_Menu extends javax.swing.JFrame {
                 txtEmpleadoDNI.setText("");
                 txtCodigoEmpleado.setText("");
             } else {
-                 Date fechaCalendario = calendarioFechaOrganizacion.getDate();
+                Date fechaCalendario = calendarioFechaOrganizacion.getDate();
                 if (fechaCalendario != null) {
                     fecha = fechaCalendario.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                 }
@@ -2919,7 +2949,7 @@ public class Frm_Menu extends javax.swing.JFrame {
                 chxCodigoEmpleado1.setSelected(false);
                 chxFechaEmpleado.setSelected(false);
                 chxEmpleadoCargo.setSelected(false);
-                
+
             }
         }
 
@@ -2936,12 +2966,12 @@ public class Frm_Menu extends javax.swing.JFrame {
     }// GEN-LAST:event_chxCodigoEmpleado1MouseClicked
 
     private void chxCodigoEmpleado1ActionPerformed(java.awt.event.ActionEvent evt) {
-       if(chxCodigoEmpleado1.isSelected()){
+        if (chxCodigoEmpleado1.isSelected()) {
             txtCodigoEmpleado.setEditable(false);
         } else {
             txtCodigoEmpleado.setEditable(true);
-            }
-     }// GEN-LAST:event_chxCodigoEmpleado1ActionPerformed
+        }
+    }// GEN-LAST:event_chxCodigoEmpleado1ActionPerformed
 
     private void chxEmpleadoCargoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_chxEmpleadoCargoActionPerformed
     }// GEN-LAST:event_chxEmpleadoCargoActionPerformed

@@ -63,4 +63,8 @@ public class BLPuesto {
           }
       } return null;
   }
+  
+  public static void guardarCambios(){
+      DALPuesto.guardarCambios(MapaPuestos.getLista());
+  }
 }

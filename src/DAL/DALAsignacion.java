@@ -25,18 +25,31 @@ public class DALAsignacion {
 
     public static void agregarAsignacion(Asignacion asignacion) {
         try {
+            
+            
             raf = new RandomAccessFile(path, "rw");
             raf.seek(raf.length());
+            
+            
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(baos);
+            
+            
             oos.writeObject(asignacion);
+            
+            
             byte[] bytes = baos.toByteArray();
+            
+            
             oos.close();
             baos.close();
+            
+            
             raf.writeInt(bytes.length);
             raf.write(bytes);
             
             ListaAsignaciones.agregarAsignacion(asignacion);
+            
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -46,13 +59,20 @@ public class DALAsignacion {
         try {
             raf = new RandomAccessFile(path, "r");
             while (raf.getFilePointer() < raf.length()) {
+                
                 int size = raf.readInt();
                 byte[] bytes = new byte[size];
+                
+                
                 raf.read(bytes);
+                
                 ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
                 ObjectInputStream ois = new ObjectInputStream(bais);
+                
+                
                 Asignacion asignacion = (Asignacion) ois.readObject();
                 ListaAsignaciones.agregarAsignacion(asignacion);
+                
                 ois.close();
                 bais.close();
             }

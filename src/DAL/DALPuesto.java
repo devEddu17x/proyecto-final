@@ -16,13 +16,14 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 public class DALPuesto {
+
     private static RandomAccessFile raf;
     private static final String path = "mapa_puestos.dat";
-    
-    private static String [] columnas = {"Codigo", "Nombre", "Cod. Area", "Max. Empleados", "N° Empleados"};
+
+    private static String[] columnas = {"Codigo", "Nombre", "Cod. Area", "Max. Empleados", "N° Empleados"};
     private static Object[] fila = new Object[columnas.length];
-    
-    public static void agregarPuesto(Puesto puesto){
+
+    public static void agregarPuesto(Puesto puesto) {
         try {
             // archivo
             raf = new RandomAccessFile(path, "rw");
@@ -43,21 +44,21 @@ public class DALPuesto {
             System.out.println(ex.getMessage());
         }
     }
-    public static void leerPuestos(){
+
+    public static void leerPuestos() {
         try {
             raf = new RandomAccessFile(path, "r");
-            
-            while(raf.getFilePointer() < raf.length()){
-                
+            while (raf.getFilePointer() < raf.length()) {
+
                 int size = raf.readInt();
                 byte[] bytes = new byte[size];
                 raf.read(bytes);
-                
+
                 ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
                 ObjectInputStream ois = new ObjectInputStream(bais);
-                
+
                 Puesto puesto = (Puesto) ois.readObject();
-                
+
                 MapaPuestos.setPuesto(puesto);
                 ois.close();
                 bais.close();
@@ -65,17 +66,16 @@ public class DALPuesto {
         } catch (Exception e) {
         }
     }
-    
-    
-    public static DefaultTableModel getTableNombreAsc(){
+
+    public static DefaultTableModel getTableNombreAsc() {
         return llenarTabla(MapaPuestos.ordenarPorNombreAsc());
     }
-    
-    public static DefaultTableModel getTableNombreDes(){
+
+    public static DefaultTableModel getTableNombreDes() {
         return llenarTabla(MapaPuestos.ordenarPorNombreDes());
     }
-    
-    public static DefaultTableModel llenarTabla(ArrayList<Puesto> lista){
+
+    public static DefaultTableModel llenarTabla(ArrayList<Puesto> lista) {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(columnas);
         for (Puesto puesto : lista) {
@@ -86,7 +86,43 @@ public class DALPuesto {
             fila[4] = puesto.getNumeroEmpleados();
             modelo.addRow(fila);
         }
-        
+
         return modelo;
     }
+
+    public static void guardarCambios(ArrayList<Puesto> listaPuestos) {
+
+        try {
+            raf = new RandomAccessFile(path, "rw");
+            raf.seek(0);
+            
+            
+            for (Puesto puesto : listaPuestos) {
+
+                // archivo
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ObjectOutputStream oos = new ObjectOutputStream(baos);
+                
+                //escribiendo en el flujo object
+                oos.writeObject(puesto);
+                byte[] bytes = baos.toByteArray();
+                // cerrando flujos
+                oos.close();
+                baos.close();
+                
+                raf.writeInt(bytes.length);
+                raf.write(bytes);
+
+                
+                
+
+            }
+            
+            raf.close();
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
 }

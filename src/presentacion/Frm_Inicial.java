@@ -95,12 +95,12 @@ public class Frm_Inicial extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 3, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 204, 0));
         jLabel2.setText("text");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 3, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 204, 51));
         jLabel3.setText("Timer");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(255, 0, 51));
         jButton1.setFont(new java.awt.Font("Segoe UI Black", 3, 24)); // NOI18N
